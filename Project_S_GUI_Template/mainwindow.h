@@ -41,6 +41,12 @@ public:
     QString thEndTime = "N/A";
     QString fBegTime;
     QString fEndTime = "N/A";
+    QString sBegTime;
+    QString sEndTime = "N/A";
+    QString suBegTime;
+    QString suEndTime = "N/A";
+
+
 
 private slots:
 
@@ -80,6 +86,19 @@ private slots:
     void on_timeEdit_11_timeChanged(const QTime &time);
 
     void on_timeEdit_12_timeChanged(const QTime &time);
+
+    void on_checkBox_6_clicked();
+
+    void on_checkBox_7_clicked();
+
+    void on_timeEdit_13_timeChanged(const QTime &time);
+
+    void on_timeEdit_14_timeChanged(const QTime &time);
+
+    void on_timeEdit_15_timeChanged(const QTime &time);
+
+    void on_timeEdit_16_timeChanged(const QTime &time);
+
 
 private:
     Ui::MainWindow *ui;

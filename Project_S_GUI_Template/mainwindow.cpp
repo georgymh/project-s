@@ -33,17 +33,36 @@ void MainWindow::on_pushButton_5_clicked()
     ui->listWidget_3->insertItem(3, wednesday);
     ui->listWidget_3->insertItem(4, thursday);
     ui->listWidget_3->insertItem(5, friday);
+    ui->listWidget_3->insertItem(6, saturday);
+    ui->listWidget_3->insertItem(7, sunday);
 
     ui->listWidget_4->insertItem(1, mEndTime);
     ui->listWidget_4->insertItem(2, tEndTime);
     ui->listWidget_4->insertItem(3, wEndTime);
     ui->listWidget_4->insertItem(4, thEndTime);
     ui->listWidget_4->insertItem(5, fEndTime);
+    ui->listWidget_4->insertItem(6, sEndTime);
+    ui->listWidget_4->insertItem(7, suEndTime);
 
+    //Clears the Bldg/Dept lineEdit field
+    ui->lineEdit->clear();
+
+    //Clears the room lineEdit field
+    ui->lineEdit_2->clear();
+
+    //Clears all checked boxes
+    ui->checkBox->setChecked(false);
+    ui->checkBox_2->setChecked(false);
+    ui->checkBox_3->setChecked(false);
+    ui->checkBox_4->setChecked(false);
+    ui->checkBox_5->setChecked(false);
+    ui->checkBox_6->setChecked(false);
+    ui->checkBox_7->setChecked(false);
 
 }
+
 /*
- *  Check Box Widgets
+ *  BEGINNING CHECK BOX WIDGETS
  **/
 
 //Passes the room number from the first line edit in Basic Info
@@ -67,22 +86,40 @@ void MainWindow::on_checkBox_3_clicked()
 {
     wednesday = "Wednesday";
 }
+
 //If Day is clicked overrides the initial N/A assignment
 void MainWindow::on_checkBox_4_clicked()
 {
     thursday = "Thursday";
 }
+
 //If Day is clicked overrides the initial N/A assignment
 void MainWindow::on_checkBox_5_clicked()
 {
     friday = "Friday";
 }
 
+//If Day is clicked overrides the initial N/A assignment
+void MainWindow::on_checkBox_6_clicked()
+{
+    saturday = "Saturday";
+}
+
+//If Day is clicked overrides the initial N/A assignment
+void MainWindow::on_checkBox_7_clicked()
+{
+    sunday = "Sunday";
+}
+/*
+ * ENDING CHECK BOX WIDGET
+ * */
 
 /*
+ *  BEGINNING TIME WIDGET
  *  Beginning and end time widgets for each day of the week
  *  first camel case indicates day of the week followed by start and end times
  **/
+
 //assigns beginning time
 void MainWindow::on_timeEdit_timeChanged(const QTime &time)
 {
@@ -133,3 +170,32 @@ void MainWindow::on_timeEdit_12_timeChanged(const QTime &time)
 {
     fEndTime = fBegTime + " - " + time.toString();
 }
+
+//assigns beginning time
+void MainWindow::on_timeEdit_13_timeChanged(const QTime &time)
+{
+    sBegTime = time.toString();
+}
+
+//assigns ending time with beginning time to pass as the displayed time
+void MainWindow::on_timeEdit_14_timeChanged(const QTime &time)
+{
+    sEndTime = sBegTime + " - " + time.toString();
+}
+
+//assigns beginning time
+void MainWindow::on_timeEdit_15_timeChanged(const QTime &time)
+{
+    suBegTime = time.toString();
+}
+
+//assigns ending time with beginning time to pass as the displayed time
+void MainWindow::on_timeEdit_16_timeChanged(const QTime &time)
+{
+    suEndTime = suBegTime + " - " + time.toString();
+}
+
+/*
+ * ENDING TIME WIDGET
+ * */
+
