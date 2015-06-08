@@ -29,7 +29,7 @@
       <x>0</x>
       <y>0</y>
       <width>771</width>
-      <height>621</height>
+      <height>631</height>
      </rect>
     </property>
     <property name="palette">
@@ -88,24 +88,11 @@
      <attribute name="title">
       <string>Basic Info</string>
      </attribute>
-     <widget class="QScrollBar" name="verticalScrollBar_3">
-      <property name="geometry">
-       <rect>
-        <x>590</x>
-        <y>360</y>
-        <width>20</width>
-        <height>191</height>
-       </rect>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_14">
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>340</y>
+        <x>330</x>
+        <y>350</y>
         <width>71</width>
         <height>16</height>
        </rect>
@@ -113,36 +100,6 @@
       <property name="text">
        <string>Rooms Added</string>
       </property>
-     </widget>
-     <widget class="QTableWidget" name="tableWidget">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>360</y>
-        <width>581</width>
-        <height>192</height>
-       </rect>
-      </property>
-      <column>
-       <property name="text">
-        <string>Dept/Bldg</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Room Name</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Days Open</string>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>Hours Open</string>
-       </property>
-      </column>
      </widget>
      <widget class="QGroupBox" name="groupBox">
       <property name="geometry">
@@ -580,41 +537,212 @@
      <widget class="QListWidget" name="listWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>40</x>
         <y>380</y>
-        <width>91</width>
-        <height>171</height>
+        <width>101</width>
+        <height>192</height>
        </rect>
       </property>
+      <item>
+       <property name="text">
+        <string>Dept/Bldg</string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>true</underline>
+         <strikeout>false</strikeout>
+        </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+       </property>
+       <property name="background">
+        <brush brushstyle="NoBrush">
+         <color alpha="255">
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </brush>
+       </property>
+      </item>
      </widget>
      <widget class="QListWidget" name="listWidget_2">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>140</x>
         <y>380</y>
-        <width>121</width>
-        <height>171</height>
+        <width>101</width>
+        <height>192</height>
        </rect>
       </property>
+      <item>
+       <property name="text">
+        <string>Room Number</string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+       </property>
+      </item>
      </widget>
      <widget class="QListWidget" name="listWidget_3">
       <property name="geometry">
        <rect>
-        <x>220</x>
+        <x>240</x>
         <y>380</y>
-        <width>101</width>
-        <height>171</height>
+        <width>111</width>
+        <height>192</height>
        </rect>
       </property>
+      <item>
+       <property name="text">
+        <string>Monday</string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+       </property>
+      </item>
      </widget>
      <widget class="QListWidget" name="listWidget_4">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>340</x>
         <y>380</y>
-        <width>271</width>
-        <height>171</height>
+        <width>111</width>
+        <height>192</height>
        </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Tuesday</string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+       </property>
+      </item>
+     </widget>
+     <widget class="QListWidget" name="listWidget_5">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>380</y>
+        <width>111</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Wednesday</string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+       </property>
+      </item>
+     </widget>
+     <widget class="QListWidget" name="listWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>380</y>
+        <width>111</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Thursday</string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+       </property>
+      </item>
+     </widget>
+     <widget class="QListWidget" name="listWidget_7">
+      <property name="geometry">
+       <rect>
+        <x>640</x>
+        <y>380</y>
+        <width>111</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <item>
+       <property name="text">
+        <string>Friday</string>
+       </property>
+       <property name="font">
+        <font>
+         <weight>75</weight>
+         <bold>true</bold>
+         <underline>true</underline>
+        </font>
+       </property>
+       <property name="textAlignment">
+        <set>AlignHCenter|AlignVCenter|AlignCenter</set>
+       </property>
+      </item>
+     </widget>
+     <widget class="QPushButton" name="pushButton_6">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>350</y>
+        <width>81</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Remove Room</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_7">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>350</y>
+        <width>75</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Edit Room</string>
       </property>
      </widget>
     </widget>

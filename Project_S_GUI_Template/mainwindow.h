@@ -47,7 +47,6 @@ public:
     QString suEndTime = "N/A";
 
 
-
 private slots:
 
 
@@ -98,6 +97,11 @@ private slots:
     void on_timeEdit_15_timeChanged(const QTime &time);
 
     void on_timeEdit_16_timeChanged(const QTime &time);
+
+
+
+    void on_pushButton_6_clicked();
+
 
 
 private:

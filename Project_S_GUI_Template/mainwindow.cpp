@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QString>
 #include <QDateTimeEdit>
+#include <QTime>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -16,33 +17,31 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//Upon clicking the "add room" button, the dept/bldg input will be passed to the room variable
-void MainWindow::on_lineEdit_textChanged(const QString &arg1)
-{
-    room = arg1;
-}
+
 
 //Upon clicking the "add room" button, the listWidget will pass the variables to be displayed in the list
 void MainWindow::on_pushButton_5_clicked()
 {
-    ui->listWidget->insertItem(1, room);
-    ui->listWidget_2->insertItem(1, roomNumber);
+    //Adds room to listWidget
+    ui->listWidget->addItem(room);
 
-    ui->listWidget_3->insertItem(1, monday);
-    ui->listWidget_3->insertItem(2, tuesday);
-    ui->listWidget_3->insertItem(3, wednesday);
-    ui->listWidget_3->insertItem(4, thursday);
-    ui->listWidget_3->insertItem(5, friday);
-    ui->listWidget_3->insertItem(6, saturday);
-    ui->listWidget_3->insertItem(7, sunday);
+    //Adds room number to listWidget_2
+    ui->listWidget_2->addItem(roomNumber);
 
-    ui->listWidget_4->insertItem(1, mEndTime);
-    ui->listWidget_4->insertItem(2, tEndTime);
-    ui->listWidget_4->insertItem(3, wEndTime);
-    ui->listWidget_4->insertItem(4, thEndTime);
-    ui->listWidget_4->insertItem(5, fEndTime);
-    ui->listWidget_4->insertItem(6, sEndTime);
-    ui->listWidget_4->insertItem(7, suEndTime);
+    //Adds var monday to listWidget_3
+    ui->listWidget_3->addItem(mEndTime);
+
+    //Adds var tuesday to listWidget_4
+    ui->listWidget_4->addItem(tEndTime);
+
+    //Adds var wednesday to listWidget_5
+    ui->listWidget_5->addItem(wEndTime);
+
+    //Adds var thursday to listWidget_6
+    ui->listWidget_6->addItem(thEndTime);
+
+    //Adds var friday to listWidget_&
+    ui->listWidget_7->addItem(fEndTime);
 
     //Clears the Bldg/Dept lineEdit field
     ui->lineEdit->clear();
@@ -59,11 +58,35 @@ void MainWindow::on_pushButton_5_clicked()
     ui->checkBox_6->setChecked(false);
     ui->checkBox_7->setChecked(false);
 
+    //Reset timeEdit widget back to 12:00am
+    QTime time(0, 0, 0, 0);
+    ui->timeEdit->setTime(time);
+    ui->timeEdit_2->setTime(time);
+    ui->timeEdit_3->setTime(time);
+    ui->timeEdit_4->setTime(time);
+    ui->timeEdit_5->setTime(time);
+    ui->timeEdit_6->setTime(time);
+    ui->timeEdit_7->setTime(time);
+    ui->timeEdit_8->setTime(time);
+    ui->timeEdit_9->setTime(time);
+    ui->timeEdit_10->setTime(time);
+    ui->timeEdit_11->setTime(time);
+    ui->timeEdit_12->setTime(time);
+    ui->timeEdit_13->setTime(time);
+    ui->timeEdit_14->setTime(time);
+
+
 }
 
 /*
  *  BEGINNING CHECK BOX WIDGETS
  **/
+
+//Upon clicking the "add room" button, the dept/bldg input will be passed to the room variable
+void MainWindow::on_lineEdit_textChanged(const QString &arg1)
+{
+    room = arg1;
+}
 
 //Passes the room number from the first line edit in Basic Info
 void MainWindow::on_lineEdit_2_textChanged(const QString &arg1)
@@ -123,52 +146,84 @@ void MainWindow::on_checkBox_7_clicked()
 //assigns beginning time
 void MainWindow::on_timeEdit_timeChanged(const QTime &time)
 {
-    mBegTime = time.toString();
+        if (time.toString() == "00:00:00")
+            mBegTime = "";
+        else
+            mBegTime = time.toString();
+
 }
 //assigns ending time with beginning time to pass as the displayed time
 void MainWindow::on_timeEdit_2_timeChanged(const QTime &time)
 {
-    mEndTime = mBegTime + " - " + time.toString();
+    if (mBegTime != "")
+        mEndTime = mBegTime + " - " + time.toString();
+    else
+        mEndTime = "N/A";
+
 }
 //assigns beginning time
 void MainWindow::on_timeEdit_5_timeChanged(const QTime &time)
 {
-    tBegTime = time.toString();
+    if (time.toString() == "00:00:00")
+        tBegTime = "";
+    else
+        tBegTime = time.toString();
 }
 //assigns ending time with beginning time to pass as the displayed time
 void MainWindow::on_timeEdit_6_timeChanged(const QTime &time)
 {
-    tEndTime = tBegTime + " - " + time.toString();
+    if (tBegTime != "")
+        tEndTime = tBegTime + " - " + time.toString();
+    else
+        tEndTime = "N/A";
 }
 //assigns beginning time
 void MainWindow::on_timeEdit_7_timeChanged(const QTime &time)
 {
-    wBegTime = time.toString();
+    if (time.toString() == "00:00:00")
+        wBegTime = "";
+    else
+        wBegTime = time.toString();
 }
 //assigns ending time with beginning time to pass as the displayed time
 void MainWindow::on_timeEdit_8_timeChanged(const QTime &time)
 {
-    wEndTime = wBegTime + " - " + time.toString();
+    if (wBegTime != "")
+        wEndTime = wBegTime + " - " + time.toString();
+    else
+        wEndTime = "N/A";
 }
 //assigns beginning time
 void MainWindow::on_timeEdit_9_timeChanged(const QTime &time)
 {
-    thBegTime = time.toString();
+    if (time.toString() == "00:00:00")
+        thBegTime = "";
+    else
+        thBegTime = time.toString();
 }
 //assigns ending time with beginning time to pass as the displayed time
 void MainWindow::on_timeEdit_10_timeChanged(const QTime &time)
 {
-    thEndTime = thBegTime + " - " + time.toString();
+    if (thBegTime != "")
+        thEndTime = thBegTime + " - " + time.toString();
+    else
+        thEndTime = "N/A";
 }
 //assigns beginning time
 void MainWindow::on_timeEdit_11_timeChanged(const QTime &time)
 {
-    fBegTime = time.toString();
+    if (time.toString() == "00:00:00")
+        fBegTime = "";
+    else
+        fBegTime = time.toString();
 }
 //assigns ending time with beginning time to pass as the displayed time
 void MainWindow::on_timeEdit_12_timeChanged(const QTime &time)
 {
-    fEndTime = fBegTime + " - " + time.toString();
+    if (fBegTime != "")
+        fEndTime = fBegTime + " - " + time.toString();
+    else
+        fEndTime = "N/A";
 }
 
 //assigns beginning time
@@ -198,4 +253,20 @@ void MainWindow::on_timeEdit_16_timeChanged(const QTime &time)
 /*
  * ENDING TIME WIDGET
  * */
+
+
+//Remove room pushButton
+void MainWindow::on_pushButton_6_clicked()
+{
+    ui->listWidget->currentItem()->~QListWidgetItem();
+    ui->listWidget_2->currentItem()->~QListWidgetItem();
+    ui->listWidget_3->currentItem()->~QListWidgetItem();
+    ui->listWidget_4->currentItem()->~QListWidgetItem();
+    ui->listWidget_5->currentItem()->~QListWidgetItem();
+    ui->listWidget_6->currentItem()->~QListWidgetItem();
+    ui->listWidget_7->currentItem()->~QListWidgetItem();
+
+}
+
+
 
