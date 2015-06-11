@@ -76,7 +76,7 @@
 		<div style="float: right; margin-right: 40%;">
 		<form class="form">
 			<p style="text-align: center">Enter Department Name: </p>
-				<input id="departmentName" class="form-control" type="text" name="department" placeholder="Enter Department" value=''/>
+				<input id="departmentName" class="form-control" type="text" name="department" placeholder="Enter Department" value=""/>
 				<br>
 			<p style="text-align: center">Enter Building Name: </p>
 				<input id="buildingName" class="form-control" type="text" name="department" placeholder="Enter Building" value=''/>
@@ -94,7 +94,7 @@
 			<br>
 			
 			<p>Select Hours of Operation: </p>
-			<select class="form-control" name="begHours">
+			<select id="begHour"class="form-control" name="begHours">
 				<option value="12:00am">12:00am</option>
 				<option value="1:00am">1:00am</option>
 				<option value="2:00am">2:00am</option>
@@ -123,7 +123,7 @@
 			
 			<p style="text-align: center">to</p>
 			
-			<select class="form-control" name="begHours">
+			<select id="endHour" class="form-control" name="begHours">
 				<option value="12:00am">12:00am</option>
 				<option value="1:00am">1:00am</option>
 				<option value="2:00am">2:00am</option>
@@ -155,15 +155,27 @@
 		<script>
 			function validateForm(){
 				if (document.getElementById('departmentName').value === null || document.getElementById('departmentName').value === '')
+				{
 					alert("Enter Department Name");
+				}
 				else if (document.getElementById('buildingName').value === null || document.getElementById('buildingName').value === '')
+				{
 					alert("Enter Building Name");
+				}
+				else if (document.getElementById('begHour').value === '12:00am' && document.getElementById('endHour').value === '12:00am')
+				{
+					alert("please choose a time");
+				}
+				else
+				{
+					window.location.replace(href="add-rooms.html");
+				}
 			}
 		</script>
 
     <!-- /.container -->
 	<div style="margin-top: 70%; margin-left: 10%;">
-		<a id="next-button" onclick="validateForm()" href="add-rooms.html" class="btn btn-success btn-block">Next</a>
+		<a id="next-button" onclick="validateForm()"  class="btn btn-success btn-block">Next</a>
 	</div>
 	</div>
 	<br><br><br><br>
