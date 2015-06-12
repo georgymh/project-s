@@ -6595,13 +6595,13 @@ body {
 }
 
 .starter-template {
-  padding: 40px 15px;
   text-align: center;
 }
 
 .banner{
 	font-size: 100px;
-	color: Black;
+	color: #555;
+	text-align: center;
 
 }
 
@@ -6623,15 +6623,33 @@ body {
 #next-button{
 	float: right;
 	width: 100px;
+	margin-right: 10%;
 }
 
 #prev-button{
 	float: left;
 	width: 100px;
-	margin-left: 10%;
+	margin-left: 20%;
+}
+
+#no-rooms{
+	opacity: 0.5;
+	text-align: center;
+}
+
+#departmentInput{
+	margin-right: 30%;
 
 }
 
+#button2id{
+	width: 75px;
+
+}
+#form-banner{
+	text-align: center;
+
+}
 ul{
 	list-style-type: none;
 
