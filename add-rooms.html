@@ -59,7 +59,7 @@
       <div class="starter-template">
         <h1 class="banner">Schedulezilla</h1>
 		
-			<h2>Step 2: Enter Available Rooms</h2>
+			<legend>Step 2: Enter Available Rooms</legend>
 		<br><br>
 		<div style="float: left">
 			<ul class="nav nav-pills nav-stacked" style="width: 100px; text-align: center">
@@ -79,44 +79,50 @@
 				<input id="addRoom" class="form-control" type="text" name="department" placeholder="Enter Room" value=""/>
 				<br>
 				<a onClick="insertRoom()" id="add-button" class="btn btn-success btn-block">Add Room</a>
+				<br>
+				
 			</p>
-			<br><br>
-			<div>
+			<div id="table-format">
 				<h1>Entered Rooms</h1>
+				<p id="no-rooms" "style="text-align: center">No Rooms Entered</p>
 					<table id="room-table" class="table" style="width: 200px">
 					</table>
+					<a onClick="deleteRoom()" id="delete-button" class="btn btn-success btn-block">Delete Room</a>
 				</div>
 				<script>
+					
 					function insertRoom() {
-					var count = 0;
+					
 					if(document.getElementById('addRoom').value === null || document.getElementById('addRoom').value === '')
 					{
 						alert("You Must Enter a Room");
 					}
 					else
 						{	
-							count += 1;
+							
 							var table = document.getElementById("room-table");
 							var row = table.insertRow(0);
-							var cell1 = row.insertCell(0);
+							var cell = row.insertCell(0);
 							var newRoom = document.getElementById("addRoom").value;
-							cell1.innerHTML = newRoom;
-							document.getElementById('addRoom').value=null;
+							cell.innerHTML = newRoom;
+							document.getElementById('addRoom').value=null;	
+							$("#no-rooms").hide();
+							$("#delete-button").show();
 							
 						}
 					}
 					
 					function deleteRoom(){
-						document/getElementById("room-table").deleteRow(0);
+						document.getElementById("room-table").deleteRow(0);
+
 					}
+					
+					$("#delete-button").hide();
 				</script>
 		</div>
 		<!-- Enter Room Form End -->
 		
-			<!--Dynamic Room Table Begin-->
-				
 			
-		<!--Dynamic Room Table End -->
 
     <!-- /.container -->
 	<div style="margin-top: 40%;">
