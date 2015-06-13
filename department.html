@@ -11,13 +11,15 @@
     <link rel="icon" href="../../favicon.ico">
 
     <title>Schedulezilla</title>
-
+	
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="starter-template.css" rel="stylesheet">
-
+	
+	<script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/ie-emulation-modes-warning.js"></script>
@@ -54,119 +56,171 @@
       </div>
     </nav>
 
-    <div class="container">
+     
+        
+        
+<h1 class="banner">Schedulezilla</h1>
 
-      <div class="starter-template">
-        <h1 class="banner">Schedulezilla</h1>
-		
-			<h2>Step 1: Enter Department/Building Name and Hours of Operation</h2>
-		<br><br>
-		<div style="float: left">
-			<ul class="nav nav-pills nav-stacked" style="width: 100px; text-align: center">
-				<li role="presentation" class="active"><a href="department.html">Department</a></li>
-				<li role="presentation" ><a href="add-rooms.html">Rooms</a></li>
-				<li role="presentation"><a href="#">Instructors</a></li>
-				<li role="presentation"><a href="#">Classes</a></li>
-				<li role="presentation"><a href="#">Review</a></li>
-				<li role="presentation"><a href="#">Generate Schedule</a></li>
-			</ul>
+
+<!--Begin Progress Bar -->
+<div>
+<div class="container">
+	<br><br>
+	  <div class="col-md-8 col-md-offset-2">   	
+		<div class="progress">
+		  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
 		</div>
-		
-		<!-- Enter Department/Building Form Begin -->
-		<div style="float: right; margin-right: 40%;">
-		<form class="form">
-			<p style="text-align: center">Enter Department Name: </p>
-				<input id="departmentName" class="form-control" type="text" name="department" placeholder="Enter Department" value=''/>
-				<br>
-			<p style="text-align: center">Enter Building Name: </p>
-				<input id="buildingName" class="form-control" type="text" name="department" placeholder="Enter Building" value=''/>
-				<br>	
-			<p style="text-align: center">Enter Days Available:</p>
-			<ul>
-				<li><input type="checkbox" name="monday" value="monday"> Monday</li>
-				<li><input type="checkbox" name="tuesday" value="tuesdayday"> Tuesday</li>
-				<li><input type="checkbox" name="wednesday" value="wednesday"> Wednesday</li>
-				<li><input type="checkbox" name="thursday" value="thursday"> Thursday</li>
-				<li><input type="checkbox" name="friday" value="friday"> Friday</li>
-				<li><input type="checkbox" name="saturday" value="saturday"> Saturday</li>
-				<li><input type="checkbox" name="sunday" value="sunday"> Sunday</li>
-			</ul>
-			<br>
-			
-			<p>Select Hours of Operation: </p>
-			<select class="form-control" name="begHours">
-				<option value="12:00am">12:00am</option>
-				<option value="1:00am">1:00am</option>
-				<option value="2:00am">2:00am</option>
-				<option value="3:00am">3:00am</option>
-				<option value="4:00am">4:00am</option>
-				<option value="5:00am">5:00am</option>
-				<option value="6:00am">6:00am</option>
-				<option value="7:00am">7:00am</option>
-				<option value="8:00am">8:00am</option>
-				<option value="9:00am">9:00am</option>
-				<option value="10:00am">10:00am</option>
-				<option value="11:00am">11:00am</option>
-				<option value="12:00pm">12:00pm</option>
-				<option value="1:00pm">1:00pm</option>
-				<option value="2:00pm">2:00pm</option>
-				<option value="3:00pm">3:00pm</option>
-				<option value="4:00pm">4:00pm</option>
-				<option value="5:00pm">5:00pm</option>
-				<option value="6:00pm">6:00pm</option>
-				<option value="7:00pm">7:00pm</option>
-				<option value="8:00pm">8:00pm</option>
-				<option value="9:00pm">9:00pm</option>
-				<option value="10:00pm">10:00pm</option>
-				<option value="11:00pm">11:00pm</option>
-			</select>
-			
-			<p style="text-align: center">to</p>
-			
-			<select class="form-control" name="begHours">
-				<option value="12:00am">12:00am</option>
-				<option value="1:00am">1:00am</option>
-				<option value="2:00am">2:00am</option>
-				<option value="3:00am">3:00am</option>
-				<option value="4:00am">4:00am</option>
-				<option value="5:00am">5:00am</option>
-				<option value="6:00am">6:00am</option>
-				<option value="7:00am">7:00am</option>
-				<option value="8:00am">8:00am</option>
-				<option value="9:00am">9:00am</option>
-				<option value="10:00am">10:00am</option>
-				<option value="11:00am">11:00am</option>
-				<option value="12:00pm">12:00pm</option>
-				<option value="1:00pm">1:00pm</option>
-				<option value="2:00pm">2:00pm</option>
-				<option value="3:00pm">3:00pm</option>
-				<option value="4:00pm">4:00pm</option>
-				<option value="5:00pm">5:00pm</option>
-				<option value="6:00pm">6:00pm</option>
-				<option value="7:00pm">7:00pm</option>
-				<option value="8:00pm">8:00pm</option>
-				<option value="9:00pm">9:00pm</option>
-				<option value="10:00pm">10:00pm</option>
-				<option value="11:00pm">11:00pm</option>
-			</select>
+
+<!-- End Progress Bar -->
+
+<!-- Begin Form 1 -->
+<div class="step well">
+	<form class="form-horizontal">
+		<fieldset>
+
+<!-- Input Fields -->
+<h1 id="form-banner">Step 1: Enter Hours of Operation</h1>
+<div class="form-group">
+  <label class="col-md-2 control-label" for="textinput">Department:</label>  
+  <div class="col-lg-4">
+  	<input id="textinput" name="textinput" placeholder="enter department" class="form-control input-md" type="text">
+  </div>
+ 
+  <label class="col-md-2 control-label" for="textinput">Building:</label>  
+  <div class="col-lg-4">
+  	<input id="textinput" name="textinput" placeholder="enter building" class="form-control input-md" type="text">
+  </div>
+ </div>
+ 
+ <!-- Multiple CheckBoxes -->
+
+  <label class="col-md-4 control-label" for="radios">Select Day and Time:</label>
+  <div class="col-md-3" style="text-align: center"> 
+    <label class="checkbox" for="radios-0">
+      <input name="radios" id="radios-0" value="monday" checked="checked" type="checkbox">
+      Monday
+    </label> 
+    <label class="checkbox" for="radios-1">
+      <input name="radios" id="radios-1" value="tuesday" type="checkbox">
+      Tuesday
+    </label>
+	<label class="checkbox" for="radios-1">
+      <input name="radios" id="radios-1" value="wednesday" type="checkbox">
+      Wednesday
+    </label>
+	<label class="checkbox" for="radios-1">
+      <input name="radios" id="radios-1" value="thursday" type="checkbox">
+      Thursday
+    </label>
+	<label class="checkbox" for="radios-1">
+      <input name="radios" id="radios-1" value="friday" type="checkbox">
+      Friday
+    </label>
+	<label class="checkbox" for="radios-1">
+      <input name="radios" id="radios-1" value="saturday" type="checkbox">
+      Saturday
+    </label>
+	<label class="checkbox" for="radios-1">
+      <input name="radios" id="radios-1" value="sunday" type="checkbox">
+      Sunday
+    </label>
+  </div>
+</div>
+  </div>
+	</fieldset>
+  </form>
+
+</div>
+
+<!--End Form 1 -->
+
+		<div class="step well">
+			Step 2
 		</div>
+		<div class="step well">
+			Step 3
+		</div>
+		<div class="step well">
+			Step 4
+		</div>
+		<div class="step well">
+			Step 5
+		</div>
+		<div class="step well">
+			Step 6
+		</div>
+
+		<button class="action back btn btn-info">Back</button>
+		<button class="action next btn btn-info">Next</button>
+		<button class="action submit btn btn-success">Submit</button>
+	 </div> 
+   </div>
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		var current = 1;
 		
-		<!-- Validate Form script -->
-		<script>
-			function validateForm(){
-				if (document.getElementById('departmentName').value === null || document.getElementById('departmentName').value === '')
-					alert("Enter Department Name");
-				else if (document.getElementById('buildingName').value === null || document.getElementById('buildingName').value === '')
-					alert("Enter Building Name");
+		widget      = $(".step");
+		btnnext     = $(".next");
+		btnback     = $(".back"); 
+		btnsubmit   = $(".submit");
+
+		// Init buttons and UI
+		widget.not(':eq(0)').hide();
+		hideButtons(current);
+		setProgress(current);
+
+		// Next button click action
+		btnnext.click(function(){
+			if(current < widget.length){
+				widget.show();
+				widget.not(':eq('+(current++)+')').hide();
+				setProgress(current);
 			}
-		</script>
+			hideButtons(current);
+		})
 
-    <!-- /.container -->
-	<div style="margin-top: 70%; margin-left: 10%;">
-		<a id="next-button" onclick="validateForm()" href="add-rooms.html" class="btn btn-success btn-block">Next</a>
-	</div>
-	</div>
-	<br><br><br><br>
+		// Back button click action
+		btnback.click(function(){
+			if(current > 1){
+				current = current - 2;
+				btnnext.trigger('click');
+			}
+			hideButtons(current);
+		})			
+	});
+
+	// Change progress bar action
+	setProgress = function(currstep){
+		var percent = parseFloat(100 / widget.length) * currstep;
+		percent = percent.toFixed();
+		$(".progress-bar").css("width",percent+"%").html(percent+"%");		
+	}
+
+	// Hide buttons according to the current step
+	hideButtons = function(current){
+		var limit = parseInt(widget.length); 
+
+		$(".action").hide();
+
+		if(current < limit) btnnext.show();
+		if(current > 1) btnback.show();
+		if (current == limit) { btnnext.hide(); btnsubmit.show(); }
+	}
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19096935-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+		    
+	<br><br><br>	
 	<!-- FOOTER -->
 	<footer>
         <p class="pull-right"><a href="#"></a></p>
