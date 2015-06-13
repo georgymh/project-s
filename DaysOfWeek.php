@@ -19,13 +19,13 @@
 *
 */
 abstract class DaysOfWeek extends BasicEnum {
-    const Sunday = 0;
-    const Monday = 1;
-    const Tuesday = 2;
-    const Wednesday = 3;
-    const Thursday = 4;
-    const Friday = 5;
-    const Saturday = 6;
+    const Monday = 0;
+    const Tuesday = 1;
+    const Wednesday = 2;
+    const Thursday = 3;
+    const Friday = 4;
+    const Saturday = 5;
+    const Sunday = 6;
 }
 
 /*
