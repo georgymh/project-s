@@ -94,36 +94,427 @@
  
  <!-- Multiple CheckBoxes -->
 
+ <!-- Monday Checkbox -->
   <label class="col-md-4 control-label" for="radios">Select Day and Time:</label>
   <div class="col-md-3" style="text-align: center"> 
     <label class="checkbox" for="radios-0">
-      <input name="radios" id="radios-0" value="monday" checked="checked" type="checkbox">
+      <input name="radios" onclick="showCheckbox()" id="checkbox-0" value="monday"  type="checkbox">
       Monday
     </label> 
+      <select class="form-group" id="monTime" name="monTime" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
+      <p id="to">to</p>
+      <select class="form-group" id="monTime-2" name="monTime-2" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
+    
+    <!-- Tuesday Checkbox -->
     <label class="checkbox" for="radios-1">
-      <input name="radios" id="radios-1" value="tuesday" type="checkbox">
+      <input name="radios" onclick="showCheckboxTwo()" id="checkbox-2" value="tuesday" type="checkbox">
       Tuesday
     </label>
-	<label class="checkbox" for="radios-1">
-      <input name="radios" id="radios-1" value="wednesday" type="checkbox">
+      <select class="form-group" id="tuesTime" name="tuesTime" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
+      <p id="to-2">to</p>
+      <select class="form-group" id="tuesTime-2" name="tuesTime-2" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
+    
+    <!-- Wednesday Checkbox -->
+   <label class="checkbox" for="radios-1">
+      <input name="radios" onClick="showCheckboxThree()"id="checkbox-3" value="wednesday" type="checkbox">
       Wednesday
     </label>
+      <select class="form-group" id="wedTime" name="wedTime" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
+      <p id="to-3">to</p>
+      <select class="form-group" id="wedTime-2" name="wedTime-2" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
+	
 	<label class="checkbox" for="radios-1">
-      <input name="radios" id="radios-1" value="thursday" type="checkbox">
+      <input name="radios" onClick="showCheckboxFour()" id="radios-1" value="thursday" type="checkbox">
       Thursday
     </label>
+      <select class="form-group" id="thursTime" name="thursTime" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
+      <p id="to-4">to</p>
+      <select class="form-group" id="thursTime-2" name="thursTime-2" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
 	<label class="checkbox" for="radios-1">
-      <input name="radios" id="radios-1" value="friday" type="checkbox">
+      <input name="radios" onClick="showCheckboxFive()" id="radios-1" value="friday" type="checkbox">
       Friday
     </label>
+      <select class="form-group" id="friTime" name="friTime" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
+      <p id="to-5">to</p>
+      <select class="form-group" id="friTime-2" name="friTime-2" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
 	<label class="checkbox" for="radios-1">
-      <input name="radios" id="radios-1" value="saturday" type="checkbox">
+      <input name="radios" onClick="showCheckboxSix()" id="radios-1" value="saturday" type="checkbox">
       Saturday
     </label>
+      <select class="form-group" id="satTime" name="satTime" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
+      <p id="to-6">to</p>
+      <select class="form-group" id="satTime-2" name="satTime-2" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
 	<label class="checkbox" for="radios-1">
-      <input name="radios" id="radios-1" value="sunday" type="checkbox">
+      <input name="radios" onClick="showCheckboxSeven()" id="radios-1" value="sunday" type="checkbox">
       Sunday
     </label>
+      <select class="form-group" id="sunTime" name="sunTime" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
+      <p id="to-7">to</p>
+      <select class="form-group" id="sunTime-2" name="sunTime-2" value="hidden">
+        <option  value="N/A">Select Time</option>
+        <option  value="00:00:00">12:00am</option>
+        <option  value="1:00:00">1:00am</option>
+        <option  value="2:00:00">2:00am</option>
+        <option  value="3:00:00">3:00am</option>
+        <option  value="4:00:00">4:00am</option>
+        <option  value="5:00:00">5:00am</option>
+        <option  value="6:00:00">6:00am</option>
+        <option  value="7:00:00">7:00am</option>
+        <option  value="8:00:00">8:00am</option>
+        <option  value="9:00:00">9:00am</option>
+        <option  value="10:00:00">10:00am</option>
+        <option  value="11:00:00">11:00am</option>
+        <option  value="12:00:00">12:00pm</option>
+        <option  value="13:00:00">1:00pm</option>
+        <option  value="14:00:00">2:00pm</option>
+        <option  value="15:00:00">3:00pm</option>
+        <option  value="16:00:00">4:00pm</option>
+        <option  value="17:00:00">5:00pm</option>
+        <option  value="18:00:00">6:00pm</option>
+        <option  value="19:00:00">7:00pm</option>
+        <option  value="20:00:00">8:00pm</option>
+        <option  value="21:00:00">9:00pm</option>
+        <option  value="22:00:00">10:00pm</option>
+        <option  value="23:00:00">11:00pm</option>
+      </select>
   </div>
 </div>
   </div>
@@ -156,70 +547,37 @@
 	 </div> 
    </div>
 
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		var current = 1;
-		
-		widget      = $(".step");
-		btnnext     = $(".next");
-		btnback     = $(".back"); 
-		btnsubmit   = $(".submit");
-
-		// Init buttons and UI
-		widget.not(':eq(0)').hide();
-		hideButtons(current);
-		setProgress(current);
-
-		// Next button click action
-		btnnext.click(function(){
-			if(current < widget.length){
-				widget.show();
-				widget.not(':eq('+(current++)+')').hide();
-				setProgress(current);
-			}
-			hideButtons(current);
-		})
-
-		// Back button click action
-		btnback.click(function(){
-			if(current > 1){
-				current = current - 2;
-				btnnext.trigger('click');
-			}
-			hideButtons(current);
-		})			
-	});
-
-	// Change progress bar action
-	setProgress = function(currstep){
-		var percent = parseFloat(100 / widget.length) * currstep;
-		percent = percent.toFixed();
-		$(".progress-bar").css("width",percent+"%").html(percent+"%");		
-	}
-
-	// Hide buttons according to the current step
-	hideButtons = function(current){
-		var limit = parseInt(widget.length); 
-
-		$(".action").hide();
-
-		if(current < limit) btnnext.show();
-		if(current > 1) btnback.show();
-		if (current == limit) { btnnext.hide(); btnsubmit.show(); }
-	}
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-19096935-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-		    
+<!-- Script Hide that hides Checkbox time on initial view -->
+	<script>
+        $('#monTime').hide();
+        $('#monTime-2').hide();
+        $('#to').hide();
+        
+        $('#tuesTime').hide();
+        $('#tuesTime-2').hide();
+        $('#to-2').hide();
+        
+        $('#wedTime').hide();
+        $('#wedTime-2').hide();
+        $('#to-3').hide();
+        
+        $('#thursTime').hide();
+        $('#thursTime-2').hide();
+        $('#to-4').hide();
+        
+        $('#friTime').hide();
+        $('#friTime-2').hide();
+        $('#to-5').hide();
+        
+        $('#satTime').hide();
+        $('#satTime-2').hide();
+        $('#to-6').hide();
+        
+        $('#sunTime').hide();
+        $('#sunTime-2').hide();
+        $('#to-7').hide();
+    </script>	
+    
 	<br><br><br>	
 	<!-- FOOTER -->
 	<footer>
@@ -232,7 +590,11 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <!-- Form Script Sources -->
+    <script src="js/checkbox-dropdown.js"></script>
+    <script src="js/progress-form.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
+   
   </body>
 </html>
