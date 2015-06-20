@@ -10,15 +10,13 @@ function showCheckbox()
 {
     if (count % 2 == 0)
     {
-        $('#monTime').show();
-        $('#monTime-2').show();
-        $('#to').show();
+        $('#stepExample1').show();
+        
     }
     else
     {
-        $('#monTime').hide();
-        $('#monTime-2').hide();
-        $('#to').hide();
+        $('#stepExample1').hide();
+       
     }
     
     count++;
@@ -30,16 +28,14 @@ function showCheckboxTwo()
 {
      if (countTwo % 2 == 0)
     {
-        $('#tuesTime').show();
-        $('#tuesTime-2').show();
-        $('#to-2').show();
+        $('#stepExample3').show();
+        
     }
     
      else
     {
-        $('#tuesTime').hide();
-        $('#tuesTime-2').hide();
-        $('#to-2').hide();
+        $('#stepExample3').hide();
+       
     }
     countTwo++;
 }
@@ -48,16 +44,14 @@ function showCheckboxThree()
 {
      if (countThree % 2 == 0)
     {
-        $('#wedTime').show();
-        $('#wedTime-2').show();
-        $('#to-3').show();
+        $('#stepExample5').show();
+        
     }
     
      else
     {
-        $('#wedTime').hide();
-        $('#wedTime-2').hide();
-        $('#to-3').hide();
+        $('#wstepExample5').hide();
+    
     }
     countThree++;
 }
@@ -66,16 +60,14 @@ function showCheckboxFour()
 {
      if (countFour % 2 == 0)
     {
-        $('#thursTime').show();
-        $('#thursTime-2').show();
-        $('#to-4').show();
+        $('#stepExample7').show();
+       
     }
     
      else
     {
-        $('#thursTime').hide();
-        $('#thursTime-2').hide();
-        $('#to-4').hide();
+        $('#stepExample7').hide();
+    
     }
     countFour++;
 }
@@ -84,16 +76,14 @@ function showCheckboxFive()
 {
      if (countFive % 2 == 0)
     {
-        $('#friTime').show();
-        $('#friTime-2').show();
-        $('#to-5').show();
+        $('#stepExample9').show();
+       
     }
     
      else
     {
-        $('#friTime').hide();
-        $('#friTime-2').hide();
-        $('#to-5').hide();
+        $('#stepExample9').hide();
+       
     }
     countFive++;
 }
@@ -102,16 +92,14 @@ function showCheckboxSix()
 {
      if (countSix % 2 == 0)
     {
-        $('#satTime').show();
-        $('#satTime-2').show();
-        $('#to-6').show();
+        $('#stepExample11').show();
+       
     }
     
      else
     {
-        $('#satTime').hide();
-        $('#satTime-2').hide();
-        $('#to-6').hide();
+        $('#stepExample11').hide();
+      
     }
     countSix++;
 }
@@ -120,16 +108,14 @@ function showCheckboxSeven()
 {
      if (countSeven % 2 == 0)
     {
-        $('#sunTime').show();
-        $('#sunTime-2').show();
-        $('#to-7').show();
+        $('#stepExample13').show();
+    
     }
     
      else
     {
-        $('#sunTime').hide();
-        $('#sunTime-2').hide();
-        $('#to-7').hide();
+        $('#stepExample13').hide();
+     
     }
     countSeven++;
 }
