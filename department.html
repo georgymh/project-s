@@ -32,171 +32,256 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+      
+    <style>
+        .heading {
+            font-weight: 200;
+            font-size: 18px;
+        }
+        
+        .pad-top {
+            
+            margin-top: 40px;
+        }
+        
+    </style>
   </head>
 
   <body>
-
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Project name</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-
      
         
+
+    <h1 class="banner" style="margin-top:0px;">Schedulezilla</h1>
+
+
+    <!-- Begin Container -->
+    <div class="container">
+        <br>
         
-<h1 class="banner">Schedulezilla</h1>
+        <div class="col-md-8 col-md-offset-2"> <!-- Good --- the offset makes it 2-8-2 = 12 -->
+              
+            <!--Begin Progress Bar -->
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+            <!-- End Progress Bar -->
 
+            <!-- Begin Form 1 -->
+            <div class="step well">
+                <form class="form-horizontal">
+                <fieldset>
 
-<!--Begin Progress Bar -->
-<div>
-<div class="container">
-	<br><br>
-	  <div class="col-md-8 col-md-offset-2">   	
-		<div class="progress">
-		  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-		</div>
+                <!-- Input Fields -->
+                <h1 id="form-banner">Step 1: Enter Hours of Operation</h1>
+                    
+                <div class="form-group pad-top">
+                    <label class="col-md-2 control-label" for="textinput">Department:</label>
+                    
+                    <div class="col-md-4">
+                        <input class="form-control input-md" id="textinput" name="textinput" placeholder="Enter Department Name" type="text">
+                    </div>
 
-<!-- End Progress Bar -->
+                    <label class="col-md-2 control-label" for="textinput">Building:</label> 
 
-<!-- Begin Form 1 -->
-<div class="step well">
-	<form class="form-horizontal">
-		<fieldset>
+                    <div class="col-lg-4">
+                        <input id="textinput" name="textinput" placeholder="Enter Building Name" class="form-control input-md" type="text">
+                    </div> <!-- total of 12, good -->
+                </div>
 
-<!-- Input Fields -->
-<h1 id="form-banner">Step 1: Enter Hours of Operation</h1>
-<div class="form-group">
-  <label class="col-md-2 control-label" for="textinput">Department:</label>  
-  <div class="col-lg-4">
-  	<input id="textinput" name="textinput" placeholder="enter department" class="form-control input-md" type="text">
-  </div>
- 
-  <label class="col-md-2 control-label" for="textinput">Building:</label>  
-  <div class="col-lg-4">
-  	<input id="textinput" name="textinput" placeholder="enter building" class="form-control input-md" type="text">
-  </div>
- </div>
- 
- <!-- Multiple CheckBoxes -->
+     <!-- Multiple CheckBoxes -->
 
- <!-- Monday Checkbox -->
-  <label class="col-md-4 control-label" for="radios">Select Day and Time:</label>
-  <div class="col-md-3" style="text-align: center"> 
-    <label class="checkbox" for="radios-0">
-      <input name="radios" onclick="showCheckbox()" id="checkbox-0" value="monday"  type="checkbox">
-      Monday
-    </label> 
-     <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample1" autocomplete="off">
-     <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample2" autocomplete="off">
+    <br>
+     <p class="lead"><strong>Please select your days and time of operation:</strong></p>
+    
+        <!-- Heading -->
+        <div class="row text-center">
+            <div class="col-md-4">
+                <p class="heading">Days</p>
+            </div>
+            
+            <div class="col-md-4">
+                <p class="heading">Opening time</p>
+            </div>
+            
+            <div class="col-md-4">
+                <p class="heading">Closing time</p>
+            </div>
+        </div>
+                    
+     <!-- Monday Checkbox -->
+        <div class="row text-center">
+            <div class="col-md-4">
+                <!-- Checkbox -->
+                <label class="form-control" for="radios-0">
+                    Monday
+                    <input name="radios" onclick="toggleMondayHours()" id="monday-checkbox" value="monday" type="checkbox">
+                </label>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Starting time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="monday-starting-hours" autocomplete="off" disabled>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Ending time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="monday-ending-hours" autocomplete="off" disabled>
+            </div>
+        </div>
+        <!-- Tuesday Checkbox -->
+        <div class="row text-center">
+            <div class="col-md-4">
+                <!-- Checkbox -->
+                <label class="form-control" for="radios-0">
+                    Tuesday
+                    <input name="radios" onclick="toggleTuesdayHours()" id="checkbox-0" value="Tuesday" type="checkbox">
+                </label>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Starting time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="tuesday-starting-hours" autocomplete="off" disabled>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Ending time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="tuesday-ending-hours" autocomplete="off" disabled>
+            </div>
+        </div>
+        <!-- Wednesday Checkbox -->
+        <div class="row text-center">
+            <div class="col-md-4">
+                <!-- Checkbox -->
+                <label class="form-control" for="radios-0">
+                    Wednesday
+                    <input name="radios" onclick="toggleWednesdayHours()" id="checkbox-0" value="Wednesday"  type="checkbox">
+                </label>
+            </div>
+            
+            <div class="col-md-4">
+               <!-- Starting time -->
+               <input type="text" style="width: 90px" class="time ui-timepicker-input" id="wednesday-starting-hours" autocomplete="off" disabled>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Ending time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="wednesday-ending-hours" autocomplete="off" disabled>
+            </div>
+        </div>
+        <!-- Thursday Checkbox -->
+        <div class="row text-center">
+            <div class="col-md-4">
+                <!-- Checkbox -->
+                <label class="form-control" for="radios-0">
+                    Thursday
+                    <input name="radios" onclick="toggleThursdayHours()" id="checkbox-0" value="Thursday"  type="checkbox">
+                </label>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Starting time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="thursday-starting-hours" autocomplete="off" disabled>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Ending time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="thursday-ending-hours" autocomplete="off" disabled>
+            </div>
+        </div>
+        <!-- Friday Checkbox -->
+        <div class="row text-center">
+            <div class="col-md-4">
+                <!-- Checkbox -->
+                <label class="form-control" for="radios-0">
+                    Friday
+                    <input name="radios" onclick="toggleFridayHours()" id="checkbox-0" value="Friday"  type="checkbox">
+                </label>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Starting time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="friday-starting-hours" autocomplete="off" disabled>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Ending time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="friday-ending-hours" autocomplete="off" disabled>
+            </div>
+        </div>
+        <!-- Saturday Checkbox -->
+        <div class="row text-center">
+            <div class="col-md-4">
+                <!-- Checkbox -->
+                <label class="form-control" for="radios-0">
+                    Saturday
+                    <input name="radios" onclick="toggleSaturdayHours()" id="checkbox-0" value="Saturday"  type="checkbox">
+                </label>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Starting time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="saturday-starting-hours" autocomplete="off" disabled>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Ending time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="saturday-ending-hours" autocomplete="off" disabled>
+            </div>
+        </div>
+        <!-- Sunday Checkbox -->
+        <div class="row text-center">
+            <div class="col-md-4">
+                <!-- Checkbox -->
+                <label class="form-control" for="radios-0">
+                    Sunday
+                    <input name="radios" onclick="toggleSundayHours()" id="checkbox-0" value="Sunday"  type="checkbox">
+                </label>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Starting time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="sunday-starting-hours" autocomplete="off" disabled>
+            </div>
+            
+            <div class="col-md-4">
+                <!-- Ending time -->
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="sunday-ending-hours" autocomplete="off" disabled>
+            </div>
+        </div>
+                    
+                    
       
-    <!-- Tuesday Checkbox -->
-    <label class="checkbox" for="radios-1">
-      <input name="radios" onclick="showCheckboxTwo()" id="checkbox-2" value="tuesday" type="checkbox">
-      Tuesday
-    </label>
-    <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample3" autocomplete="off">
-     <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample4" autocomplete="off">
     
-    <!-- Wednesday Checkbox -->
-   <label class="checkbox" for="radios-1">
-      <input name="radios" onClick="showCheckboxThree()"id="checkbox-3" value="wednesday" type="checkbox">
-      Wednesday
-    </label>
-       <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample5" autocomplete="off">
-     <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample6" autocomplete="off">
-	
-	<label class="checkbox" for="radios-1">
-      <input name="radios" onClick="showCheckboxFour()" id="radios-1" value="thursday" type="checkbox">
-      Thursday
-    </label>
-       <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample7" autocomplete="off">
-     <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample8" autocomplete="off">
-	<label class="checkbox" for="radios-1">
-      <input name="radios" onClick="showCheckboxFive()" id="radios-1" value="friday" type="checkbox">
-      Friday
-    </label>
-       <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample9" autocomplete="off">
-     <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample10" autocomplete="off">
-	<label class="checkbox" for="radios-1">
-      <input name="radios" onClick="showCheckboxSix()" id="radios-1" value="saturday" type="checkbox">
-      Saturday
-    </label>
-       <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample11" autocomplete="off">
-     <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample12" autocomplete="off">
-	<label class="checkbox" for="radios-1">
-      <input name="radios" onClick="showCheckboxSeven()" id="radios-1" value="sunday" type="checkbox">
-      Sunday
-    </label>
-       <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample13" autocomplete="off">
-     <input type="text" style="width: 90px" class="time ui-timepicker-input" id="stepExample14" autocomplete="off">
-  </div>
-</div>
-  </div>
-	</fieldset>
-  </form>
+        </fieldset>
+      </form>
 
-</div>
+    </div>
 
-<!--End Form 1 -->
+    <!--End Form 1 -->
 
-		<div class="step well">
-			Step 2
-		</div>
-		<div class="step well">
-			Step 3
-		</div>
-		<div class="step well">
-			Step 4
-		</div>
-		<div class="step well">
-			Step 5
-		</div>
-		<div class="step well">
-			Step 6
-		</div>
+            <div class="step well">
+                Step 2
+            </div>
+            <div class="step well">
+                Step 3
+            </div>
+            <div class="step well">
+                Step 4
+            </div>
+            <div class="step well">
+                Step 5
+            </div>
+            <div class="step well">
+                Step 6
+            </div>
 
-		<button class="action back btn btn-info">Back</button>
-		<button class="action next btn btn-info">Next</button>
-		<button class="action submit btn btn-success">Submit</button>
-	 </div> 
-   </div>
+            <button class="action back btn btn-info">Back</button>
+            <button class="action next btn btn-info">Next</button>
+            <button class="action submit btn btn-success">Submit</button>
+          
+       </div>
 
-<!-- Script Hide that hides Checkbox time on initial view -->
-	<script>
-        $('#stepExample1').hide();
-        $('#stepExample2').hide();
-        $('#stepExample3').hide();
-        $('#stepExample4').hide();
-        $('#stepExample5').hide();
-        $('#stepExample6').hide();
-        $('#stepExample7').hide();
-        $('#stepExample8').hide();
-        $('#stepExample9').hide();
-        $('#stepExample10').hide();
-        $('#stepExample11').hide();
-        $('#stepExample12').hide();
-        $('#stepExample13').hide();
-        $('#stepExample14').hide();
-        
- 
-    </script>	
-    
+
 	<br><br><br>	
 	<!-- FOOTER -->
 	<footer>
