@@ -1,121 +1,117 @@
-var count = 2;
-var countTwo = 2;
-var countThree = 2;
-var countFour = 2;
-var countFive = 2;
-var countSix = 2;
-var countSeven = 2;
-
-function showCheckbox()
-{
-    if (count % 2 == 0)
-    {
-        $('#stepExample1').show();
-        
-    }
-    else
-    {
-        $('#stepExample1').hide();
-       
-    }
+function toggleMondayHours() {
     
-    count++;
+    // Check if one of the text fields is disabled.
+    if ( $('#monday-starting-hours').is('[disabled]') ) {
+        // Since it's disabled, enable THEM.
+        $("#monday-ending-hours").removeAttr("disabled");
+        $("#monday-starting-hours").removeAttr("disabled");
+         
+    } else {
+        // It's enabled, disable THEM.
+        // And also zero out the values? Not right now.
+        $("#monday-starting-hours").attr("disabled", "disabled");  
+        $("#monday-ending-hours").attr("disabled", "disabled"); 
+    }  
+    
 }
 
-
-
-function showCheckboxTwo()
-{
-     if (countTwo % 2 == 0)
-    {
-        $('#stepExample3').show();
-        
-    }
+function toggleTuesdayHours() {
     
-     else
-    {
-        $('#stepExample3').hide();
-       
-    }
-    countTwo++;
+    // Check if one of the text fields is disabled.
+    if ( $('#tuesday-starting-hours').is('[disabled]') ) {
+        // Since it's disabled, enable THEM.
+        $("#tuesday-ending-hours").removeAttr("disabled");
+        $("#tuesday-starting-hours").removeAttr("disabled");
+         
+    } else {
+        // It's enabled, disable THEM.
+        // And also zero out the values? Not right now.
+        $("#tuesday-starting-hours").attr("disabled", "disabled");  
+        $("#tuesday-ending-hours").attr("disabled", "disabled"); 
+    }  
+    
 }
 
-function showCheckboxThree()
-{
-     if (countThree % 2 == 0)
-    {
-        $('#stepExample5').show();
-        
-    }
+function toggleWednesdayHours() {
     
-     else
-    {
-        $('#wstepExample5').hide();
+    // Check if one of the text fields is disabled.
+    if ( $('#wednesday-starting-hours').is('[disabled]') ) {
+        // Since it's disabled, enable THEM.
+        $("#wednesday-ending-hours").removeAttr("disabled");
+        $("#wednesday-starting-hours").removeAttr("disabled");
+         
+    } else {
+        // It's enabled, disable THEM.
+        // And also zero out the values? Not right now.
+        $("#wednesday-starting-hours").attr("disabled", "disabled");  
+        $("#wednesday-ending-hours").attr("disabled", "disabled"); 
+    }  
     
-    }
-    countThree++;
 }
 
-function showCheckboxFour()
-{
-     if (countFour % 2 == 0)
-    {
-        $('#stepExample7').show();
-       
-    }
+function toggleThursdayHours() {
     
-     else
-    {
-        $('#stepExample7').hide();
+    // Check if one of the text fields is disabled.
+    if ( $('#thursday-starting-hours').is('[disabled]') ) {
+        // Since it's disabled, enable THEM.
+        $("#thursday-ending-hours").removeAttr("disabled");
+        $("#thursday-starting-hours").removeAttr("disabled");
+         
+    } else {
+        // It's enabled, disable THEM.
+        // And also zero out the values? Not right now.
+        $("#thursday-starting-hours").attr("disabled", "disabled");  
+        $("#thursday-ending-hours").attr("disabled", "disabled"); 
+    }  
     
-    }
-    countFour++;
+}
+function toggleFridayHours() {
+    
+    // Check if one of the text fields is disabled.
+    if ( $('#friday-starting-hours').is('[disabled]') ) {
+        // Since it's disabled, enable THEM.
+        $("#friday-ending-hours").removeAttr("disabled");
+        $("#friday-starting-hours").removeAttr("disabled");
+         
+    } else {
+        // It's enabled, disable THEM.
+        // And also zero out the values? Not right now.
+        $("#friday-starting-hours").attr("disabled", "disabled");  
+        $("#friday-ending-hours").attr("disabled", "disabled"); 
+    }  
+    
 }
 
-function showCheckboxFive()
-{
-     if (countFive % 2 == 0)
-    {
-        $('#stepExample9').show();
-       
-    }
+function toggleSaturdayHours() {
     
-     else
-    {
-        $('#stepExample9').hide();
-       
-    }
-    countFive++;
+    // Check if one of the text fields is disabled.
+    if ( $('#saturday-starting-hours').is('[disabled]') ) {
+        // Since it's disabled, enable THEM.
+        $("#saturday-ending-hours").removeAttr("disabled");
+        $("#saturday-starting-hours").removeAttr("disabled");
+         
+    } else {
+        // It's enabled, disable THEM.
+        // And also zero out the values? Not right now.
+        $("#saturday-starting-hours").attr("disabled", "disabled");  
+        $("#saturday-ending-hours").attr("disabled", "disabled"); 
+    }  
+    
 }
 
-function showCheckboxSix()
-{
-     if (countSix % 2 == 0)
-    {
-        $('#stepExample11').show();
-       
-    }
+function toggleSundayHours() {
     
-     else
-    {
-        $('#stepExample11').hide();
-      
-    }
-    countSix++;
-}
-
-function showCheckboxSeven()
-{
-     if (countSeven % 2 == 0)
-    {
-        $('#stepExample13').show();
+    // Check if one of the text fields is disabled.
+    if ( $('#sunday-starting-hours').is('[disabled]') ) {
+        // Since it's disabled, enable THEM.
+        $("#sunday-ending-hours").removeAttr("disabled");
+        $("#sunday-starting-hours").removeAttr("disabled");
+         
+    } else {
+        // It's enabled, disable THEM.
+        // And also zero out the values? Not right now.
+        $("#sunday-starting-hours").attr("disabled", "disabled");  
+        $("#sunday-ending-hours").attr("disabled", "disabled"); 
+    }  
     
-    }
-    
-     else
-    {
-        $('#stepExample13').hide();
-     
-    }
-    countSeven++;
 }
