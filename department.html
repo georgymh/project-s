@@ -78,13 +78,13 @@
                     <label class="col-md-2 control-label" for="textinput">Department:</label>
                     
                     <div class="col-md-4">
-                        <input class="form-control input-md" id="textinput" name="textinput" placeholder="Enter Department Name" type="text">
+                        <input class="form-control input-md" id="deptName" name="textinput" placeholder="Enter Department Name" value="" type="text">
                     </div>
 
                     <label class="col-md-2 control-label" for="textinput">Building:</label> 
 
                     <div class="col-lg-4">
-                        <input id="textinput" name="textinput" placeholder="Enter Building Name" class="form-control input-md" type="text">
+                        <input id="bldgName" name="textinput" placeholder="Enter Building Name" class="form-control input-md" value="" type="text">
                     </div> <!-- total of 12, good -->
                 </div>
 
@@ -120,12 +120,12 @@
             
             <div class="col-md-4">
                 <!-- Starting time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="monday-starting-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="monday-starting-hours" value="" autocomplete="off" disabled>
             </div>
             
             <div class="col-md-4">
                 <!-- Ending time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="monday-ending-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="monday-ending-hours" value="" autocomplete="off" disabled>
             </div>
         </div>
         <!-- Tuesday Checkbox -->
@@ -134,18 +134,18 @@
                 <!-- Checkbox -->
                 <label class="form-control" for="radios-0">
                     Tuesday
-                    <input name="radios" onclick="toggleTuesdayHours()" id="checkbox-0" value="Tuesday" type="checkbox">
+                    <input name="radios" onclick="toggleTuesdayHours(); testJSON();" id="checkbox-0" value="Tuesday" type="checkbox">
                 </label>
             </div>
             
             <div class="col-md-4">
                 <!-- Starting time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="tuesday-starting-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="tuesday-starting-hours" value="" autocomplete="off" disabled>
             </div>
             
             <div class="col-md-4">
                 <!-- Ending time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="tuesday-ending-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="tuesday-ending-hours" value="" autocomplete="off" disabled>
             </div>
         </div>
         <!-- Wednesday Checkbox -->
@@ -160,12 +160,12 @@
             
             <div class="col-md-4">
                <!-- Starting time -->
-               <input type="text" style="width: 90px" class="time ui-timepicker-input" id="wednesday-starting-hours" autocomplete="off" disabled>
+               <input type="text" style="width: 90px" class="time ui-timepicker-input" id="wednesday-starting-hours" value="" autocomplete="off" disabled>
             </div>
             
             <div class="col-md-4">
                 <!-- Ending time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="wednesday-ending-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="wednesday-ending-hours" value="" autocomplete="off" disabled>
             </div>
         </div>
         <!-- Thursday Checkbox -->
@@ -180,12 +180,12 @@
             
             <div class="col-md-4">
                 <!-- Starting time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="thursday-starting-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="thursday-starting-hours" value="" autocomplete="off" disabled>
             </div>
             
             <div class="col-md-4">
                 <!-- Ending time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="thursday-ending-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="thursday-ending-hours" value="" autocomplete="off" disabled>
             </div>
         </div>
         <!-- Friday Checkbox -->
@@ -200,12 +200,12 @@
             
             <div class="col-md-4">
                 <!-- Starting time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="friday-starting-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="friday-starting-hours" value="" autocomplete="off" disabled>
             </div>
             
             <div class="col-md-4">
                 <!-- Ending time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="friday-ending-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="friday-ending-hours" value="" autocomplete="off" disabled>
             </div>
         </div>
         <!-- Saturday Checkbox -->
@@ -220,12 +220,12 @@
             
             <div class="col-md-4">
                 <!-- Starting time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="saturday-starting-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="saturday-starting-hours" value="" autocomplete="off" disabled>
             </div>
             
             <div class="col-md-4">
                 <!-- Ending time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="saturday-ending-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="saturday-ending-hours" value="" autocomplete="off" disabled>
             </div>
         </div>
         <!-- Sunday Checkbox -->
@@ -240,12 +240,12 @@
             
             <div class="col-md-4">
                 <!-- Starting time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="sunday-starting-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="sunday-starting-hours" value="" autocomplete="off" disabled>
             </div>
             
             <div class="col-md-4">
                 <!-- Ending time -->
-                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="sunday-ending-hours" autocomplete="off" disabled>
+                <input type="text" style="width: 90px" class="time ui-timepicker-input" id="sunday-ending-hours" value="" autocomplete="off" disabled>
             </div>
         </div>
                     
@@ -275,12 +275,18 @@
                 Step 6
             </div>
 
-            <button class="action back btn btn-info">Back</button>
-            <button class="action next btn btn-info">Next</button>
+            <button class="action back btn btn-info" onClick="setDeptData()">Back</button>
+            <button class="action next btn btn-info" onClick="setDepartmentData()">Next</button>
             <button class="action submit btn btn-success">Submit</button>
           
        </div>
+        <script>
+            
+            
+            
 
+               
+        </script>
 
 	<br><br><br>	
 	<!-- FOOTER -->
@@ -294,12 +300,14 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <!-- Form Script Sources -->
+    <!-- Script Sources -->
     <script src="js/checkbox-dropdown.js"></script>
     <script src="js/progress-form.js"></script>
-    <script src="js/jquery.timepicker.js"</script>
-    <script src="js/GruntFile.js"</script>
-    <script src="js/jquery.timepicker.min.js"</script>
+    <script src="js/jquery.timepicker.js"></script>
+    <script src="js/GruntFile.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/user-data.js"></script>
+    <script src="js/set-data-functions.js"></script>
     <!-- IE10 viewport hack for Surfac<e/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
    
