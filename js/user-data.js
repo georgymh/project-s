@@ -15,6 +15,7 @@ var userData = {
     friClosingHours : "N/A",
     satOpeningHours : "N/A",
     satClosingHours : "N/A",
+    sunOpeningHours : "N/A",
     sunClosingHours : "N/A",
       
 };

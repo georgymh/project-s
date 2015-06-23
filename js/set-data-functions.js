@@ -1,7 +1,7 @@
 
 
 
-
+//function that sets the user data
 function setDepartmentData() {
     
         userData.department = document.getElementById("deptName").value;
@@ -18,13 +18,13 @@ function setDepartmentData() {
         userData.friClosingHours = document.getElementById("friday-ending-hours").value;
         userData.satOpeningHours = document.getElementById("saturday-starting-hours").value;
         userData.satClosingHours = document.getElementById("saturday-ending-hours").value;
-        userData.sunopeningHours = document.getElementById("sunday-starting-hours").value;
+        userData.sunOpeningHours = document.getElementById("sunday-starting-hours").value;
         userData.sunClosingHours = document.getElementById("sunday-ending-hours").value;
                 
 }
     
-//Test JSON USER Data
+//Test JSON USER Data by hitting the "back" button
 function setDeptData() {
     
-    alert(userData.sunClosingHours);
+    alert(userData.sunOpeningHours);
 }
