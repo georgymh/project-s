@@ -260,8 +260,36 @@
     <!--End Form 1 -->
 
             <div class="step well">
-                Step 2
+            <form class="form-horizontal">
+                <!-- Input Fields -->
+                <h1 id="form-banner">Step 2: Enter Available Rooms</h1>
+            <div class="form-group pad-top">
+                 <div class="col-md-4">
+                    <label class="col-md-2 control-label" for="textinput">Prefix:</label>
+                        <input class="form-control input-md" id="addPrefix" name="textinput" placeholder="Room Prefix" value="" type="text">
+                    
+                    
+                    <label class="col-md-2 control-label" for="textinput">Room:</label>
+                        <input class="form-control input-md" id="addRoom" name="textinput" placeholder="Room Name" value="" type="text">
+                     <br>
+                     <button type="button" onClick="insertRoom()" class="btn btn-success">Submit</button>
+                    </div>
+               
+                <div class ="pull-right" class="col-md-2 control-label" id="table-format" style="padding-right:35px">
+				<h1>Entered Rooms</h1>
+				<p id="no-rooms" style="" text-align="center" >No Rooms Entered</p>
+					<table id="room-table" class="table" style="width: 200px">
+					</table>
+					<a onClick="deleteRoom()" id="delete-button" class="btn btn-success btn-block">Delete Last Room</a>
+                </div>
+                
+                </div>
+            </form>
+            
+                
+                
             </div>
+            
             <div class="step well">
                 Step 3
             </div>
@@ -280,13 +308,6 @@
             <button class="action submit btn btn-success">Submit</button>
           
        </div>
-        <script>
-            
-            
-            
-
-               
-        </script>
 
 	<br><br><br>	
 	<!-- FOOTER -->

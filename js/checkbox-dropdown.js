@@ -11,6 +11,10 @@ function toggleMondayHours() {
         // And also zero out the values? Not right now.
         $("#monday-starting-hours").attr("disabled", "disabled");  
         $("#monday-ending-hours").attr("disabled", "disabled"); 
+        
+        //zero out values
+        document.getElementById("monday-starting-hours").value = null;
+        document.getElementById("monday-ending-hours").value = null;
     }  
     
 }
@@ -28,6 +32,10 @@ function toggleTuesdayHours() {
         // And also zero out the values? Not right now.
         $("#tuesday-starting-hours").attr("disabled", "disabled");  
         $("#tuesday-ending-hours").attr("disabled", "disabled"); 
+        
+        //zero out values
+        document.getElementById("tuesday-starting-hours").value = null;
+        document.getElementById("tuesday-ending-hours").value = null;
     }  
     
 }
@@ -45,6 +53,10 @@ function toggleWednesdayHours() {
         // And also zero out the values? Not right now.
         $("#wednesday-starting-hours").attr("disabled", "disabled");  
         $("#wednesday-ending-hours").attr("disabled", "disabled"); 
+        
+        //zero out values
+        document.getElementById("wednesday-starting-hours").value = null;
+        document.getElementById("wednesday-ending-hours").value = null;
     }  
     
 }
@@ -62,6 +74,10 @@ function toggleThursdayHours() {
         // And also zero out the values? Not right now.
         $("#thursday-starting-hours").attr("disabled", "disabled");  
         $("#thursday-ending-hours").attr("disabled", "disabled"); 
+        
+        //zero out values
+        document.getElementById("thursday-starting-hours").value = null;
+        document.getElementById("thursday-ending-hours").value = null;
     }  
     
 }
@@ -78,6 +94,10 @@ function toggleFridayHours() {
         // And also zero out the values? Not right now.
         $("#friday-starting-hours").attr("disabled", "disabled");  
         $("#friday-ending-hours").attr("disabled", "disabled"); 
+        
+        //zero out values
+        document.getElementById("friday-starting-hours").value = null;
+        document.getElementById("friday-ending-hours").value = null;
     }  
     
 }
@@ -95,6 +115,10 @@ function toggleSaturdayHours() {
         // And also zero out the values? Not right now.
         $("#saturday-starting-hours").attr("disabled", "disabled");  
         $("#saturday-ending-hours").attr("disabled", "disabled"); 
+        
+        //zero out values
+        document.getElementById("saturday-starting-hours").value = null;
+        document.getElementById("saturday-ending-hours").value = null;
     }  
     
 }
@@ -112,6 +136,10 @@ function toggleSundayHours() {
         // And also zero out the values? Not right now.
         $("#sunday-starting-hours").attr("disabled", "disabled");  
         $("#sunday-ending-hours").attr("disabled", "disabled"); 
+        
+        //zero out values
+        document.getElementById("sunday-starting-hours").value = null;
+        document.getElementById("sunday-ending-hours").value = null;
     }  
     
 }
