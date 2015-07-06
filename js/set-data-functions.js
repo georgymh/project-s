@@ -22,9 +22,34 @@ function setDepartmentData() {
         userData.sunClosingHours = document.getElementById("sunday-ending-hours").value;
                 
 }
-    
-//Test JSON USER Data by hitting the "back" button
-function setDeptData() {
-    
-    alert(userData.sunOpeningHours);
+
+function insertRoom() {
+					
+                    if(document.getElementById('addPrefix').value === null || document.getElementById('addPrefix').value === ''){
+						alert("You must enter a prefix");
+					}
+					else if(document.getElementById('addRoom').value === null || document.getElementById('addRoom').value === ''){
+						alert("You must enter a room");
+					}
+                    
+					else{	
+							
+							var table = document.getElementById("room-table");
+							var row = table.insertRow(0);
+							var cell = row.insertCell(0);
+							var newRoom = document.getElementById("addRoom").value;
+                            var newPrefix = document.getElementById("addPrefix").value;
+							cell.innerHTML = newPrefix + " " + newRoom;
+							document.getElementById('addRoom').value = null;
+                            document.getElementById('addPrefix').value = null;
+							$("#no-rooms").hide();
+							$("#delete-button").show();
+							
+						}
+					}
+					
+function deleteRoom(){
+				document.getElementById("room-table").deleteRow(0);
 }
+					
+$("#delete-button").hide();
