@@ -12,9 +12,9 @@ function toggleMondayHours() {
         $("#monday-starting-hours").attr("disabled", "disabled");  
         $("#monday-ending-hours").attr("disabled", "disabled"); 
         
-        //zero out values
-        document.getElementById("monday-starting-hours").value = null;
-        document.getElementById("monday-ending-hours").value = null;
+        // //zero out values
+        // document.getElementById("monday-starting-hours").value = null;
+        // document.getElementById("monday-ending-hours").value = null;
     }  
     
 }
@@ -34,8 +34,8 @@ function toggleTuesdayHours() {
         $("#tuesday-ending-hours").attr("disabled", "disabled"); 
         
         //zero out values
-        document.getElementById("tuesday-starting-hours").value = null;
-        document.getElementById("tuesday-ending-hours").value = null;
+        // document.getElementById("tuesday-starting-hours").value = null;
+        // document.getElementById("tuesday-ending-hours").value = null;
     }  
     
 }
@@ -55,8 +55,8 @@ function toggleWednesdayHours() {
         $("#wednesday-ending-hours").attr("disabled", "disabled"); 
         
         //zero out values
-        document.getElementById("wednesday-starting-hours").value = null;
-        document.getElementById("wednesday-ending-hours").value = null;
+        // document.getElementById("wednesday-starting-hours").value = null;
+        // document.getElementById("wednesday-ending-hours").value = null;
     }  
     
 }
@@ -76,8 +76,8 @@ function toggleThursdayHours() {
         $("#thursday-ending-hours").attr("disabled", "disabled"); 
         
         //zero out values
-        document.getElementById("thursday-starting-hours").value = null;
-        document.getElementById("thursday-ending-hours").value = null;
+        // document.getElementById("thursday-starting-hours").value = null;
+        // document.getElementById("thursday-ending-hours").value = null;
     }  
     
 }
@@ -96,8 +96,8 @@ function toggleFridayHours() {
         $("#friday-ending-hours").attr("disabled", "disabled"); 
         
         //zero out values
-        document.getElementById("friday-starting-hours").value = null;
-        document.getElementById("friday-ending-hours").value = null;
+        // document.getElementById("friday-starting-hours").value = null;
+        // document.getElementById("friday-ending-hours").value = null;
     }  
     
 }
@@ -117,8 +117,8 @@ function toggleSaturdayHours() {
         $("#saturday-ending-hours").attr("disabled", "disabled"); 
         
         //zero out values
-        document.getElementById("saturday-starting-hours").value = null;
-        document.getElementById("saturday-ending-hours").value = null;
+        // document.getElementById("saturday-starting-hours").value = null;
+        // document.getElementById("saturday-ending-hours").value = null;
     }  
     
 }
@@ -138,8 +138,8 @@ function toggleSundayHours() {
         $("#sunday-ending-hours").attr("disabled", "disabled"); 
         
         //zero out values
-        document.getElementById("sunday-starting-hours").value = null;
-        document.getElementById("sunday-ending-hours").value = null;
+        // document.getElementById("sunday-starting-hours").value = null;
+        // document.getElementById("sunday-ending-hours").value = null;
     }  
     
 }
