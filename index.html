@@ -306,13 +306,16 @@
                         <input class="form-control input-md" id="room-number" name="textinput" type="text">
 
                         <div class="text-center pad-top-sm">
-                            <button type="button" id="add-room-btn" class="btn btn-success text-ce">Add Room</button>
+                            <button type="button" id="add-room-btn" class="btn btn-success text-ce" onclick="insertRoom()">Add Room</button>
                         </div>
                       </div>
                    
                       <div class="col-md-8 text-center" id="table-format">
     				    <h4>Entered Rooms</h4>
-    				    <p class="text-muted">No Rooms Entered</p>
+    				    <p class="text-muted" id="rooms-entered">No Rooms Entered</p>
+                        <ul  class="list-unstyled">
+                          <li id="room-list"></li>
+                        </ul>
                         <!--    
                             <div class="table-responsive">
                               <table id="mytable" class="table table-bordred table-striped">
