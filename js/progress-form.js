@@ -3,11 +3,6 @@ jQuery(document).ready(function() {
    /*
         Form
     */
-   
-   	// Hide all steps.
-   	$('#main-form').find('fieldset').each(function() {
-   		$(this).hide();
-   	});
 
    	// Animation to show FIRST step.
     $('#main-form fieldset:first-child').fadeIn('slow');
