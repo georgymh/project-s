@@ -37,12 +37,14 @@ jQuery(document).ready(function() {
     });
     
     // submit
-    $('form').on('submit', function(e) {
+    $('#main-form').on('submit', function(e) {
         e.preventDefault();
 
         var allow_submit = true;
 
         if ( allow_submit ) {
+
+        	console.log('submitting...');
             
             $.ajax({
                 type: "POST",
