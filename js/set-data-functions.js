@@ -1,6 +1,6 @@
 
 
-
+var count = 0;
 //function that sets the user data
 function setDepartmentData() {
     
@@ -27,14 +27,15 @@ function setDepartmentData() {
                 
 }
 
+
 var deleteButton = function(){
     var listItem = this.parentNode;
     var ul = listItem.parentNode;
     
     ul.removeChild(listItem);
-    
-    
 }
+
+
 //Function that insert new room and prefix in step-well 2
 function insertRoom() {
 					
@@ -69,6 +70,15 @@ function insertRoom() {
                             //Sets the text boxes value back to null
                             document.getElementById("room-prefix").value = '';
                             document.getElementById("room-number").value = '';
+                            
+                            //stores the data that the user inputs into an object and inserts into an array
+                            var arrayR = [100];
+                            roomData.roomNumber = roomNumber;
+                            roomData.roomPrefix = roomPrefix;
+                            arrayR[count] = roomData;
+                            var object = arrayR[count];
+                            //alert(object.roomNumber);//function to check data integrity
+                            count++;
                             
 						}
     

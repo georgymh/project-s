@@ -2,8 +2,7 @@ var userData = {
     
         "department": "N/A",
         "building": "N/A", 
-        "prefix": "N/A",
-        "room": "N/A",
+       
     
         "hours":[
             {
@@ -23,8 +22,13 @@ var userData = {
                 sunClosingHours : "N/A",
             }
         ]
+    
         
-        
-      
 };
 
+var roomData = {
+    
+    "roomPrefix": "N/A",
+    "roomNumber": "N/A",
+    
+};
