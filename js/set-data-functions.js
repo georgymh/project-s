@@ -1,7 +1,6 @@
 
 
-var count = 0;
-var arrayR = [];
+
 //function that sets the user data
 function setDepartmentData() {
     
@@ -84,10 +83,11 @@ function saveRoomData() {
      //stores the data that the user into an array
      var rooms = document.getElementById("room-list");
      var totalRooms = rooms.getElementsByTagName("li");
-    
+     var arrayR = [];
      
      for (var i = 0; i < totalRooms.length; i++){
-      arrayR.push(totalRooms[i].innerHTML, 10); 
+      var roomData = totalRooms[i].innerHTML.split("<")[0];
+      arrayR.push(roomData); 
          
      }
      
