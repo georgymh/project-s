@@ -26,9 +26,3 @@ var userData = {
         
 };
 
-var roomData = {
-    
-    "roomPrefix": "N/A",
-    "roomNumber": "N/A",
-    
-};

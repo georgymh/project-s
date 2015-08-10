@@ -1,6 +1,7 @@
 
 
 var count = 0;
+var arrayR = [];
 //function that sets the user data
 function setDepartmentData() {
     
@@ -71,21 +72,28 @@ function insertRoom() {
                             document.getElementById("room-prefix").value = '';
                             document.getElementById("room-number").value = '';
                             
-                            //stores the data that the user inputs into an object and inserts into an array
-                            var arrayR = [100];
-                            roomData.roomNumber = roomNumber;
-                            roomData.roomPrefix = roomPrefix;
-                            arrayR[count] = roomData;
-                            var object = arrayR[count];
-                            //alert(object.roomNumber);//function to check data integrity
-                            count++;
+                          
                             
 						}
     
     
 }
 					
-
+function saveRoomData() {
+    
+     //stores the data that the user into an array
+     var rooms = document.getElementById("room-list");
+     var totalRooms = rooms.getElementsByTagName("li");
+    
+     
+     for (var i = 0; i < totalRooms.length; i++){
+      arrayR.push(totalRooms[i].innerHTML, 10); 
+         
+     }
+     
+     alert(arrayR[0]); //function to check data integrity
+    
+}
 					
 
 
