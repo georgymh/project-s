@@ -59,6 +59,10 @@ class TimeInterval {
 			$formattedTime = $this->convertUnixTimeStampToHumanTime($formattedTime);
 			$this->start = $formattedTime;
 
+			if ($this->boundsNeedSwapping() && !self::$preventErrorBySwappingBounds) {
+				echo "Warning: bounds need swapping and error prevention is not active.";
+			}
+
 			if ( self::$preventErrorBySwappingBounds == TRUE ) {
 			 $this->swapBoundsIfNeeded();
 			}
@@ -71,6 +75,10 @@ class TimeInterval {
 			$formattedTime = strtotime($end);
 			$formattedTime = $this->convertUnixTimeStampToHumanTime($formattedTime);
 			$this->end = $formattedTime;
+
+			if ($this->boundsNeedSwapping() && !self::$preventErrorBySwappingBounds) {
+				echo "Warning: bounds need swapping and error prevention is not active.";
+			}
 
 			if ( self::$preventErrorBySwappingBounds == TRUE ) {
 				$this->swapBoundsIfNeeded();
@@ -96,6 +104,10 @@ class TimeInterval {
 		$formattedTime = $this->convertUnixTimeStampToHumanTime($formattedTime);
 		$this->start = $formattedTime;
 
+		if ($this->boundsNeedSwapping() && !self::$preventErrorBySwappingBounds) {
+			echo "Warning: bounds need swapping and error prevention is not active.";
+		}
+
 		if ( self::$preventErrorBySwappingBounds == TRUE ) {
 			$this->swapBoundsIfNeeded();
 		}
@@ -105,6 +117,11 @@ class TimeInterval {
 		$formattedTime = strtotime($end);
 		$formattedTime = $this->convertUnixTimeStampToHumanTime($formattedTime);
 		$this->end = $formattedTime;
+
+		if ($this->boundsNeedSwapping() && !self::$preventErrorBySwappingBounds) {
+			echo "<font color='yellow'>Warning: bounds need swapping and error prevention is not active.</font><br>Erroneous TimeInterval: ";
+			$this->printObject();
+		}
 
 		if ( self::$preventErrorBySwappingBounds == TRUE ) {
 			$this->swapBoundsIfNeeded();
@@ -174,15 +191,22 @@ class TimeInterval {
 	* Swaps start and end only if start is greater than end.
 	*/
 	private function swapBoundsIfNeeded() {
-		if ( $this->start > $this->end 	&& 
-			 $this->start != NULL 		&&
-			 $this->end != NULL ) {
+		if ( $this->boundsNeedSwapping() ) {
 
 			$temp = $this->start;
 			$this->start = $this->end;
 			$this->end = $temp;
 
 		}
+	}
+
+	/**
+	 * Detects if Bounds have to be changed.
+	 */
+	private function boundsNeedSwapping() {
+		return ( $this->start > $this->end 	&& 
+		 $this->start != NULL 		&&
+		 $this->end != NULL );
 	}
 
 }
