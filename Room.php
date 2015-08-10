@@ -63,18 +63,6 @@ class Room {
 		return $this->roomNumber;
 	}
 
-	public static function getDepartmentName() {
-		return self::$departmentName;
-	}
-
-	public static function getDaysOpened() {
-		return self::$daysOpened;
-	}
-
-	public static function getHoursOpened() {
-		return self::$hoursOpened;
-	}
-
 	// Setter methods
 	
 	/*
@@ -95,41 +83,6 @@ class Room {
 		$this->roomNumber = $newRoomNumber;
 	}
 
-	/*
-	* Sets the name of the department that manages all the rooms.
-	*
-	* @param string $newDepartmentName The name of the department.
-	*/
-	public static function setDepartmentName( $newDepartmentName ) {
-		self::$departmentName = $newDepartmentName;
-	}
-
-	/*
-	* Sets the days in which all the rooms (collectively) will be open.
-	*
-	* @param [DaysOfWeek => boolean] An associative array containing each
-	*                       	     day of the week as keys, and booleans
-	*                       	     as values (representing if the room is
-	*                       	     operating on that day or not).
-	*                          
-	*/
-	public static function setDaysOpened ( $newDaysOpened ) {
-		self::$daysOpened = $newDaysOpened;
-	}
-
-	/*
-	* Sets the hours of every day in which the rooms (collectively) will
-	* operate.
-	*
-	* @param [DaysOfWeek => INTERVAL] An associative array containing each
-	*                       		  day of the week as keys, and TIME INTERVALS
-	*                       		  as values that represent the interval of 
-	*                       		  time that the rooms will operate per day.
-	*/
-	public static function setHoursOpened ( $newHoursOpened ) {
-		self::$hoursOpened = $newHoursOpened;
-	}
-
 	// Helper methods
 	
 	/*
@@ -139,54 +92,21 @@ class Room {
 		echo "<hr>";
 		echo "*** Printing the object *** <br><br>";
 		echo "<b>Room name:</b> $this->prefix $this->roomNumber <br>";
-		echo "<b>Building name:</b> " . self::$departmentName . " <br>";
+		//echo "<b>Building name:</b> " . self::$departmentName . " <br>";
 
-		echo "<b>Days Opened:</b> <br>";
-		// Print associative array.
-		print_r( self::$daysOpened );
-		echo "<br>";
+		// echo "<b>Days Opened:</b> <br>";
+		// // Print associative array.
+		// print_r( self::$daysOpened );
+		// echo "<br>";
 
-		echo "<b>Hours opened:</b> <br>";
-		// Print associative array.
-		print_r( self::$hoursOpened );
-		echo "<br><hr><br><br>";
+		// echo "<b>Hours opened:</b> <br>";
+		// // Print associative array.
+		// print_r( self::$hoursOpened );
+		 echo "<br><hr><br><br>";
 
 	}
 
 // PRIVATE:
-
-	/**
-	* Represents the name of the department that manages all the rooms.
-	*
-	* Note: This variable is static so that you can return the building name from
-	* any instance of the Room class.
-	*
-	* @var string
-	*/
-	private static $departmentName = "NO_DEPARTMENT_NAME";
-
-	/**
-	* Represents the days of the week that the building and its rooms are 
-	* operating.
-	*
-	* Note: This variable is static because we ASSUME the rooms are opened when 
-	* the department is opened. We ask for the days of operation only once.
-	*
-	* @var associative array [DaysOfWeek => boolean]
-	*/
-	private static $daysOpened;
-
-	/**
-	* Represents the hours of the week that the building and its rooms 
-	* are operating.
-	*
-	* Note: This variable is static because we ASSUME the rooms are opened when the
-	* department is opened. We ask ONCE for the hours of operation (per day) of the 
-	* whole department.
-	* 
-	* @var associative array [DaysOfWeek => INTERVAL_OF_TIME]
-	*/
-	private static $hoursOpened;
 
 	/**
 	* Represents the prefix of the room.
