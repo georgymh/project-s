@@ -1,11 +1,11 @@
 
-
-
-//function that sets the user data
+/*
+    Function that sets the user data in step 1, converts data into JSON schema
+*/
 function setDepartmentData() {
     
-        userData.department = document.getElementById("deptName").value;
-        userData.building = document.getElementById("bldgName").value;
+        userData.department = document.getElementById("department-name").value;
+        userData.building = document.getElementById("building-name").value;
     
         //Hours Available Data
         userData.monOpeningHours =  document.getElementById("monday-starting-hours").value;
@@ -23,10 +23,13 @@ function setDepartmentData() {
         userData.sunOpeningHours = document.getElementById("sunday-starting-hours").value;
         userData.sunClosingHours = document.getElementById("sunday-ending-hours").value;
     
-        
+        alert(userData.monClosingHours);//check data integrity
                 
 }
 
+/*
+    Function that deletes the rooms that the user has added in step 2
+*/
 
 var deleteButton = function(){
     var listItem = this.parentNode;
@@ -35,8 +38,9 @@ var deleteButton = function(){
     ul.removeChild(listItem);
 }
 
-
-//Function that insert new room and prefix in step-well 2
+/*
+    Function that insert new room and prefix in step-well 2
+*/
 function insertRoom() {
 					
                     if(document.getElementById('room-prefix').value === null || document.getElementById('room-prefix').value === ''){
@@ -77,7 +81,11 @@ function insertRoom() {
     
     
 }
-					
+
+/*
+    Function that saves the user's input in step 2 when the next button is clicked
+*/
+
 function saveRoomData() {
     
      //stores the data that the user into an array
@@ -94,6 +102,9 @@ function saveRoomData() {
      alert(arrayR[0]); //function to check data integrity
     
 }
-					
 
+
+
+  
+    
 
