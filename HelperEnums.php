@@ -49,6 +49,6 @@ function getIntervalFromPeriod( $timePeriod ) {
 
 define("DEFAULT_EARLY_BOUND", '7 AM');
 
-define("DEFAULT_LATE_BOUND", '10:30 PM');
+define("DEFAULT_LATE_BOUND", '11 PM');
 
 ?>
