@@ -43,11 +43,13 @@ class MultiTimeInterval {
 	}
 
 	public function printObject() {
-		echo "<br><b>Printing MultiTimeInterval</b><h><br>";
+		$countOfIntervals = $this->getCountOfTimeOfIntervals();
+		echo "<br><b>Printing MultiTimeInterval (count: $countOfIntervals)</b><h><br>";
 
 		$count = 1;
 		foreach ($this->timeIntervalArray as $timeInterval) {
-			if ( $this->getCountOfTimeOfIntervals() > 1 ) echo $count++ . "<br>";
+			echo $count . "<br>";
+
 			$timeInterval->printObject();
 
 			$count++;
