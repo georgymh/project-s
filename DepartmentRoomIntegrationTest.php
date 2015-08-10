@@ -34,7 +34,7 @@ $clarkCompCenter->setDaysOpened($daysOpened);
 
 // Create and assign hours.
 $weekdaysTimeInterval = TimeInterval::create()->withStart("7:30 AM")->withEnd("10:30 PM");
-$fridaysTimeInterval = TimeInterval::create()->withStart("9 AM")->withEnd("6 PM");
+$fridayTimeInterval = TimeInterval::create()->withStart("9 AM")->withEnd("6 PM");
 $saturdayTimeInterval = TimeInterval::create()->withStart("9 AM")->withEnd("3 PM");
 
 $hoursOpened = [
@@ -42,7 +42,7 @@ $hoursOpened = [
 	DaysOfWeek::Tuesday 	=> $weekdaysTimeInterval,
 	DaysOfWeek::Wednesday 	=> $weekdaysTimeInterval,
 	DaysOfWeek::Thursday 	=> $weekdaysTimeInterval,
-	DaysOfWeek::Friday 		=> $fridaysTimeInterval,
+	DaysOfWeek::Friday 		=> $fridayTimeInterval,
 	DaysOfWeek::Saturday 	=> $saturdayTimeInterval
 ];
 
