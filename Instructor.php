@@ -35,7 +35,12 @@ class Instructor {
 
 		// Schedule setter - fluent style
 		public function withSchedule( $schedule ) {
-			$this->availSchedule = $schedule;
+			if ($schedule != null) {
+				$this->availSchedule = $schedule;
+			} else {
+				die("Error: trying set Instructor's AvailSchedule with null. Exiting...");
+			}
+			
 			return $this;
 		}
 
