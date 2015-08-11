@@ -65,6 +65,10 @@
           margin-top: 20px;
         }
 
+        #delete-room-btn {
+            margin-left: 10px;
+        }
+
     </style>
   </head>
 
@@ -287,7 +291,7 @@
                     </div>
                     
                     <div class="btn-container">
-                        <button type="button" class="next btn btn-lg btn-info pull-right" onClick="setDepartmentData()">Next</button>
+                        <button type="button" class="next btn btn-lg btn-info pull-right">Next</button>
                     </div>
                 </fieldset>
                 <!--End Step One (1) -->
@@ -306,7 +310,7 @@
                         <input class="form-control input-md" id="room-number" name="textinput" type="text">
 
                         <div class="text-center pad-top-sm">
-                            <button type="button" id="add-room-btn" class="btn btn-success text-ce" onClick="insertRoom()">Add Room</button>
+                            <button type="button" id="add-room-btn" class="btn btn-success text-center">Add Room</button>
                         </div>
                       </div>
                    
@@ -314,7 +318,6 @@
     				    <h4>Entered Rooms</h4>
     				    <p class="text-muted" id="rooms-entered">No Rooms Entered</p>
                         <ul  class="list-unstyled" id="room-list">
-                          
                         </ul>
                       </div>
 
@@ -322,7 +325,7 @@
 
                     <div class="btn-container">
                         <button type="button" class="action back btn btn-lg pull-left">Back</button>
-                        <button type="button" class="action next btn btn-lg btn-info pull-right" onClick="saveRoomData()">Next</button>
+                        <button type="button" class="action next btn btn-lg btn-info pull-right">Next</button>
                     </div>
                 </fieldset>
                 
@@ -362,11 +365,12 @@
 
     <!-- Script Sources -->
     <script src="js/checkbox-dropdown.js"></script>
-    <script src="js/progress-form.js"></script>
+    <script src="js/form.js"></script>
     <script src="js/jquery.timepicker.js"></script>
     <script src="js/jquery.timepicker.min.js"></script>
-    <script src="js/user-data.js"></script>
+    <script src="js/data.js"></script>
     <script src="js/set-data-functions.js"></script>
+    <script src="js/room-table.js"></script>
     <!-- IE10 viewport hack for Surfac<e/desktop Windows 8 bug -->
     
     <!-- JQuery -->

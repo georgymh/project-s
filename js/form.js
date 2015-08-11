@@ -19,7 +19,11 @@ jQuery(document).ready(function() {
                 $(this).next().fadeIn();
             });
         }
-        
+
+        // Run respective JSON-populating routine.
+        var currentStepId = getCurrentStep().attr('id');
+        runCorrectDataFiller( currentStepId );
+
     });
     
     // previous step
