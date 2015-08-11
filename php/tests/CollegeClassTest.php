@@ -5,7 +5,7 @@
 	August 10, 2015.
 */
 
-require_once 'CollegeClass.php';
+require_once '../CollegeClass.php';
 
 // TESTING BEGINS
 echo "<h1>TESTING CollegeClass CLASS</h1><br><br>";

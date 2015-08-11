@@ -2,13 +2,12 @@
 
 /*
 	Georgy Marrero.
-	August 10, 2015.
+	August 9, 2015.
 */
 
 // INCLUDES
-require_once 'Instructor.php';
-require_once 'AvailSchedule.php';
-require_once 'CollegeClass.php';
+require_once '../Instructor.php';
+require_once '../AvailSchedule.php';
 
 // SOME SETUPS:
 	// InstructorAvailSchedule #1
@@ -35,6 +34,8 @@ require_once 'CollegeClass.php';
 	$availableSchedule->setAvailableTimePeriod( DaysOfWeek::Saturday, TimePeriod::EarlyMorning );
 	$availableSchedule->setAvailableTimePeriod( DaysOfWeek::Saturday, TimePeriod::Evening );
 
+	$availableSchedule->setAvailableTimePeriod( DaysOfWeek::Sunday, TimePeriod::LateMorningAndAfternoon );
+
 	// InstructorAvailSchedule # 2
 	$anotherSchedule = new InstructorAvailSchedule();
 	$anotherSchedule->setAvailableTimePeriod( DaysOfWeek::Monday, TimePeriod::EarlyMorning );
@@ -51,56 +52,45 @@ require_once 'CollegeClass.php';
 	$anotherSchedule->setAvailableTimePeriod( DaysOfWeek::Thursday, TimePeriod::Night );
 
 // TESTING BEGINS
-echo "<h1>TESTING Instructor with CollegeClass CLASS</h1><br><br>";
+echo "<h1>TESTING INSTRUCTOR CLASS</h1><br><br>";
 
 // A: Default Constructor
 echo '<h2>A: Default constructor</h2>';
 // 1. Default Constructor.
 $instructorA = new Instructor();
 
-// 2. Now set values.
-$instructorA->setName('Mrs. Anna Wall');
+// 2. Print (empty)
+echo "<h3>- Printing empty:</h3>";
+$instructorA->printObject();
 
+// 3. Now set values.
+$instructorA->setName('Mrs. Anna Wall');
 $instructorA->setAvailSchedule($availableSchedule);
 
-$history = new CollegeClass();
-$history->setTitle('History 180');
-$history->setCredits(CollegeClassCredits::Three);
-$history->setWeeklyFrequency(CollegeClassWeeklyFrequency::TwicePerWeek);
-$history->setPeriod(CollegeClassSemestrialPeriod::FullSemester);
-$instructorA->addClass($history);
-
-// 3. Print object
+// 4. Print object
+echo "<h3>- Printing with data:</h3>";
 $instructorA->printObject();
 
 // B: Overloaded Constructor
 echo '<h2>B: Overloaded constructor</h2>';
 // 1. Overloaded Constructor.
-$instructorB = Instructor::create()->withName("Mr. John Doe")->withSchedule($anotherSchedule);
+$instructorB = Instructor::create()->withName("Mr. John Doe")->withSchedule($availableSchedule);
 
-// 2. Add classes.
-$math = new CollegeClass();
-$math->setTitle('Math 180');
-$math->setCredits(CollegeClassCredits::Four);
-$math->setWeeklyFrequency(CollegeClassWeeklyFrequency::MondayToThursday);
-$math->setPeriod(CollegeClassSemestrialPeriod::FullSemester);
-$instructorB->addClass($math);
+// 2. Print object
+echo "<h3>- Printing with data:</h3>";
+$instructorB->printObject();
 
-$anotherMath = new CollegeClass();
-$anotherMath->setTitle('Math 185');
-$anotherMath->setCredits(CollegeClassCredits::Four);
-$anotherMath->setWeeklyFrequency(CollegeClassWeeklyFrequency::ThricePerWeek);
-$anotherMath->setPeriod(CollegeClassSemestrialPeriod::FullSemester);
-$instructorB->addClass($anotherMath);
+// 3. Now change values.
+$instructorB->setName('Mr. Johnny');
+$instructorB->setAvailSchedule($anotherSchedule);
 
-$yetAnotherMath = new CollegeClass();
-$yetAnotherMath->setTitle('Math 280');
-$yetAnotherMath->setCredits(CollegeClassCredits::Four);
-$yetAnotherMath->setWeeklyFrequency(CollegeClassWeeklyFrequency::TwicePerWeek);
-$yetAnotherMath->setPeriod(CollegeClassSemestrialPeriod::FullSemester);
-$instructorB->addClass($yetAnotherMath);
+// 4. Print object
+echo "<h3>- Printing with less data:</h3>";
+$instructorB->printObject();
 
-// 3. Print object
+// 5. Unset schedule (should result on error)
+echo "<h3>- Set schedule to 'null' -- expecting error:</h3>";
+$instructorB->setAvailSchedule(null);
 $instructorB->printObject();
 
 ?>

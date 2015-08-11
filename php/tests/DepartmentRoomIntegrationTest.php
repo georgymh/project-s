@@ -6,8 +6,8 @@
 */
 
 // INCLUDES
-require 'Department.php';
-require 'Room.php';
+require '../Department.php';
+require '../Room.php';
 
 
 // TESTING BEGINS

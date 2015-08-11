@@ -16,7 +16,7 @@ $log->pushHandler(new Monolog\Handler\StreamHandler('app.log', Monolog\Logger::W
 */
 
 // INCLUDES
-require 'Room.php';
+require '../Room.php';
 
 // TESTING BEGINS
 echo "TESTING ROOM CLASS <br><br>";

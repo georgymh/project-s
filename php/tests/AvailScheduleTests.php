@@ -5,8 +5,8 @@
 	August 9, 2015.
 */
 
-require_once 'AvailSchedule.php';
-require_once 'HelperEnums.php';
+require_once '../AvailSchedule.php';
+require_once '../HelperEnums.php';
 
 // TESTING BEGINS
 echo "<h1>TESTING AvailSchedule CLASS and SUBCLASSES</h1>";

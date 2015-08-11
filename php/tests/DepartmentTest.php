@@ -6,7 +6,7 @@
 */
 
 // INCLUDE
-require 'Department.php';
+require '../Department.php';
 
 // TESTING BEGINS
 
