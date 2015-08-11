@@ -94,7 +94,7 @@ class AvailSchedule {
 	 * Prints the object.
 	 */
 	public function printObject() {
-		echo "<b>*** Printing AvailSchedule ***</b><br><hr>";
+		echo "<b>*** Printing Schedule ***</b><br><hr>";
 		echo "<b>* Available Days:</b> ";
 		print_r ($this->getAvailableDays() );
 
