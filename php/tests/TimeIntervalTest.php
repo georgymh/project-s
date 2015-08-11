@@ -1,7 +1,7 @@
 <?php 
 
 // INCLUDE
-require 'TimeInterval.php';
+require '../TimeInterval.php';
 
 // TESTING BEGINS
 
