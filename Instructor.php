@@ -13,7 +13,7 @@ class Instructor {
 	
 	// Default constructor
 	function __construct() {
-		$this->name = "";
+		$this->name = "NO_NAME";
 		$this->availSchedule = new InstructorAvailSchedule();
 		$this->listOfClasses = new SplDoublyLinkedList();
 	}
@@ -52,11 +52,11 @@ class Instructor {
 
 	// Setters
 	
-	function setName( $name ) {
+	public function setName( $name ) {
 		$this->name = $name;
 	}
 
-	function setAvailSchedule( $availSchedule ) {
+	public function setAvailSchedule( $availSchedule ) {
 		if ($availSchedule != null) {
 			$this->availSchedule = $availSchedule;
 		} else {
@@ -64,31 +64,45 @@ class Instructor {
 		}
 	}
 
-	function setListOfClasses( $listOfClasses ) {
+	public function setListOfClasses( $listOfClasses ) {
 		$this->listOfClasses = $listOfClasses;
 	}
 
 	// Getters
 	
-	function getName() {
+	public function getName() {
 		return $this->name;
 	}
 
-	function getAvailSchedule() {
+	public function getAvailSchedule() {
 		return $this->availSchedule;
 	}
 
-	function getListOfClasses() {
+	public function getListOfClasses() {
 		return $this->listOfClasses;
 	}
 
 	// Other methods
 	
-	function addClass( $newClass ) {
-		$this->listOfClasses->addClass($newClass);
+	public function addClass( $newClass ) {
+		$this->listOfClasses->push($newClass);
 	}
 
-	function printObject() {
+	public function countClasses() {
+		return $this->listOfClasses->count();
+	}
+
+	public function calculateTotalCredits() {
+		$sumOfCredits = 0;
+
+		foreach ($this->listOfClasses as $class) {
+			$sumOfCredits += $class->getCredits();
+		}
+
+		return $sumOfCredits;
+	}
+
+	public function printObject() {
 		echo "<hr>";
 		echo "<b>*** Printing the Instructor object *** </b><br><br>";
 		echo "<b>Name:</b> $this->name<br>";
@@ -96,7 +110,7 @@ class Instructor {
 		echo "<b>Schedule:</b> <br>";
 		$this->availSchedule->printObject();
 
-		echo "<b>List of classes:</b> <br>";
+		echo "<b>List of classes (count: ".$this->countClasses()."; credit total: ".$this->calculateTotalCredits().") :</b> <br>";
 		if (!$this->listOfClasses->isEmpty()) {
 			foreach ($this->listOfClasses as $class) {
 				$class->printObject();
@@ -123,15 +137,10 @@ class Instructor {
 	private $availSchedule;
 
 	/**
-	 * List of classes that the instructor teaches.
-	 * @var SplDoublyLinkedList [Class]
+	 * List of college classes that the instructor teaches.
+	 * @var SplDoublyLinkedList [CollegeClass]
 	 */
 	private $listOfClasses;
 }
-
-
-
-
-
 
 ?>
