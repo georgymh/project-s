@@ -81,7 +81,8 @@ function fillDataFromStepTwo() {
 function fillDataFromStepThree() {
     // Code that fills the data variable from data.js with the
     // Instructor and Classes information from step 3.
-    
+    var classes = document.getElementById("class-list");
+    var totalClasses = classes.getElementsByTagName("li");
     
 }
 
