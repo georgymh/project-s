@@ -10,7 +10,11 @@
 		// The Master Algorithm will do this.
 
 	// Code that exports and stores the entire Output Classes
-		// Maybe to an SQL Database, but initially just a JSON file stored locally.
+		// Maybe to an SQL Database, but initially just a JSON file stored locally
+		//		Example: http://jondavidjohn.com/show-non-public-members-with-json_encode/
+		//		Example 2: http://stackoverflow.com/questions/1306740/json-vs-serialized-array-in-database
+		//		Example 3: http://www.elated.com/articles/object-oriented-php-autoloading-serializing-and-querying-objects/
+	
 		// NOTE: There should also be a code that imports from the JSON file into the Output Classes.
 	
 	// Code that converts the info from the Output Classes and turns it into DayPilot-recognizable data
