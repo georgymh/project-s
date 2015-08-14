@@ -5,6 +5,10 @@ function toggleMondayHours() {
         // Since it's disabled, enable THEM.
         $("#monday-ending-hours").removeAttr("disabled");
         $("#monday-starting-hours").removeAttr("disabled");
+        
+        //Sets the initial values when toggled on
+        document.getElementById("monday-starting-hours").value = "7:30am";
+        document.getElementById("monday-ending-hours").value = "10:00pm";
          
     } else {
         // It's enabled, disable THEM.
@@ -26,6 +30,10 @@ function toggleTuesdayHours() {
         // Since it's disabled, enable THEM.
         $("#tuesday-ending-hours").removeAttr("disabled");
         $("#tuesday-starting-hours").removeAttr("disabled");
+        
+        //Sets the initial values when toggled on
+        document.getElementById("tuesday-starting-hours").value = "7:30am";
+        document.getElementById("tuesday-ending-hours").value = "10:00pm";
          
     } else {
         // It's enabled, disable THEM.
@@ -47,6 +55,10 @@ function toggleWednesdayHours() {
         // Since it's disabled, enable THEM.
         $("#wednesday-ending-hours").removeAttr("disabled");
         $("#wednesday-starting-hours").removeAttr("disabled");
+        
+        //Sets the initial values when toggled on
+        document.getElementById("wednesday-starting-hours").value = "7:30am";
+        document.getElementById("wednesday-ending-hours").value = "10:00pm";
          
     } else {
         // It's enabled, disable THEM.
@@ -68,7 +80,11 @@ function toggleThursdayHours() {
         // Since it's disabled, enable THEM.
         $("#thursday-ending-hours").removeAttr("disabled");
         $("#thursday-starting-hours").removeAttr("disabled");
-         
+        
+        //Sets the initial values when toggled on
+        document.getElementById("thursday-starting-hours").value = "7:30am";
+        document.getElementById("thursday-ending-hours").value = "10:00pm";
+        
     } else {
         // It's enabled, disable THEM.
         // And also zero out the values? Not right now.
@@ -88,6 +104,10 @@ function toggleFridayHours() {
         // Since it's disabled, enable THEM.
         $("#friday-ending-hours").removeAttr("disabled");
         $("#friday-starting-hours").removeAttr("disabled");
+        
+        //Sets the initial values when toggled on
+        document.getElementById("friday-starting-hours").value = "7:30am";
+        document.getElementById("friday-ending-hours").value = "10:00pm";
          
     } else {
         // It's enabled, disable THEM.
@@ -109,6 +129,10 @@ function toggleSaturdayHours() {
         // Since it's disabled, enable THEM.
         $("#saturday-ending-hours").removeAttr("disabled");
         $("#saturday-starting-hours").removeAttr("disabled");
+        
+         //Sets the initial values when toggled on
+         document.getElementById("saturday-starting-hours").value = "7:30am";
+         document.getElementById("saturday-ending-hours").value = "10:00pm";
          
     } else {
         // It's enabled, disable THEM.
@@ -130,7 +154,11 @@ function toggleSundayHours() {
         // Since it's disabled, enable THEM.
         $("#sunday-ending-hours").removeAttr("disabled");
         $("#sunday-starting-hours").removeAttr("disabled");
-         
+        
+        //Sets the initial values when toggled on
+        document.getElementById("sunday-starting-hours").value = "7:30am";
+        document.getElementById("sunday-ending-hours").value = "10:00pm";
+        
     } else {
         // It's enabled, disable THEM.
         // And also zero out the values? Not right now.

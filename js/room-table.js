@@ -6,6 +6,12 @@ jQuery(document).ready(function() {
 
 });
 
+jQuery(document).ready(function() {
+    $('#save-instructor-changes').on('click', function() {
+        insertInstructor();
+    });
+    
+});
 
 /*
     Function that deletes the rooms that the user has added in step 2
@@ -50,7 +56,6 @@ function insertRoom() {
         deleteRoomBtn.onclick = deleteRoom;
         
         //Sets the text boxes value back to null
-        document.getElementById("room-prefix").value = '';
         document.getElementById("room-number").value = '';        
     }    
 }
@@ -78,7 +83,7 @@ function insertClass() {
     newClassList.class = "text-center";
     
     var deleteRoomBtn = document.createElement("button");
-    var classListText = document.createTextNode(classTitle + "/" + credit + "/" + freq);
+    var classListText = document.createTextNode(classTitle + "-" + credit + "-" + freq);
     var deleteText = document.createTextNode("×");
     
     
@@ -94,10 +99,25 @@ function insertClass() {
     deleteRoomBtn.onclick = deleteRoom;
     
     document.getElementById("class-title").value = '';
+    document.getElementById("credits").value = '';
+    document.getElementById("frequency").value = '';
     console.log(credit);
     }
     
 }
 
+
+function insertInstructor() {
+     if(document.getElementById("instructor-first-name").value === null || document.getElementById("instructor-first-name").value === ''){
+        //alert("You must enter a room prefix");
+    }  
+    else if(document.getElementById("instructor-last-name").value === null || document.getElementById("instructor-last-name").value === ''){
+        //alert("You must enter a room");
+    } else{ 
+        document.getElementById("instructor-first-name").value = '';
+        document.getElementById("instructor-last-name").value = '';
+    }
+    
+}
 
 
