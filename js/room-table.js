@@ -45,11 +45,11 @@ var deleteClass = function() {
 }
 
 /*
-    Function that deletes the instructor info in step 3
+    Function that deletes the instructor info in step 3, uses the unique id to delete items
     terrible code but it works
 */
 var deleteInstructorInfo = function(){
-    document.getElementById(this.id).remove();
+     document.getElementById(this.id).remove();
      document.getElementById(this.id).remove();
      document.getElementById(this.id).remove();
     
@@ -223,10 +223,7 @@ function insertInstructor() {
         var currentTotalClassList = document.getElementById("number-classes-list");
         currentTotalClassList.appendChild(newTotalClassList);
         
-        
-       
-        
-        
+
         deleteRoomBtn.type = "button";
         deleteRoomBtn.onclick = deleteInstructorInfo;
         
