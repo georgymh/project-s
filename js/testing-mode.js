@@ -10,6 +10,34 @@ $(document).ready(function() {
 
 	function fillStepOne() {
 
+		$('#department-name').val('Clark Computing Center');
+		$('#building-name').val('Clark Computing Center');
+
+		var weekdayOpeningTime = "7:00am";
+		var weekdayClosingTime = "10:00pm";
+
+		var weekendOpeningTime = "9:00am";
+		var weekendClosingTime = "6:00pm";
+
+		var weekdays = ["monday", "tuesday", "wednesday",
+							"thursday", "friday", "saturday", "sunday"];
+
+		for (var i = 0; i < weekdays.length; i++) {
+			if (i <= 5) {
+				// Weekday.
+				$('#' + weekdays[i] + '-checkbox').click();
+				$('#' + weekdays[i] + '-starting-hours').val(weekdayOpeningTime);
+				$('#' + weekdays[i] + '-ending-hours').val(weekdayClosingTime);
+			} else {
+				// Weekend day.
+				$('#' + weekdays[i] + '-checkbox').click();
+				$('#' + weekdays[i] + '-starting-hours').val(weekendOpeningTime);
+				$('#' + weekdays[i] + '-ending-hours').val(weekendClosingTime);
+			}
+		}
+
+		// Turn sunday off.
+		$('#sunday-checkbox').click();
 	}
 
 	function fillStepTwo() {
