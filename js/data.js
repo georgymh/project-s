@@ -63,6 +63,6 @@ var instructorData = {
     
     "totalClasses" : "N/A",
     "instructorFirstName" : "N/A",
-    "instrucorLastName" : "N/A,
+    "instrucorLastName" : "N/A"
     
 };
