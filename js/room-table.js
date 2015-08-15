@@ -1,5 +1,5 @@
 var totalClass = 0;
-var u_ID = 1;
+var u_ID = 0;
 
 jQuery(document).ready(function() {
 
@@ -46,15 +46,45 @@ var deleteClass = function() {
 
 /*
     Function that deletes the instructor info in step 3, uses the unique id to delete items
-    terrible code but it works
 */
 var deleteInstructorInfo = function(){
      document.getElementById(this.id).remove();
      document.getElementById(this.id).remove();
      document.getElementById(this.id).remove();
-    
-    
+     document.getElementById(this.id).remove();
 }
+
+/*
+
+    Edit instructor information function in Step 3
+*/
+
+var editInstructorInfo = function() {
+    
+    $('#myModal-1').modal('show');
+    
+    var id = this.id;
+
+    //sets values into variables
+    var fName = document.getElementById("instructor-first-name");
+    var lName = document.getElementById("instructor-last-name");
+                                           
+    var uls = document.getElementById("instructor-list");
+    var lis = uls.getElementsByTagName('li');
+    
+    //repopulate lsat and first names into form
+    fName.value = document.getElementById(id).innerHTML.split(", ")[1];
+    lName.value = document.getElementById(id).innerHTML.split(", ")[0];
+    
+    document.getElementById(this.id).remove();
+    document.getElementById(this.id).remove();
+    document.getElementById(this.id).remove();
+    document.getElementById(this.id).remove();
+    
+     
+}
+
+
 /*
     Function that inserts new room and prefix in step-well 2
 */
@@ -152,7 +182,9 @@ function insertInstructor() {
     }  
     else if(document.getElementById("instructor-last-name").value === null || document.getElementById("instructor-last-name").value === ''){
         //alert("You must enter a room");
-    } else{ 
+    }
+    else{ 
+        
         
         //sets values into variables
         var firstName = document.getElementById("instructor-first-name").value;
@@ -197,14 +229,33 @@ function insertInstructor() {
         var newActionList = document.createElement("li");
         newActionList.class = "text-center";
         
-        //create new elements to be appended
+        //create new list item for edit button
+        var newEditList = document.createElement("li");
+        newEditList.class = "text-center";
+        
+        //create edit button and append
+        var editInstructorBtn = document.createElement("button");
+        var editInstructor = document.createTextNode("edit");
+        editInstructorBtn.appendChild(editInstructor);
+        newEditList.appendChild( editInstructorBtn );
+        
+        //set unique Id
+        newEditList.id = u_ID;
+        
+        //ad edit button to actions list
+        var currentEditList = document.getElementById("actions-list");
+        //currentEditList.appendChild(newEditList);
+        
+        //create new delete button to be appended
         var deleteRoomBtn = document.createElement("button");
         var deleteText = document.createTextNode("×");
         deleteRoomBtn.appendChild(deleteText);
+        newActionList.appendChild(editInstructorBtn);
         newActionList.appendChild(deleteRoomBtn);
         
         //set unique id's
         deleteRoomBtn.id =  u_ID;
+        editInstructorBtn.id = u_ID;
         
         var currentActionList = document.getElementById("actions-list");
         currentActionList.appendChild(newActionList);
@@ -227,11 +278,13 @@ function insertInstructor() {
         deleteRoomBtn.type = "button";
         deleteRoomBtn.onclick = deleteInstructorInfo;
         
-        //exits the modal and resets the totalClass count
-        totalClass = 0;
-        u_ID++;
-        $('#myModal-1').modal('hide')
+        editInstructorBtn.onclick = editInstructorInfo;
+        //exits the modal, resets the totalClass count and increases count of the unique id
         
+            totalClass = 0;
+            u_ID++;
+            $('#myModal-1').modal('hide')
+
     }
     
 }
