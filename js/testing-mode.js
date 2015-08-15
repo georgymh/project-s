@@ -41,7 +41,23 @@ $(document).ready(function() {
 	}
 
 	function fillStepTwo() {
+		var prefix = $('#room-prefix');
+		var number = $('#room-number');
+		var addBtn = $('#add-room-btn');
 
+		var prefixTest = "CC";
+		var prefixNumberStart = 100;
+		var numOfRoomsToAdd = 9;
+
+		for (var i = 0; i < numOfRoomsToAdd; i++) {
+			prefix.val(prefixTest);
+			number.val(prefixNumberStart++);
+			addBtn.trigger('click');
+		}
+
+		// And just fill an extra one but not add it.
+		prefix.val(prefixTest);
+		number.val(prefixNumberStart);
 	}
 
 	function fillStepThree() {
