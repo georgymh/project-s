@@ -54,7 +54,7 @@ var deleteInstructorInfo = function(){
     Function that inserts new room and prefix in step-well 2
 */
 function insertRoom() {     
-    if(document.getElementById('room-prefix').value === null || document.getElementById('room-prefix').value === ''){
+    if(document.getElementById('room-prefix').value == null || document.getElementById('room-prefix').value == ''){
         //alert("You must enter a room prefix");
     } else if(document.getElementById('room-number').value === null || document.getElementById('room-number').value === ''){
         //alert("You must enter a room");
@@ -97,12 +97,12 @@ function insertClass() {
         //alert("You must enter a room prefix");
     }  else{ 
     var classTitle = document.getElementById("class-title").value;
-    var credit = document.getElementById("credits").value;
+    var credit = document.getElementById("hours").value;
     var freq = document.getElementById("frequency").value;
     
     //reset all values
     document.getElementById("instructor-classes").innerHTML = '';
-    document.getElementById("credits").value;
+    document.getElementById("hours").value;
     document.getElementById("frequency").value;
     
     //create new list element
@@ -127,7 +127,7 @@ function insertClass() {
     deleteRoomBtn.onclick = deleteClass;
     
     document.getElementById("class-title").value = '';
-    document.getElementById("credits").value = '';
+    document.getElementById("hours").value = '';
     document.getElementById("frequency").value = '';
     
     totalClass++;
