@@ -47,7 +47,7 @@ var data = {
                         title: "N/A",               // Ex. History 180
                         credits: "N/A",             // Ex. 3 -- as of 3 credits
                         frequencyPerWeek: "N/A",    // Ex. 2 -- as of twice a week
-                        semestrialPeriod: "N/A"     // Ex. full, firstHalf, secondHalf
+                        semestrialPeriod: "N/A",    // Ex. full, firstHalf, secondHalf
                                                     // ^ if the class is 16 weeks or 8 weeks.
                     }
                 ] // list of classes the instructor teaches
@@ -58,3 +58,11 @@ var data = {
         
 };
 
+
+var instructorData = {
+    
+    "totalClasses" : "N/A",
+    "instructorFirstName" : "N/A",
+    "instrucorLastName" : "N/A,
+    
+};
