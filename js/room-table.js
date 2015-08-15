@@ -1,4 +1,5 @@
 var totalClass = 0;
+var u_ID = 1;
 
 jQuery(document).ready(function() {
 
@@ -45,8 +46,12 @@ var deleteClass = function() {
 
 /*
     Function that deletes the instructor info in step 3
+    terrible code but it works
 */
 var deleteInstructorInfo = function(){
+    document.getElementById(this.id).remove();
+     document.getElementById(this.id).remove();
+     document.getElementById(this.id).remove();
     
     
 }
@@ -173,29 +178,61 @@ function insertInstructor() {
             Append Instructor info
         */
         
-        //create new list element
+        //create new instructor list element
         var newClassList = document.createElement("li");
         newClassList.class = "text-center";
         
         //add text to list item
-        var classListText = document.createTextNode(lastName + ", " + firstName +  " " + totalClass);
+        var classListText = document.createTextNode(lastName + ", " + firstName);
         newClassList.appendChild(classListText); 
+        
+        //set unique u_ID
+        newClassList.id = u_ID;
+        
+        //append text node to new list item
+        var currentClassList = document.getElementById("instructor-list");
+        currentClassList.appendChild(newClassList);
+        
+        //create new action list element
+        var newActionList = document.createElement("li");
+        newActionList.class = "text-center";
         
         //create new elements to be appended
         var deleteRoomBtn = document.createElement("button");
         var deleteText = document.createTextNode("×");
         deleteRoomBtn.appendChild(deleteText);
-        newClassList.appendChild(deleteRoomBtn);
+        newActionList.appendChild(deleteRoomBtn);
         
-        //append text node to new list item
-        var currentClassList = document.getElementById("instructor-data");
-        currentClassList.appendChild(newClassList);
+        //set unique id's
+        deleteRoomBtn.id =  u_ID;
+        
+        var currentActionList = document.getElementById("actions-list");
+        currentActionList.appendChild(newActionList);
+        
+        //create new total class list element
+        var newTotalClassList = document.createElement("li");
+        newTotalClassList.class = "text-center";
+        
+        //add text to list item
+        var classListText = document.createTextNode(totalClass);
+        newTotalClassList.appendChild(classListText);
+        
+        //set unique id's
+        newTotalClassList.id = u_ID;
+        
+        var currentTotalClassList = document.getElementById("number-classes-list");
+        currentTotalClassList.appendChild(newTotalClassList);
+        
+        
+       
+        
         
         deleteRoomBtn.type = "button";
-        deleteRoomBtn.id = "delete-room-btn";
-        deleteRoomBtn.onclick = deleteClass;
-     
-        //exits the modal
+        deleteRoomBtn.onclick = deleteInstructorInfo;
+        
+        //exits the modal and resets the totalClass count
+        totalClass = 0;
+        u_ID++;
         $('#myModal-1').modal('hide')
         
     }
