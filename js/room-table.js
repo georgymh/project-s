@@ -1,5 +1,7 @@
 var totalClass = 0;
 var u_ID = 0;
+var editBool = false;
+var editID;
 
 jQuery(document).ready(function() {
 
@@ -7,6 +9,12 @@ jQuery(document).ready(function() {
         insertRoom();
     });
 
+});
+
+jQuery(document).ready(function() {
+     $('#save-instructor-changes').on('click', function() {
+        storeClasses();
+     });
 });
 
 jQuery(document).ready(function() {
@@ -22,6 +30,7 @@ jQuery(document).ready(function() {
     });
     
 });
+
 
 /*
     Function that deletes the rooms that the user has added in step 2
@@ -64,24 +73,32 @@ var editInstructorInfo = function() {
     $('#myModal-1').modal('show');
     
     var id = this.id;
-
+    globalID = this.id;
+    
     //sets values into variables
     var fName = document.getElementById("instructor-first-name");
     var lName = document.getElementById("instructor-last-name");
-                                           
-    var uls = document.getElementById("instructor-list");
-    var lis = uls.getElementsByTagName('li');
-    
+    var classes = document.getElementById("class-list");
+    var totalClasses = instructorData.classes[id];
     //repopulate lsat and first names into form
     fName.value = document.getElementById(id).innerHTML.split(", ")[1];
     lName.value = document.getElementById(id).innerHTML.split(", ")[0];
     
-    document.getElementById(this.id).remove();
-    document.getElementById(this.id).remove();
-    document.getElementById(this.id).remove();
-    document.getElementById(this.id).remove();
+    //repopulate classes
+    for (var i = 0; i < totalClasses.length; i++){
     
-     
+        var newList = document.createElement("li");
+        newList.class = "text-center";
+        var arrayVariables = document.createTextNode(totalClasses[i]);
+        newList.appendChild(arrayVariables)
+        
+        var currentList = document.getElementById("class-list");
+        currentList.appendChild(newList);
+        totalClass++;
+    }
+    
+    editBool = true;
+    editID = this.id;
 }
 
 
@@ -139,7 +156,7 @@ function insertClass() {
     document.getElementById("instructor-classes").innerHTML = '';
     document.getElementById("hours").value;
     document.getElementById("frequency").value;
-    
+        
     //create new list element
     var newClassList = document.createElement("li");
     newClassList.class = "text-center";
@@ -185,20 +202,12 @@ function insertInstructor() {
     }
     else{ 
         
-        
         //sets values into variables
         var firstName = document.getElementById("instructor-first-name").value;
         var lastName = document.getElementById("instructor-last-name").value;
         var adjunct = document.getElementById("adjunct-radio").value;
         var fullTime = document.getElementById("full-time-radio").value;
         
-        
-        //Set to JSON schema
-        /*
-        instructorData.instructorFirstName = firstName;
-        instructorData.instrucorLastName = lastName;
-        instructorData.totalClasses = totalClass;
-        */ 
         
         //reset user input
         document.getElementById("classes-entered").innerHTML = '';
@@ -281,6 +290,13 @@ function insertInstructor() {
         editInstructorBtn.onclick = editInstructorInfo;
         //exits the modal, resets the totalClass count and increases count of the unique id
         
+        if (editBool == true){
+            document.getElementById(editID).remove();
+            document.getElementById(editID).remove();
+            document.getElementById(editID).remove();
+            document.getElementById(editID).remove();
+            editBool = false;
+        }
             totalClass = 0;
             u_ID++;
             $('#myModal-1').modal('hide')
@@ -288,5 +304,22 @@ function insertInstructor() {
     }
     
 }
+
+/*
+    function that stores the class data into an JSON array
+*/
+function storeClasses() {
+    var uls = document.getElementById("class-list");
+    var lis = uls.getElementsByTagName('li');
+    var classArray = [];
+    for (var i = 0; i < lis.length; i++){
+        var test = lis[i].innerHTML.split("<")[0];
+        classArray.push(test);
+    }
+    instructorData.classes.push(classArray);
+}
+
+
+
 
 
