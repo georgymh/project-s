@@ -6,6 +6,12 @@ $(document).ready(function() {
 	  fillStepOne();
 	  fillStepTwo();
 	  fillStepThree();
+
+	  jQuery(document).ready(function() {
+	    fillDataFromStepOne();
+	    fillDataFromStepTwo();
+	    sendByAjax();
+	  });
 	}
 
 	function fillStepOne() {
@@ -23,13 +29,13 @@ $(document).ready(function() {
 							"thursday", "friday", "saturday", "sunday"];
 
 		for (var i = 0; i < weekdays.length; i++) {
-			if (i <= 5) {
+			if (i < 4) {
 				// Weekday.
 				$('#' + weekdays[i] + '-checkbox').click();
 				$('#' + weekdays[i] + '-starting-hours').val(weekdayOpeningTime);
 				$('#' + weekdays[i] + '-ending-hours').val(weekdayClosingTime);
 			} else {
-				// Weekend day.
+				// Weekend day (including Friday)
 				$('#' + weekdays[i] + '-checkbox').click();
 				$('#' + weekdays[i] + '-starting-hours').val(weekendOpeningTime);
 				$('#' + weekdays[i] + '-ending-hours').val(weekendClosingTime);
@@ -86,6 +92,28 @@ $(document).ready(function() {
 		$('#frequency').val('4')
 		$('#add-class-btn').trigger('click');
 
+	}
+
+	function sendByAjax() {
+	    var JSONData = {};
+	    JSONData.data = data;
+
+	    $.ajax({
+	                type: "POST",
+	                url: "process.php",
+	                data: JSONData,
+	                success: function(replyObj) {
+	                    console.log('success');
+	                    console.log(replyObj);
+	                    $('#testing').html(replyObj);
+	                },
+	                error: function() {
+	                    console.log('error');
+	                },
+	                complete: function() {
+	                    console.log('complete');
+	                }
+	    });
 	}
 
 });

@@ -41,6 +41,8 @@ jQuery(document).ready(function() {
 
         var allow_submit = true;
 
+        var formData = {};
+
         if ( allow_submit ) {
 
         	console.log('submitting...');
