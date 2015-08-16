@@ -10,46 +10,31 @@ require '../Department.php';
 
 // TESTING BEGINS
 
-// 1. Default Constructor
-echo "1. Default Constructor";
+// 1. Empty Object
+echo "1. Empty Object";
 $noNameDepartment = new Department();
 $noNameDepartment->printObject();
 
-// 2. Overloaded Constructor ('Clark Computing Center')
-echo "2. Overloaded Constructor ('Clark Computing Center')";
-$clarkCompCenter = Department::create()->withName('Clark Computing Center');
+// 2. Default Constructor (Clark Computing Center)
+echo "2. Default Constructor ('Clark Computing Center')";
+$clarkCompCenter = new Department();
+$clarkCompCenter->setName('Clark Computing Center');
 $clarkCompCenter->printObject();
 
-// 3. Assign days opened and hours of operation.
-echo "3. Assign days opened and hours of operation.";
-$clarkCompCenter->setDaysOpened([
-	DaysOfWeek::Monday 		=> TRUE,
-	DaysOfWeek::Tuesday 	=> TRUE,
-	DaysOfWeek::Wednesday 	=> TRUE,
-	DaysOfWeek::Thursday 	=> TRUE,
-	DaysOfWeek::Friday 		=> TRUE,
-	DaysOfWeek::Saturday 	=> TRUE,
-	DaysOfWeek::Sunday 		=> TRUE
-	]);
+// 3. Assign schedule of operation.
+echo "3. Assign schedule of operation.";
 
-$clarkCompCenter->setHoursOpened([	  // Not exactly.
-	DaysOfWeek::Monday 		=> TRUE,  // Should use TimeInterval
-	DaysOfWeek::Tuesday 	=> TRUE,  // instead of boolean for
-	DaysOfWeek::Wednesday 	=> TRUE,  // te key.
-	DaysOfWeek::Thursday 	=> TRUE,
-	DaysOfWeek::Friday 		=> TRUE,
-	DaysOfWeek::Saturday 	=> TRUE,
-	DaysOfWeek::Sunday 		=> TRUE
-	]);
+$weekdaysTimeInterval = TimeInterval::create()->withStart("7:30 AM")->withEnd("10:30 PM");
+$fridayTimeInterval = TimeInterval::create()->withStart("9 AM")->withEnd("6 PM");
+$saturdayTimeInterval = TimeInterval::create()->withStart("9 AM")->withEnd("3 PM");
+
+$clarkCompCenter->addOperationDayAndTime( DaysOfWeek::Monday, $weekdaysTimeInterval );
+$clarkCompCenter->addOperationDayAndTime( DaysOfWeek::Tuesday, $weekdaysTimeInterval );
+$clarkCompCenter->addOperationDayAndTime( DaysOfWeek::Wednesday, $weekdaysTimeInterval );
+$clarkCompCenter->addOperationDayAndTime( DaysOfWeek::Thursday, $weekdaysTimeInterval );
+$clarkCompCenter->addOperationDayAndTime( DaysOfWeek::Friday, $fridayTimeInterval );
+$clarkCompCenter->addOperationDayAndTime( DaysOfWeek::Saturday, $saturdayTimeInterval );
 
 $clarkCompCenter->printObject();
-
-// 4. Overloaded Constructor ( withName()->withDaysOpened()->withHoursOpened() )
-echo "4. Overloaded Constructor ( withName()->withDaysOpened()->withHoursOpened() )";
-$businessEd = Department::create()->withName('Business Education')
-	->withDaysOpened($clarkCompCenter->getDaysOpened())
-	->withHoursOpened($clarkCompCenter->getHoursOpened());
-
-$businessEd->printObject();
 
 ?>
