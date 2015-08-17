@@ -23,7 +23,14 @@ jQuery(document).ready(function() {
     
 });
 
-
+jQuery(document).ready(function() {
+    $('#close-instructor-changes').on('click', function() {
+        $('#myModal-1').modal('hide');
+        document.getElementById("class-list").innerHTML = "";
+        totalClass = 0;
+    });
+    
+});
 
 jQuery(document).ready(function() {
     $('#add-class-btn').on('click', function (){

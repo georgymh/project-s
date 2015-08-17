@@ -8,16 +8,20 @@ var totalClass = 0;
 var u_ID = 0;
 
 
+
+
 /*
     Function that deletes the class that the user has added in step 2
 */
     var deleteClass = function() {
-    var listItem = this.parentNode;
-    var ul = listItem.parentNode;
-    ul.removeChild(listItem);
-    
-    totalClass--;
+        
+        var listItem = this.parentNode;
+        var ul = listItem.parentNode;
+        ul.removeChild(listItem);
+        
+        totalClass--;
 }
+
 
 /*
     Function that sets instructor data from modal into the step 3 form
@@ -148,7 +152,7 @@ function insertInstructor() {
     Edit instructor information function in Step 3
 */
 
-function editInstructorInfo () {
+var editInstructorInfo = function () {
     
     $('#myModal-1').modal('show');
     
@@ -163,47 +167,33 @@ function editInstructorInfo () {
     fName.value = document.getElementById(id).innerHTML.split(", ")[1];
     lName.value = document.getElementById(id).innerHTML.split(", ")[0];
     
-    /*
-       Delete old list items before repopulating
-    */
-    
-    var getID = document.getElementById("class-list");
-    var classListElements = getID.getElementsByTagName("li");
-    var classListElementsLength = classListElements.length;
-    
-    if (classListElementsLength > 0 ){
-        for (var j = 0; j < classListElementsLength; j++){
-            var test1 = document.getElementById("class-list");
-            var test2 = test1.getElementsByTagName("li");
-            test2.removeChild();
-           totalClass--;
-        }
-    }
-    
-    //repopulate classes
-    for (var i = 0; i < totalClasses.length; i++){
-    
-        var newList = document.createElement("li");
-        newList.class = "text-center";
-        
-        //create new delete button to be appended
-        var deleteRoomBtn = document.createElement("button");
-        var deleteText = document.createTextNode("×");
-        deleteRoomBtn.appendChild(deleteText);
+   
+     //repopulate classes
 
-        deleteRoomBtn.type = "button";
-        deleteRoomBtn.id = "delete-room-btn";
+    for (var i = 0; i < totalClasses.length; i++){
+                
         
-        var arrayVariables = document.createTextNode(totalClasses[i]);
-        newList.appendChild(arrayVariables)
-        newList.appendChild(deleteRoomBtn);
+                var newList = document.createElement("li");
+                newList.class = "text-center";
         
-        var currentList = document.getElementById("class-list");
-        currentList.appendChild(newList);
+                //create new delete button to be appended
+                var deleteRoomBtn = document.createElement("button");
+                var deleteText = document.createTextNode("×");
+                deleteRoomBtn.appendChild(deleteText);
+
+                deleteRoomBtn.type = "button";
+                deleteRoomBtn.id = "delete-room-btn";
         
-        deleteRoomBtn.onclick = deleteClass;
-        totalClass++;
-    }
+                var arrayVariables = document.createTextNode(totalClasses[i]);
+                newList.appendChild(arrayVariables)
+                newList.appendChild(deleteRoomBtn);
+        
+                var currentList = document.getElementById("class-list");
+                currentList.appendChild(newList);
+        
+                deleteRoomBtn.onclick = deleteClass;
+                totalClass++;
+            }
 
         editBool = true;
         editID = this.id;
