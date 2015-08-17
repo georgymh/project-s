@@ -25,8 +25,12 @@ jQuery(document).ready(function() {
 
 jQuery(document).ready(function() {
     $('#close-instructor-changes').on('click', function() {
+        document.getElementById("class-list").innerHTML = '';
+        document.getElementById("classes-entered").innerHTML = '';
+        document.getElementById("instructor-first-name").value = '';
+        document.getElementById("instructor-last-name").value = '';
         $('#myModal-1').modal('hide');
-        document.getElementById("class-list").innerHTML = "";
+    
         totalClass = 0;
     });
     
