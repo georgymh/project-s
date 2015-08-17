@@ -11,7 +11,7 @@ var u_ID = 0;
 /*
     Function that deletes the class that the user has added in step 2
 */
-var deleteClass = function() {
+    var deleteClass = function() {
     var listItem = this.parentNode;
     var ul = listItem.parentNode;
     ul.removeChild(listItem);
@@ -119,7 +119,6 @@ function insertInstructor() {
         
         editInstructorBtn.onclick = editInstructorInfo;
         
-        
         /*
             If editBool is equal to true then the user has edited the data, this logic gate will be activated to delete the old user info which 
             will be replaced with the new data
@@ -129,6 +128,7 @@ function insertInstructor() {
             document.getElementById(editID).remove();
             document.getElementById(editID).remove();
             document.getElementById(editID).remove();
+            
             editBool = false;
         }
         
@@ -148,21 +148,37 @@ function insertInstructor() {
     Edit instructor information function in Step 3
 */
 
-var editInstructorInfo = function() {
+function editInstructorInfo () {
     
     $('#myModal-1').modal('show');
     
     var id = this.id;
-    globalID = this.id;
     
     //sets values into variables
     var fName = document.getElementById("instructor-first-name");
     var lName = document.getElementById("instructor-last-name");
-    var classes = document.getElementById("class-list");
     var totalClasses = instructorData.classes[id];
+    
     //repopulate lsat and first names into form
     fName.value = document.getElementById(id).innerHTML.split(", ")[1];
     lName.value = document.getElementById(id).innerHTML.split(", ")[0];
+    
+    /*
+       Delete old list items before repopulating
+    */
+    
+    var getID = document.getElementById("class-list");
+    var classListElements = getID.getElementsByTagName("li");
+    var classListElementsLength = classListElements.length;
+    
+    if (classListElementsLength > 0 ){
+        for (var j = 0; j < classListElementsLength; j++){
+            var test1 = document.getElementById("class-list");
+            var test2 = test1.getElementsByTagName("li");
+            test2.removeChild();
+           totalClass--;
+        }
+    }
     
     //repopulate classes
     for (var i = 0; i < totalClasses.length; i++){
@@ -174,23 +190,23 @@ var editInstructorInfo = function() {
         var deleteRoomBtn = document.createElement("button");
         var deleteText = document.createTextNode("×");
         deleteRoomBtn.appendChild(deleteText);
-        newList.appendChild(deleteRoomBtn);
+
+        deleteRoomBtn.type = "button";
+        deleteRoomBtn.id = "delete-room-btn";
         
-        var arrayVariables = document.createTextNode(totalClasses[i] + " ");
+        var arrayVariables = document.createTextNode(totalClasses[i]);
         newList.appendChild(arrayVariables)
         newList.appendChild(deleteRoomBtn);
         
         var currentList = document.getElementById("class-list");
         currentList.appendChild(newList);
+        
+        deleteRoomBtn.onclick = deleteClass;
         totalClass++;
     }
-    
-    deleteRoomBtn.type = "button";
-    deleteRoomBtn.id = "delete-room-btn";
-    deleteRoomBtn.onclick = deleteClass;
-    
-    editBool = true;
-    editID = this.id;
+
+        editBool = true;
+        editID = this.id;
 }
 
 /*
@@ -261,10 +277,10 @@ function insertClass() {
     document.getElementById("frequency").value = '';
     
     totalClass++;
-        
-    console.log(credit);
+
     }
     
 }
+
 
 

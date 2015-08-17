@@ -15,12 +15,15 @@ jQuery(document).ready(function() {
      });
 });
 
+
 jQuery(document).ready(function() {
     $('#save-instructor-changes').on('click', function() {
         insertInstructor();
     });
     
 });
+
+
 
 jQuery(document).ready(function() {
     $('#add-class-btn').on('click', function (){
