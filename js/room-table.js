@@ -24,6 +24,13 @@ jQuery(document).ready(function() {
 });
 
 jQuery(document).ready(function() {
+    $('#save-instructor-changes').on('click', function() {
+        storeInstructorType();
+       
+    });
+    
+});
+jQuery(document).ready(function() {
     $('#close-instructor-changes').on('click', function() {
         document.getElementById("class-list").innerHTML = '';
         document.getElementById("classes-entered").innerHTML = '';

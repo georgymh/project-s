@@ -161,14 +161,24 @@ var editInstructorInfo = function () {
     //sets values into variables
     var fName = document.getElementById("instructor-first-name");
     var lName = document.getElementById("instructor-last-name");
+    var adjunctRadio = document.getElementById("adjunct-radio");
+    var fullTimeRadio =  document.getElementById("full-time-radio");
     var totalClasses = instructorData.classes[id];
     
     //repopulate lsat and first names into form
     fName.value = document.getElementById(id).innerHTML.split(", ")[1];
     lName.value = document.getElementById(id).innerHTML.split(", ")[0];
     
-   
-     //repopulate classes
+    //repopulate the instructor type
+    if ( instructorData.instructorTypeArray[id] == 1){
+        adjunctRadio.click();
+    }
+    else{
+        
+        fullTimeRadio.click();
+    }
+        
+    //repopulate classes
 
     for (var i = 0; i < totalClasses.length; i++){
                 
@@ -222,7 +232,21 @@ function storeClasses() {
     }
     instructorData.classes.push(classArray);
 }
+/*
+    function that stores instructor type
+*/
+function storeInstructorType() {
+    var adjunctRadio = document.getElementById("adjunct-radio");
+    var fullTimeRadio = document.getElementById("full-time-radio");
 
+   if(document.getElementById("adjunct-radio").checked){
+        instructorData.instructorTypeArray.push(1);
+   }
+    else{
+        
+         instructorData.instructorTypeArray.push(2);
+    }
+}
 /*
     Function that inserts new classes added in Step 3
 */

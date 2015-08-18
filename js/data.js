@@ -64,6 +64,7 @@ var instructorData = {
     "totalClasses" : "N/A",
     "instructorFirstName" : "N/A",
     "instructorLastName" : "N/A",
+    "instructorTypeArray" : [],
     "classes": []
     
 };
