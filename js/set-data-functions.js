@@ -83,7 +83,14 @@ function fillDataFromStepThree() {
     // Instructor and Classes information from step 3.
     var classes = document.getElementById("class-list");
     var totalClasses = classes.getElementsByTagName("li");
-
+    
+    var instructorList = document.getElementById("instructor-list");
+    var instructorName = instructorList.getElementsByTagName("li");
+    
+    name = instructorName[0].id;
+    
+    alert(name);
+          
     logTheFullJSONObject();
     
 }

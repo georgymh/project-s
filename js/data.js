@@ -24,7 +24,7 @@ var data = {
 
     // Step Two: Room Information
     "stepTwo" : {
-        "rooms" : [ ] // array of rooms
+        "rooms" : [] // array of rooms
     },
 
     // Step Three: Instructor & Classes Information

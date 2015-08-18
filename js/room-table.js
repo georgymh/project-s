@@ -29,8 +29,8 @@ jQuery(document).ready(function() {
         document.getElementById("classes-entered").innerHTML = '';
         document.getElementById("instructor-first-name").value = '';
         document.getElementById("instructor-last-name").value = '';
-        $('#myModal-1').modal('hide');
-    
+        document.getElementById("class-title").value = '';
+        editBool = false;
         totalClass = 0;
     });
     
@@ -43,6 +43,18 @@ jQuery(document).ready(function() {
     
 });
 
+
+jQuery(document).ready(function() {
+$('#myModal-1').on('hidden.bs.modal', function () {
+        document.getElementById("class-list").innerHTML = '';
+        document.getElementById("class-title").value = '';
+        document.getElementById("classes-entered").innerHTML = '';
+        document.getElementById("instructor-first-name").value = '';
+        document.getElementById("instructor-last-name").value = '';
+        editBool = false;
+        totalClass = 0;
+    });
+});
 
 /*
     Function that deletes the rooms that the user has added in step 2
