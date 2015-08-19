@@ -81,34 +81,36 @@ function fillDataFromStepTwo() {
 function fillDataFromStepThree() {
     // Code that fills the data variable from data.js with the
     // Instructor and Classes information from step 3.
-    var classes = document.getElementById("class-list");
-    var totalClasses = classes.getElementsByTagName("li");
+   //  var classes = document.getElementById("class-list");
+   //  var totalClasses = classes.getElementsByTagName("li");
     
-    //Obtain instructor LIst
-    var instructorList = document.getElementById("instructor-list");
-    var instructorName = instructorList.getElementsByTagName("li");
+   //  //Obtain instructor LIst
+   //  var instructorList = document.getElementById("instructor-list");
+   //  var instructorName = instructorList.getElementsByTagName("li");
     
-    //Obtain Class List
-    var classList = document.getElementById("number-classes-list");
-    var quantityClasses = classList.getElementsByTagName("li");
+   //  //Obtain Class List
+   //  var classList = document.getElementById("number-classes-list");
+   //  var quantityClasses = classList.getElementsByTagName("li");
     
-    for (var i = 0; i < instructorName.length; i++){
+   //  for (var i = 0; i < instructorName.length; i++){
         
-        step3Data.numberOfClasses = quantityClasses[i].innerHTML;
-        step3Data.name = instructorName[i].innerHTML;
+   //      step3Data.numberOfClasses = quantityClasses[i].innerHTML;
+   //      step3Data.name = instructorName[i].innerHTML;
         
-        var setID = quantityClasses[i].id;
-        step3Data.classes = instructorData.classes[setID]
+   //      var setID = quantityClasses[i].id;
+   //      step3Data.classes = instructorData.classes[setID]
 
         
-        step3Array.step3DataArray.push(step3Data);
-       // alert( step3Array.step3DataArray );
-    }
-    var check = step3Array.step3DataArray[0];
+   //      step3Array.step3DataArray.push(step3Data);
+   //     // alert( step3Array.step3DataArray );
+   //  }
+   //  var check = step3Array.step3DataArray[0];
     
     
-   // alert(check.classes);
-    logTheFullJSONObject();
+   // // alert(check.classes);
+   //  logTheFullJSONObject();
+   
+   console.log('filling data for step 3');
     
 }
 

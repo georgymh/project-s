@@ -7,11 +7,11 @@ $(document).ready(function() {
 	  fillStepTwo();
 	  fillStepThree();
 
-	  jQuery(document).ready(function() {
-	    fillDataFromStepOne();
-	    fillDataFromStepTwo();
-	    sendByAjax();
-	  });
+	  // jQuery(document).ready(function() {
+	  //   fillDataFromStepOne();
+	  //   fillDataFromStepTwo();
+	  //   sendByAjax();
+	  // });
 	}
 
 	function fillStepOne() {
