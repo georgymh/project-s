@@ -26,7 +26,8 @@ var data = {
     "stepTwo" : {
         "rooms" : [] // array of rooms
     },
-
+    
+    /*
     // Step Three: Instructor & Classes Information
     "stepThree" : {
         "instructors" : 
@@ -44,6 +45,7 @@ var data = {
                 classes : 
                 [
                     {
+                        numberOfClasses: "N/A",
                         title: "N/A",               // Ex. History 180
                         credits: "N/A",             // Ex. 3 -- as of 3 credits
                         frequencyPerWeek: "N/A",    // Ex. 2 -- as of twice a week
@@ -55,9 +57,23 @@ var data = {
             // ----------------------------------------------------------
         ]
     }
-        
+    */
+    
 };
 
+var step3Data = {
+    instructorName : "N/A",
+    totalNumberClasses : "N/A",
+    classes : [],
+    title : "N/A",
+    credits : "N/A",
+    frequencyPerWeek: "N/A",
+
+};
+
+var step3Array = {
+    step3DataArray : []
+};
 
 var instructorData = {
     
