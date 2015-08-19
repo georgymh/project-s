@@ -339,4 +339,70 @@ class InstructorAvailSchedule extends AvailSchedule {
 	private $earlyAndLateBounds;
 }
 
+
+
+
+
+
+class ClassOcurrence extends AvailSchedule {
+// PUBLIC:
+
+	// Contructor
+	function __construct() {
+		parent::__construct();
+
+		$this->hoursOcurrence = [
+			DaysOfWeek::Monday 		=> new TimeInterval(),
+			DaysOfWeek::Tuesday 	=> new TimeInterval(),
+			DaysOfWeek::Wednesday 	=> new TimeInterval(),
+			DaysOfWeek::Thursday 	=> new TimeInterval(),
+			DaysOfWeek::Friday 		=> new TimeInterval(),
+			DaysOfWeek::Saturday 	=> new TimeInterval(),
+			DaysOfWeek::Sunday 		=> new TimeInterval()
+		];
+	}
+
+	/**
+	 * Returns the hours of availability of a specific day.
+	 * @param  DaysOfWeek $day 
+	 * @return TimeInterval
+	 */
+	public function getHoursOfDay( $day ) {
+		parent::getHoursOfDay($day);
+
+		return $this->hoursOcurrence[$day];
+	}
+
+	/**
+	 * Adds a specific time period as an availability on a day.
+	 * 
+	 * @param DaysOfWeek $day    
+	 * @param TimeInterval $timeInterval
+	 */
+	public function setAvailableTimeInterval( $day, $timeInterval ) {
+		if ( isValidDay($day) ) {
+			parent::setDayAsAvailable($day);
+			$this->hoursOcurrence[$day] = $timeInterval;
+		}
+	}
+
+	public function printObject() {
+		parent::printObject();
+
+		for ($i = DaysOfWeek::Monday; $i <= DaysOfWeek::Sunday; $i++) {
+			echo "<b>* Hours of day # $i:</b> ";
+			$this->getHoursOfDay($i)->printObject();
+		}
+	
+		echo "<br><hr><br><br>";
+	}
+
+// PRIVATE:
+	/**
+	 * The hours of every day of the week in which a department is available.
+	 * @var associative array [DaysOfWeek => TimeInterval]
+	 */
+	private $hoursOcurrence;
+}
+
 ?>
