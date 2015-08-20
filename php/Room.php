@@ -63,6 +63,10 @@ class Room {
 		return $this->roomNumber;
 	}
 
+	public function getTitle() {
+		return $this->prefix . " " . $this->roomNumber;
+	}
+
 	// Setter methods
 	
 	/*
