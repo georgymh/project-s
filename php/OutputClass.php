@@ -1,15 +1,16 @@
 <?php
 
-// INCLUDES
-
 /*
-	This class uses Dependency Injection for the following member data:
-		- instructor
-		- classOcurrence
-		- room
+	Georgy Marrero
+	August 19, 2015
  */
+
+// INCLUDES
 require_once 'HelperClasses.php';
 require_once 'HelperEnums.php';
+require_once 'DaysOfWeek.php';
+require_once 'Room.php';
+require_once 'Instructor.php';
 
 /**
  * ScheduleType Enum
@@ -20,6 +21,12 @@ abstract class ScheduleType extends BasicEnum {
     const ByDay = 3; 			// Day as the whole screen, Room as a column, Class with Instructor inside schedule box.
 }
 
+/*
+	This class uses Dependency Injection for the following member data:
+		- instructor
+		- classOcurrence
+		- room
+ */
 class OutputClass {
 // PUBLIC:
 	// Default Constructor
@@ -69,7 +76,7 @@ class OutputClass {
 	}
 
 	public function getRoomName() {
-		$roomTitle = $this->room->getPrefix() . " " . $this->room->getNumber();
+		$roomTitle = $this->room->getPrefix() . " " . $this->room->getRoomNumber();
 		return $roomTitle;
 	}
 
@@ -84,34 +91,56 @@ class OutputClass {
 		// 			$name = "Class Name";
 		//			$start = "2015-08-10T10:10:00";
 		//			$end = "2015-08-10T12:00:00";
-		
-		$rawData = array();
 
 		switch( $scheduleType ) {
-		case ByInstructor:
-			$name = $this->title . ' ' . $this->getRoomName();
+		case ScheduleType::ByInstructor:
+			$name = '<b>' . $this->title . '</b><br>Room: ' . $this->getRoomName();
 		break;
-		case ByRoom:
-			$name = $this->title . ' ' . $this->getInstructorName();
+		case ScheduleType::ByRoom:
+			$name = '<b>' . $this->title . '</b><br>Instructor: ' . $this->getInstructorName();
 		break;
-		// case ByDay:
+		// case ScheduleType::ByDay:
 		// 	$name = $this->title . ' ' . $this->getInstructorName();
 		// break;
 		}
 
-		$dayPilotDays = array();
+		// Get days and hours to use with DayPilot and put into an array.
+		$rawData = new stdClass();
+		$rawData->data = array();
+		// Get days.
 		$days = $this->classOcurrence->getAvailableDays();		
 		foreach($days as $day) {
-			$dayPilotDays = getDayForDayPilot($day); // Sets day
+			// Get hour of day.
+			$hour = $this->classOcurrence->getHoursOfDay($day);
+
+			// Change format of day to DayPilot-recognizable.
+			$dayPilotDay = $this->dayInDayPilotFormat[$day];
+
+			// Create time string used by DayPilot.
+			$start = $dayPilotDay . "T" . $hour->getStart();
+			$end = $dayPilotDay . "T" . $hour->getEnd();
+
+			// Put data into rawData.
+			$rawData->data[] = array(
+				"name" => $name,
+				"start" => $start,
+				"end" => $end
+			);
 		}
 
-		// Set time in ISO8601 (append to each $dayPilotDays).
-		// Note: set for both 'start' and 'end'
-		
-		// Create array with $name, $start and $end for each occurrence
+		$JSONData = json_encode($rawData);
 
-		// $start = "";
-		// $end = "";
+		return $JSONData;
+	}
+
+	public function printObject() {
+		echo '<br>====== PRINTING CLASS ======';
+		echo '<br>Title of Class: ' . $this->title;
+		echo '<br>Instructor: ' . $this->instructor->getFullName();
+		echo '<br>Class ocurrence: <br>';
+		$this->classOcurrence->printObject();
+		echo '<br>Room: ' . $this->room->getTitle();
+		echo '<br>============================<br>';
 	}
 
 // PRIVATE:
@@ -138,20 +167,20 @@ class OutputClass {
 	 * @var Room
 	 */
 	private $room;
-}
 
-$dayPilotDayTranslationData = [
-	DaysOfWeek::Monday 		=> new DateTime("2006-01-01");
-	DaysOfWeek::Tuesday 	=> new DateTime("2006-01-02");
-	DaysOfWeek::Wednesday 	=> new DateTime("2006-01-03");
-	DaysOfWeek::Thursday 	=> new DateTime("2006-01-04");
-	DaysOfWeek::Friday 		=> new DateTime("2006-01-05");
-	DaysOfWeek::Saturday 	=> new DateTime("2006-01-06");
-	DaysOfWeek::Sunday 		=> new DateTime("2006-01-07");
-]; 
+	private $dayInDayPilotFormat = array(
+		DaysOfWeek::Monday 		=> "2006-01-01",
+		DaysOfWeek::Tuesday 	=> "2006-01-02",
+		DaysOfWeek::Wednesday 	=> "2006-01-03",
+		DaysOfWeek::Thursday 	=> "2006-01-04",
+		DaysOfWeek::Friday 		=> "2006-01-05",
+		DaysOfWeek::Saturday 	=> "2006-01-06",
+		DaysOfWeek::Sunday 		=> "2006-01-07"
+	); 
 
-function getDayForDayPilot($day) {
-	return $dayPilotDayTranslationData[$day];
+	private function getDayInDayPilotFormat( $day ) {
+		return $this->dayInDayPilotFormat[$day];
+	}
 }
 
 ?>
