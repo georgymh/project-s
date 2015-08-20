@@ -13,7 +13,8 @@ class Instructor {
 	
 	// Default constructor
 	function __construct() {
-		$this->name = "NO_NAME";
+		$this->firstName = "NO_FIRST_NAME";
+		$this->lastName = "NO_LAST_NAME";
 		$this->availSchedule = new InstructorAvailSchedule();
 		$this->listOfClasses = new SplDoublyLinkedList();
 	}
@@ -27,9 +28,15 @@ class Instructor {
 			return $instance;
 		}
 
-		// Name setter - fluent style
-		public function withName( $name ) {
-			$this->name = $name;
+		// First Name setter - fluent style
+		public function withFirstName( $fName ) {
+			$this->firstName = $fName;
+			return $this;
+		}
+
+		// Last Name setter - fluent style
+		public function withLastName( $lName ) {
+			$this->lastName = $lName;
 			return $this;
 		}
 
@@ -52,8 +59,12 @@ class Instructor {
 
 	// Setters
 	
-	public function setName( $name ) {
-		$this->name = $name;
+	public function setFirstName( $fName ) {
+		$this->firstName = $fName;
+	}
+
+	public function setLastName( $lName ) {
+		$this->lastName = $lName;
 	}
 
 	public function setAvailSchedule( $availSchedule ) {
@@ -70,8 +81,16 @@ class Instructor {
 
 	// Getters
 	
-	public function getName() {
-		return $this->name;
+	public function getFirstName() {
+		return $this->firstName;
+	}
+
+	public function getLastName() {
+		return $this->lastName;
+	}
+
+	public function getFullName() {
+		return $this->lastName . ', ' . $this->firstName;
 	}
 
 	public function getAvailSchedule() {
@@ -105,7 +124,7 @@ class Instructor {
 	public function printObject() {
 		echo "<hr>";
 		echo "<b>*** Printing the Instructor object *** </b><br><br>";
-		echo "<b>Name:</b> $this->name<br>";
+		echo "<b>Name:</b> ". $this->getFullName() . "<br>";
 
 		echo "<b>Schedule:</b> <br>";
 		$this->availSchedule->printObject();
@@ -125,10 +144,15 @@ class Instructor {
 
 // PRIVATE:
 	/**
-	 * Name of the instructor.
+	 * First name of the instructor.
 	 * @var string
 	 */
-	private $name;
+	private $firstName;
+
+	/* Last name of the instructor.
+	 * @var string
+	 */
+	private $lastName;
 
 	/**
 	 * Availability schedule of the instructor.

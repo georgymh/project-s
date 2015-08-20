@@ -64,7 +64,8 @@ echo "<h3>- Printing empty:</h3>";
 $instructorA->printObject();
 
 // 3. Now set values.
-$instructorA->setName('Mrs. Anna Wall');
+$instructorA->setFirstName('Anna');
+$instructorA->setLastName('Wall');
 $instructorA->setAvailSchedule($availableSchedule);
 
 // 4. Print object
@@ -74,14 +75,14 @@ $instructorA->printObject();
 // B: Overloaded Constructor
 echo '<h2>B: Overloaded constructor</h2>';
 // 1. Overloaded Constructor.
-$instructorB = Instructor::create()->withName("Mr. John Doe")->withSchedule($availableSchedule);
+$instructorB = Instructor::create()->withFirstName("John")->withLastName("Doe")->withSchedule($availableSchedule);
 
 // 2. Print object
 echo "<h3>- Printing with data:</h3>";
 $instructorB->printObject();
 
 // 3. Now change values.
-$instructorB->setName('Mr. Johnny');
+$instructorB->setFirstName('Johnny');
 $instructorB->setAvailSchedule($anotherSchedule);
 
 // 4. Print object
