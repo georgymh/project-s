@@ -35,7 +35,7 @@ var editID;
 var totalClass = 0;
 var u_ID = 0;
 
-var classID = 1;
+var classID = 0;
 
 jQuery(document).ready(function() {
 
@@ -44,11 +44,15 @@ jQuery(document).ready(function() {
     });
 
     $('#save-instructor-changes').on('click', function() {
-        // storeClasses();
-        // insertInstructor();
-        // storeInstructorType();  
+        insertInstructor();
+        storeInstructorType();  
         console.log('saving changes...');
         saveInstructorToJSON();
+        document.getElementById("class-list").innerHTML = '';
+        document.getElementById("classes-entered").innerHTML = '';
+        document.getElementById("instructor-first-name").value = '';
+        document.getElementById("instructor-last-name").value = '';
+        document.getElementById("class-title").value = '';
     });
 
     $('#close-instructor-changes').on('click', function() {
@@ -190,15 +194,19 @@ function insertInstructor() {
             will be replaced with the new data
         */
         if (editBool == true){
+
             document.getElementById(editID).remove();
             document.getElementById(editID).remove();
             document.getElementById(editID).remove();
             document.getElementById(editID).remove();
+
+            deleteInstructorFromJSON(editID);
             
             editBool = false;
         }
 
         fillInstructorsWithJSON( u_ID, firstName, lastName, retrieveInstructorType() );
+        data.stepThree.instructors[u_ID].classes = classes;
         resetClassesJSON();
         
         /*
@@ -225,6 +233,7 @@ function fillInstructorsWithJSON(id, firstName, lastName, type) {
 
 function resetClassesJSON() {
     classes = [];
+    classID = 0;
 }
 
 /*
@@ -237,56 +246,74 @@ var editInstructorInfo = function () {
     $('#myModal-1').modal('show');
     
     var id = this.id;
+    editID = this.id;
+    var instructorObject = data.stepThree.instructors[id];
     
     //sets values into variables
-    var fName = document.getElementById("instructor-first-name");
-    var lName = document.getElementById("instructor-last-name");
-    var adjunctRadio = document.getElementById("adjunct-radio");
-    var fullTimeRadio =  document.getElementById("full-time-radio");
-    var totalClasses = instructorData.classes[id];
+    document.getElementById("instructor-first-name").value = instructorObject.firstName;
+    document.getElementById("instructor-last-name").value = instructorObject.lastName;
+
+   
+   var classArray = instructorObject.classes;
+   fillModalClasses(classArray);
     
-    //repopulate lsat and first names into form
-    fName.value = document.getElementById(id).innerHTML.split(", ")[1];
-    lName.value = document.getElementById(id).innerHTML.split(", ")[0];
-    
-    //repopulate the instructor type
-    if ( instructorData.instructorTypeArray[id] == 1){
-        adjunctRadio.click();
+   if (instructorObject.type == "adjunct"){
+       document.getElementById("adjunct-radio").click();
+   
     }
     else{
-        
-        fullTimeRadio.click();
+        document.getElementById("full-time-radio").click();
+
     }
-        
-    //repopulate classes
+    editBool = true;
+    classes = instructorObject.classes;
+    classID = instructorObject.classes.length;
+}
 
-    for (var i = 0; i < totalClasses.length; i++){
-                
+function fillModalClasses(classArr){
+ 
+    for (var i = 0; i < classArr.length; i++){
         
-                var newList = document.createElement("li");
-                newList.class = "text-center";
+        var classTitle = classArr[i].title;
+        var hours = classArr[i].hours;
+        var freq = classArr[i].frequency;
         
-                //create new delete button to be appended
-                var deleteRoomBtn = document.createElement("button");
-                var deleteText = document.createTextNode("×");
-                deleteRoomBtn.appendChild(deleteText);
 
-                deleteRoomBtn.type = "button";
-                deleteRoomBtn.id = "delete-room-btn";
+        //create new list element
+        var newClassList = document.createElement("li");
+        newClassList.class = "text-center";
         
-                var arrayVariables = document.createTextNode(totalClasses[i]);
-                newList.appendChild(arrayVariables)
-                newList.appendChild(deleteRoomBtn);
-        
-                var currentList = document.getElementById("class-list");
-                currentList.appendChild(newList);
-        
-                deleteRoomBtn.onclick = deleteClass;
-                totalClass++;
-            }
+        //create new elements to be appended
+        var deleteRoomBtn = document.createElement("button");
 
-        editBool = true;
-        editID = this.id;
+        // Transform variables into text HERE.
+        
+        var classListText = document.createTextNode(classTitle + " " + hours + " " + freq);
+        var deleteText = document.createTextNode("×");
+        
+        //aggregrate new elemenets into one element
+        newClassList.appendChild(classListText);
+        deleteRoomBtn.appendChild(deleteText);
+        newClassList.appendChild(deleteRoomBtn);
+
+        // Create hidden textbox with ID.
+        var idHiddenBox = document.createElement("input");
+        idHiddenBox.type = "hidden";
+        idHiddenBox.value = classID;
+        idHiddenBox.id = classID;
+        newClassList.appendChild( idHiddenBox );
+        
+        var currentClassList = document.getElementById("class-list");
+        currentClassList.appendChild(newClassList);
+        
+        deleteRoomBtn.type = "button";
+        deleteRoomBtn.id = "delete-room-btn";
+        deleteRoomBtn.onclick = deleteClass;
+        classID++;
+        totalClass++;
+        
+    }
+    
 }
 
 /*
@@ -318,19 +345,25 @@ var deleteClass = function() {
     var listItem = this.parentNode;
     var ul = listItem.parentNode;
     ul.removeChild(listItem);
-
+    
     var id = $(this).siblings('input').val(); // the magic touch.
     deleteClassFromJSONData(id);
 }
 
 function deleteClassFromJSONData(id) {
-    //var classCount = classes.length;
-    // for (var i in classes) {
-    //     if (classes[i].id == id) {
-    //         delete classes[i];
-    //     }
-    // }
-    delete classes[id];
+
+    classes[id].title = '1';
+    
+    //shift array
+    var newClasses = []
+    for (var i = 0; i < classes.length; i++){
+        
+        if (classes[i].title != '1'){
+           // alert(classes[i].title);
+            newClasses.push(classes[i]);
+        }
+    }
+    classes = newClasses;
     totalClass--;
 }
 
@@ -372,6 +405,7 @@ function insertClass() {
         var idHiddenBox = document.createElement("input");
         idHiddenBox.type = "hidden";
         idHiddenBox.value = classID;
+        idHiddenBox.id = classID;;
         newClassList.appendChild( idHiddenBox );
         
         var currentClassList = document.getElementById("class-list");
@@ -395,25 +429,10 @@ function fillClassesWithJSON(id, title, hours, frequency) {
     aClass.title = title;
     aClass.hours = hours;
     aClass.frequency = frequency;
-
     classes[id] = aClass;
     totalClass++;
 }
 
-/*
-    function that stores the class data for each instructor into an JSON array
-*/
-function storeClasses() {
-    var uls = document.getElementById("class-list");
-    var lis = uls.getElementsByTagName('li');
-    var classArray = [];
-    for (var i = 0; i < lis.length; i++){
-        var test = lis[i].innerHTML.split("<")[0];
-        classArray.push(test);
-    }
-    instructorData.classes.push(classArray);
-    console.log(instructorData.classes);
-}
 /*
     function that stores instructor type
 */
@@ -427,6 +446,11 @@ function retrieveInstructorType() {
         return 'fulltime';
     }
 }
+
+
+
+
+
 
 
 

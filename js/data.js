@@ -31,48 +31,35 @@ var data = {
     "stepThree" : {
         "instructors" : 
         [   
-            // {   
-            //     firstName : "N/A", // the name of the instructor
-            //     lastName : "N/A",
-            //     type : "N/A",
-            //     availablePeriods : [], // the periods available (can be more than one)
-            //     classes : [] // classes the instructor teaches
-            // }
+             {   
+                 firstName : "N/A", // the name of the instructor
+                 lastName : "N/A",
+                 type : "N/A",
+                 availablePeriods : [], // the periods available (can be more than one)
+                 classes : [] // classes the instructor teaches
+             }
         ]
     }
     
 };
 
 var classes = [
-                // {
-                //     id: "N/A",
-                //     title: "N/A",               // Ex. History 180
-                //     frequencyPerWeek: "N/A",    // Ex. 2 -- as of twice a week
-                //     semestrialPeriod: "N/A",    // Ex. full, firstHalf, secondHalf
-                //                                 // ^ if the class is 16 weeks or 8 weeks.
-                // }
+                 {
+                     id: "N/A",
+                     title: "N/A",               // Ex. History 180
+                     frequencyPerWeek: "N/A",    // Ex. 2 -- as of twice a week
+                     semestrialPeriod: "N/A",    // Ex. full, firstHalf, secondHalf
+                                                 // ^ if the class is 16 weeks or 8 weeks.
+                 }
 ];
 
-// var step3Data = {
-//     instructorName : "N/A",
-//     totalNumberClasses : "N/A",
-//     classes : [],
-//     title : "N/A",
-//     credits : "N/A",
-//     frequencyPerWeek: "N/A",
 
-// };
-
-// var step3Array = {
-//     step3DataArray : []
-// };
-// 
-// // var instructorData = {
+ var instructorData = {
     
-//     "totalClasses" : "N/A",
-//     "instructorFirstName" : "N/A",
-//     "instructorLastName" : "N/A",
-//     "instructorTypeArray" : [],
-//     "classes": []
-    
-// };
+    "totalClasses" : "N/A",
+    "instructorFirstName" : "N/A",
+    "instructorLastName" : "N/A",
+    "instructorTypeArray" : [],
+    "classes": []
+     
+ };
