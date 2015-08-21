@@ -26,426 +26,298 @@
     ]
  */
 
-
-/*
-    Global Variables
-*/
-var editBool = false;
-var editID;
-var totalClass = 0;
-var u_ID = 0;
-
-var classID = 0;
-
 jQuery(document).ready(function() {
 
     $('#save-instructor-changes').on('click', function() {
-        insertInstructor();
-        storeInstructorType();  
-        console.log('saving changes...');
-        saveInstructorToJSON();
-        document.getElementById("class-list").innerHTML = '';
-        document.getElementById("classes-entered").innerHTML = '';
-        document.getElementById("instructor-first-name").value = '';
-        document.getElementById("instructor-last-name").value = '';
-        document.getElementById("class-title").value = '';
-    });
-
-    $('#close-instructor-changes').on('click', function() {
-        document.getElementById("class-list").innerHTML = '';
-        document.getElementById("classes-entered").innerHTML = '';
-        document.getElementById("instructor-first-name").value = '';
-        document.getElementById("instructor-last-name").value = '';
-        document.getElementById("class-title").value = '';
-        editBool = false;
-        totalClass = 0;
+        saveInstructor();
+        console.log(data.stepThree);
+        $('#addInstructorModal').modal('hide');
     });
 
     $('#add-class-btn').on('click', function (){
         insertClass();
     });
     
-    // Add instructor modal.
-    $('#myModal-1').on('hidden.bs.modal', function () {
-        document.getElementById("class-list").innerHTML = '';
-        document.getElementById("class-title").value = '';
-        document.getElementById("classes-entered").innerHTML = '';
-        document.getElementById("instructor-first-name").value = '';
-        document.getElementById("instructor-last-name").value = '';
-        editBool = false;
-        totalClass = 0;
+    $('#addInstructorModal').on('hidden.bs.modal', function () {
+        resetSaveInstructorFormData();
     });
 
 });
 
-
-function saveInstructorToJSON() {
-    insertInstructor();
-}
-
+/**
+ * INSTRUCTORS METHODS
+ */
 
 /*
-    Function that sets instructor data from modal into the step 3 form
-*/
+    Saves the instructor.
 
-function insertInstructor() {
-     if(document.getElementById("instructor-first-name").value === null || document.getElementById("instructor-first-name").value === ''){
-        //alert("You must enter a room prefix");
-    }  
-    else if(document.getElementById("instructor-last-name").value === null || document.getElementById("instructor-last-name").value === ''){
-        //alert("You must enter a room");
-    }
-    else{ 
-        
-        //sets values into variables
-        var firstName = document.getElementById("instructor-first-name").value;
-        var lastName = document.getElementById("instructor-last-name").value;
-        var adjunct = document.getElementById("adjunct-radio").value;
-        var fullTime = document.getElementById("full-time-radio").value;
-        
-        
-        //reset user input
-        document.getElementById("classes-entered").innerHTML = '';
-        document.getElementById("instructor-first-name").value = '';
-        document.getElementById("instructor-last-name").value = '';
-        document.getElementById("class-list").innerHTML = "";
-      
-        /*
-            Append Instructor info
-        */
-        
-        //create new instructor list element
-        var newClassList = document.createElement("li");
-        newClassList.class = "text-center";
-        
-        //add text to list item
-        var classListText = document.createTextNode(lastName + ", " + firstName);
-        newClassList.appendChild(classListText); 
-        
-        //set unique u_ID
-        newClassList.id = u_ID;
-        
-        //append text node to new list item
-        var currentClassList = document.getElementById("instructor-list");
-        currentClassList.appendChild(newClassList);
-        
-        //create new action list element
-        var newActionList = document.createElement("li");
-        newActionList.class = "text-center";
-        
-        //create new list item for edit button
-        var newEditList = document.createElement("li");
-        newEditList.class = "text-center";
-        
-        //create edit button and append
-        var editInstructorBtn = document.createElement("button");
-        var editInstructor = document.createTextNode("edit");
-        editInstructorBtn.appendChild(editInstructor);
-        newEditList.appendChild( editInstructorBtn );
-        
-        //set unique Id
-        newEditList.id = u_ID;
-        
-        //ad edit button to actions list
-        var currentEditList = document.getElementById("actions-list");
-        //currentEditList.appendChild(newEditList);
-        
-        //create new delete button to be appended
-        var deleteRoomBtn = document.createElement("button");
-        var deleteText = document.createTextNode("×");
-        deleteRoomBtn.appendChild(deleteText);
-        newActionList.appendChild(editInstructorBtn);
-        newActionList.appendChild(deleteRoomBtn);
-        
-        //set unique id's
-        deleteRoomBtn.id =  u_ID;
-        editInstructorBtn.id = u_ID;
-        
-        var currentActionList = document.getElementById("actions-list");
-        currentActionList.appendChild(newActionList);
-        
-        //create new total class list element
-        var newTotalClassList = document.createElement("li");
-        newTotalClassList.class = "text-center";
-        
-        //add text to list item (Class Count)
-        var classListText = document.createTextNode(totalClass);
-        newTotalClassList.appendChild(classListText);
-        
-        //set unique id's
-        newTotalClassList.id = u_ID;
-        
-        var currentTotalClassList = document.getElementById("number-classes-list");
-        currentTotalClassList.appendChild(newTotalClassList);
-        
+    Checks first if we're saving a new or old instructor.
+ */
+function saveInstructor() {
+    var editingID = $('#instructor-editing-id').val();
 
-        deleteRoomBtn.type = "button";
-        deleteRoomBtn.onclick = deleteInstructorInfo;
-        
-        editInstructorBtn.onclick = editInstructorInfo;
-        editInstructorBtn.type = "button";
-        
-        /*
-            If editBool is equal to true then the user has edited the data, this logic gate will be activated to delete the old user info which 
-            will be replaced with the new data
-        */
-        if (editBool == true){
-
-            document.getElementById(editID).remove();
-            document.getElementById(editID).remove();
-            document.getElementById(editID).remove();
-            document.getElementById(editID).remove();
-
-            deleteInstructorFromJSON(editID);
-            
-            editBool = false;
-        }
-
-        fillInstructorsWithJSON( u_ID, firstName, lastName, retrieveInstructorType() );
-        data.stepThree.instructors[u_ID].classes = classes;
-        resetClassesJSON();
-        
-        /*
-            exits the modal, resets the totalClass count and increases count of the unique id
-        */
-            u_ID++;
-            $('#myModal-1').modal('hide')
+    // Decide if we're saving a new instructor or an old one.
+    if (editingID.length > 0) {
+        // We are editing...
+        editInstructor(editingID);
+    } else {
+        // We are adding a new instructor.
+        addInstructor();
     }
     
+    // Reset the editing id.
+    $('instructor-editing-id').val('');
+
+    // Hide the "No Instructor Added" message.
+    $("#instructor-list-msg").hide();
 }
 
-function fillInstructorsWithJSON(id, firstName, lastName, type) {
+/*
+    Resets the information in the instructor modal.
+ */
+function resetSaveInstructorFormData() {
+    $("#instructor-first-name").val('');
+    $("#instructor-last-name").val('');
+    $("#class-list").html('');
+
+    resetClassInfoForm();
+}
+
+/*
+    Adds a new instructor.
+*/
+function addInstructor() {
+    // First check if name and last name are set.
+    if ( ($('#instructor-first-name').val().length > 0) && ($('#instructor-last-name').val().length > 0) ) {
+
+        // Create a hidden textbox with the ID (it will be added on the three lists/columns).
+        var uniqueID = guid();
+        var uniqueIDHiddenInput = '<input type="hidden" class="' + uniqueID + '" value="' + uniqueID + '"></input>';
+
+        /*
+            UI-RELATED ROUTINE FOR INSTRUCTOR TABLE
+        */
+        
+        // Add Instructor Personal Info to Table
+        var firstName = $('#instructor-first-name').val();
+        var lastName = $('#instructor-last-name').val();
+        var instructorPersonalInfo = lastName + ", " + firstName;
+        $('#instructor-list').append('<li class="text-center">' + instructorPersonalInfo + uniqueIDHiddenInput + '</li>')
+
+        // Add Quantity of Classes to Table
+        var classCount = $('#class-list li').length; // find out how many <li> inside #class-list there are
+        $('#number-classes-list').append('<li class="text-center">' + classCount + uniqueIDHiddenInput + '</li>');
+
+        // Add Actions to Table
+        var editInstructorBtnElem = '<button type="button" onclick="showModalWithInstructorInfo(this)">Edit</button>';
+        var deleteInstructorBtnElem = '<button type="button" onclick="deleteInstructor(this)">×</button>';
+        $('#actions-list').append('<li class="text-center">' + editInstructorBtnElem + deleteInstructorBtnElem + uniqueIDHiddenInput + '</li>');
+        
+        /*
+            JSON-RELATED ROUTINE FOR INSTRUCTORS
+        */
+        var classes = retrieveClassesFromUI();
+        var instructorType = retrieveInstructorTypeFromUI();
+        fillInstructorsDataWithJSON( uniqueID, firstName, lastName, classes, instructorType );
+    }
+}
+
+// Helper method to add instructor.
+function fillInstructorsDataWithJSON(id, firstName, lastName, classes, type) {
     var instructor = {};
     instructor.firstName = firstName;
     instructor.lastName = lastName;
-    instructor.type = type;
-    // Extra
     instructor.classes = classes;
+    instructor.type = type;
 
     var instructors = data.stepThree.instructors;
 
-    instructors[u_ID] = instructor;
+    instructors[id] = instructor;
 }
 
-function resetClassesJSON() {
-    classes = [];
-    classID = 0;
-}
+// Helper method to add instructor.
+function retrieveClassesFromUI() {
+    var classList = [];
 
-/*
+    $('ul#class-list li').each(function(index, element) {
+        var classString = $(element).text();
+        var classInfo = classString.split(" - ");
 
-    Edit instructor information function in Step 3
-*/
+        var title = classInfo[0];
+        var hours = parseFloat(classInfo[1]); // to Float...
+        var frequency = parseInt(classInfo[2]); // to Int...
 
-var editInstructorInfo = function () {
-    
-    $('#myModal-1').modal('show');
-    
-    var id = this.id;
-    editID = this.id;
-    var instructorObject = data.stepThree.instructors[id];
-    
-    //sets values into variables
-    document.getElementById("instructor-first-name").value = instructorObject.firstName;
-    document.getElementById("instructor-last-name").value = instructorObject.lastName;
+        var aClass = {};
+        aClass.title = title;
+        aClass.hours = hours;
+        aClass.frequency = frequency;
 
-   
-   var classArray = instructorObject.classes;
-   fillModalClasses(classArray);
-    
-   if (instructorObject.type == "adjunct"){
-       document.getElementById("adjunct-radio").click();
-   
-    }
-    else{
-        document.getElementById("full-time-radio").click();
+        classList.push( aClass );
+    });
 
-    }
-    editBool = true;
-    classes = instructorObject.classes;
-    classID = instructorObject.classes.length;
-}
-
-function fillModalClasses(classArr){
- 
-    for (var i = 0; i < classArr.length; i++){
-        
-        var classTitle = classArr[i].title;
-        var hours = classArr[i].hours;
-        var freq = classArr[i].frequency;
-        
-
-        //create new list element
-        var newClassList = document.createElement("li");
-        newClassList.class = "text-center";
-        
-        //create new elements to be appended
-        var deleteRoomBtn = document.createElement("button");
-
-        // Transform variables into text HERE.
-        
-        var classListText = document.createTextNode(classTitle + " " + hours + " " + freq);
-        var deleteText = document.createTextNode("×");
-        
-        //aggregrate new elemenets into one element
-        newClassList.appendChild(classListText);
-        deleteRoomBtn.appendChild(deleteText);
-        newClassList.appendChild(deleteRoomBtn);
-
-        // Create hidden textbox with ID.
-        var idHiddenBox = document.createElement("input");
-        idHiddenBox.type = "hidden";
-        idHiddenBox.value = classID;
-        idHiddenBox.id = classID;
-        newClassList.appendChild( idHiddenBox );
-        
-        var currentClassList = document.getElementById("class-list");
-        currentClassList.appendChild(newClassList);
-        
-        deleteRoomBtn.type = "button";
-        deleteRoomBtn.id = "delete-room-btn";
-        deleteRoomBtn.onclick = deleteClass;
-        classID++;
-        totalClass++;
-        
-    }
-    
+    return classList;
 }
 
 /*
-    Function that deletes the instructor info in step 3, uses the unique id to delete items
+    Shows the modal with a particular instructor information.
 */
-var deleteInstructorInfo = function(){
-     document.getElementById(this.id).remove();
-     document.getElementById(this.id).remove();
-     document.getElementById(this.id).remove();
-     document.getElementById(this.id).remove();
+var showModalWithInstructorInfo = function (elem) {
+    // Show Modal.
+    $('#addInstructorModal').modal('show');
+    
+    // Get correct instructor's information.
+    var uniqueID = $(elem).siblings('input[type=hidden]').val();
+    var instructorInfo = data.stepThree.instructors[uniqueID];
 
-     deleteInstructorFromJSON(this.id);
+    // IMPORTANT: Put uniqueID in the hidden textbox to prevent duplication.
+    $('#instructor-editing-id').val(uniqueID);
+
+    // Fill out form with the correct info.
+    var firstName = instructorInfo.firstName;
+    $('#instructor-first-name').val(firstName);
+
+    var lastName = instructorInfo.lastName;
+    $('#instructor-last-name').val(lastName);
+
+    var type = instructorInfo.type;
+    switch (type) {
+        case "parttime":
+            $('#part-time-radio').click();
+        break;
+        case "fulltime":
+            $('#full-time-radio').click();
+        break;
+    }
+
+    fillClassTable(instructorInfo.classes);
 }
 
+// Helper method to show modal with instructor info.
+function fillClassTable(classes) {
+    for(var i = 0; i < classes.length; i++) {
+        var title = classes[i].title;
+        var hours = classes[i].hours;
+        var frequency = classes[i].frequency;
+        createClassInUI(title, hours, frequency);  
+    }
+}
+
+/*
+    Edits an instructor's info.
+ */
+function editInstructor(id) {
+    var instructorToEdit = data.stepThree.instructors[id];
+
+    // If the instructor with such ID exists...
+    if (typeof(instructorToEdit) != "undefined") {
+        // Delete the instructor from the JSON and UI...
+        deleteInstructorFromUI(id);
+        deleteInstructorFromJSON(id);
+    }
+
+    // And then add it again normally!
+    addInstructor();
+}
+
+/*
+    Deletes the Instructor.
+*/
+var deleteInstructor = function(elem){
+    var uniqueID = $(elem).siblings('input[type=hidden]').val();
+
+    /**
+    * DELETE FROM JSON
+    */
+    deleteInstructorFromJSON( uniqueID );
+
+    /**
+    * DELETE FROM THE TABLE (UI)
+    */
+    deleteInstructorFromUI( uniqueID );
+}
+
+// Helper method to delete instructor.
+function deleteInstructorFromUI(id) {
+    var uniqueIDClass = '.' + id; // since the hidden textbox has the ID as its value and class...
+    $(uniqueIDClass).each(function() {
+        $(this).parent('li').remove();
+    });
+}
+
+// Helper method to delete instructor.
 function deleteInstructorFromJSON(id) {
     var instructors = data.stepThree.instructors;
-    instructors.splice( )
+    delete instructors[id];
 }
-
 
 /**
  *  CLASS METHODS.
  */
 
 /*
-    Function that deletes the class in the UI that the user has added in step 2
-*/
-var deleteClass = function() {
-    var listItem = this.parentNode;
-    var ul = listItem.parentNode;
-    ul.removeChild(listItem);
-    
-    var id = $(this).siblings('input').val(); // the magic touch.
-    deleteClassFromJSONData(id);
-}
-
-function deleteClassFromJSONData(id) {
-
-    classes[id].title = '1';
-    
-    //shift array
-    var newClasses = []
-    for (var i = 0; i < classes.length; i++){
-        
-        if (classes[i].title != '1'){
-           // alert(classes[i].title);
-            newClasses.push(classes[i]);
-        }
-    }
-    classes = newClasses;
-    totalClass--;
-}
-
-/*
-    Function that inserts new classes added in Step 3
+    Inserts class into UI.
 */
 function insertClass() {
-    
-    if(document.getElementById('class-title').value === null || document.getElementById('class-title').value === ''){
-        //alert("You must enter a room prefix");
-    } else {
-        var classTitle = document.getElementById("class-title").value;
-        var hours = document.getElementById("hours").value;
-        var freq = document.getElementById("frequency").value;
-        
-        //reset all values
-        document.getElementById("instructor-classes").innerHTML = '';
-        document.getElementById("hours").value;
-        document.getElementById("frequency").value;
-            
-        //create new list element
-        var newClassList = document.createElement("li");
-        newClassList.class = "text-center";
-        
-        //create new elements to be appended
-        var deleteRoomBtn = document.createElement("button");
+    if ( ($('#class-title').val().length > 0) && ($('#class-hours').val().length > 0) && ($('#class-frequency').val().length > 0) ) {
+        var title = $('#class-title').val();
+        var hours = $('#class-hours').val();
+        var freq = $('#class-frequency').val();
 
-        // Transform variables into text HERE.
+        createClassInUI(title, hours, freq);
         
-        var classListText = document.createTextNode(classTitle + " " + hours + " " + freq);
-        var deleteText = document.createTextNode("×");
-        
-        //aggregrate new elemenets into one element
-        newClassList.appendChild(classListText);
-        deleteRoomBtn.appendChild(deleteText);
-        newClassList.appendChild(deleteRoomBtn);
-
-        // Create hidden textbox with ID.
-        var idHiddenBox = document.createElement("input");
-        idHiddenBox.type = "hidden";
-        idHiddenBox.value = classID;
-        idHiddenBox.id = classID;;
-        newClassList.appendChild( idHiddenBox );
-        
-        var currentClassList = document.getElementById("class-list");
-        currentClassList.appendChild(newClassList);
-        
-        deleteRoomBtn.type = "button";
-        deleteRoomBtn.id = "delete-room-btn";
-        deleteRoomBtn.onclick = deleteClass;
-        
-        document.getElementById("class-title").value = '';
-        document.getElementById("hours").value = '';
-        document.getElementById("frequency").value = '';
-
-        fillClassesWithJSON(classID, classTitle, hours, freq);
-        classID++;
+        resetClassInfoForm();
     }
 }
 
-function fillClassesWithJSON(id, title, hours, frequency) {    
-    var aClass = {};
-    aClass.title = title;
-    aClass.hours = hours;
-    aClass.frequency = frequency;
-    classes[id] = aClass;
-    totalClass++;
+// Helper method to insert class.
+function createClassInUI(title, hours, freq) {
+    var classInfo = title + " - " + hours + " - " + freq;
+    var classActionElem = '<button type="button" class="delete-class-btn" onclick="deleteClass(this)">×</button>';
+    $('#class-list').append('<li class="text-center">' + classInfo + classActionElem + '</li>')
+    $('#class-list-msg').hide(); // hide the message that says "No Classes Entered"
 }
 
 /*
-    function that stores instructor type
+    Deletes class from UI.
 */
-function retrieveInstructorType() {
-    var adjunctRadio = document.getElementById("adjunct-radio");
-    var fullTimeRadio = document.getElementById("full-time-radio");
+var deleteClass = function(elem) {
+    var holder_li_element = $(elem).parent('li');
+    holder_li_element.remove();
+}
 
-   if(document.getElementById("adjunct-radio").checked){
-        return 'adjunct';
+/*
+    Resets the class form in the UI.
+ */
+function resetClassInfoForm() {
+    $('#class-title').val('');
+    $('#class-hours').val('');
+    $('#class-frequency').val('');
+}
+
+/**
+ * HELPER METHODS.
+ */
+
+/*
+    Function that retrieves instructor type from the UI and returns a string with the type.
+*/
+function retrieveInstructorTypeFromUI() {
+   if(document.getElementById("part-time-radio").checked){
+        return 'parttime';
    } else{
         return 'fulltime';
     }
 }
 
-
-
-
-
-
-
+/**
+ * Unique ID generator.
+ */
+function guid() {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+    s4() + '-' + s4() + s4() + s4();
+}
