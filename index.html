@@ -65,7 +65,7 @@
           margin-top: 20px;
         }
 
-        #delete-room-btn {
+        .delete-class-btn {
             margin-left: 10px;
         }
         
@@ -388,17 +388,17 @@
                     <!-- Message -->
                     <div class="row">
                         <div class="col-md-offset-1 col-md-10">
-                            <p class="text-muted text-center" id="classes-entered">No instructors added. Please start adding instructors...</p>
+                            <p class="text-muted text-center" id="instructor-list-msg">No instructors added. Please start adding instructors...</p>
                         </div>
                     </div>
                     
 
                     <div class="col-md-12 pad-top-sm">
-                    <button type="button" class="btn btn-success text-center" data-toggle="modal" data-target="#myModal-1">Add Instructor</button>
+                    <button type="button" class="btn btn-success text-center" data-toggle="modal" data-target="#addInstructorModal">Add Instructor</button>
                     
                         
                     <!-- Add Instructor Modal 1-->
-		                  <div class="modal fade bs-example-modal-lg" id="myModal-1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		                  <div class="modal fade bs-example-modal-lg" id="addInstructorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		                      <div class="modal-dialog modal-lg">
 		                          <div class="modal-content">
 		                              <div class="modal-header">
@@ -428,7 +428,7 @@
                                     <label class="control-label">Type of Instructor:</label>
                                   </div>
                                   <div class="col-md-4">
-                                    <label class="radio-inline"><input type="radio" id="adjunct-radio"name="optradio">Adjunct</label>
+                                    <label class="radio-inline"><input type="radio" id="part-time-radio"name="optradio">Part Time</label>
                                   </div>
                                   <div class="col-md-4">
                                     <label class="radio-inline"><input type="radio" id="full-time-radio"name="optradio">Full Time</label>
@@ -454,7 +454,7 @@
                                         <div class="col-md-12">
                                          
                                             <label class="control-label">Total Hours</label>
-                                            <select class="form-control" id="hours">
+                                            <select class="form-control" id="class-hours">
                                                     <option></option>
                                                     <option value="3.4">3.4 hrs/week (3 credits)</option>
                                                     <option value="4.2">4.2 hrs/week (3 credits)</option>
@@ -466,7 +466,7 @@
                                         <div class="col-md-12">
                                         
                                             <label for="sel1">Frequency</label>
-                                                <select class="form-control" id="frequency">
+                                                <select class="form-control" id="class-frequency">
                                                     <option></option>
                                                     <option value="1">Once a Week</option>
                                                     <option value="2">Twice a Week</option>
@@ -487,9 +487,8 @@
 
                                     <div class="col-md-8 text-center">
                                         <h4>Classes Added</h4>
-                                            <p class="text-muted" id="instructor-classes">No Classes Entered</p>
-                                                <ul  class="list-unstyled" id="class-list">
-                                                </ul>
+                                            <p class="text-muted" id="class-list-msg">No Classes Entered</p>
+                                            <ul  class="list-unstyled" id="class-list"></ul>
                                     </div>
                                 </div>
                             </div>
