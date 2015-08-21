@@ -80,11 +80,9 @@ function fillDataFromStepTwo() {
 
 function fillDataFromStepThree() {
     
-    
-    
-   //  logTheFullJSONObject();
+    logTheFullJSONObject();
    
-   console.log('filling data for step 3');
+    console.log('filling data for step 3');
     
 }
 
