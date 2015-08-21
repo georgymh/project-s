@@ -73,23 +73,23 @@ $(document).ready(function() {
 		$('#full-time-radio').click();
 
 		$('#class-title').val('CS 170');
-		$('#hours').val('3.4');
-		$('#frequency').val('1')
+		$('#class-hours').val('3.4');
+		$('#class-frequency').val('1')
 		$('#add-class-btn').trigger('click');
 
 		$('#class-title').val('CS 150');
-		$('#hours').val('5.6');
-		$('#frequency').val('2')
+		$('#class-hours').val('5.6');
+		$('#class-frequency').val('2')
 		$('#add-class-btn').trigger('click');
 
 		$('#class-title').val('CS 250');
-		$('#hours').val('5.6');
-		$('#frequency').val('3')
+		$('#class-hours').val('5.6');
+		$('#class-frequency').val('3')
 		$('#add-class-btn').trigger('click');
 
 		$('#class-title').val('CS 200');
-		$('#hours').val('5.7');
-		$('#frequency').val('4')
+		$('#class-hours').val('5.7');
+		$('#class-frequency').val('4')
 		$('#add-class-btn').trigger('click');
 
 	}
