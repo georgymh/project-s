@@ -30,36 +30,24 @@ var data = {
     // Step Three: Instructor & Classes Information
     "stepThree" : {
         "instructors" : 
-        [   
-             {   
-                 firstName : "N/A", // the name of the instructor
-                 lastName : "N/A",
-                 type : "N/A",
-                 availablePeriods : [], // the periods available (can be more than one)
-                 classes : [] // classes the instructor teaches
-             }
+        [    // NOTE: The lines below are just for informational purposes.
+             // {   
+             //     firstName : "N/A", // the name of the instructor
+             //     lastName : "N/A",
+             //     type : "N/A",
+             //     availablePeriods : [], // the periods available (can be more than one)
+             //     classes : [
+             //     
+             //         {
+             //             id: "N/A",
+             //             title: "N/A",               // Ex. History 180
+             //             frequencyPerWeek: "N/A",    // Ex. 2 -- as of twice a week
+             //             semestrialPeriod: "N/A",    // Ex. full, firstHalf, secondHalf
+             //                                 // ^ if the class is 16 weeks or 8 weeks.
+             //         }
+             //     
+             //     ] // classes the instructor teaches
+             // }
         ]
     }
-    
 };
-
-var classes = [
-                 {
-                     id: "N/A",
-                     title: "N/A",               // Ex. History 180
-                     frequencyPerWeek: "N/A",    // Ex. 2 -- as of twice a week
-                     semestrialPeriod: "N/A",    // Ex. full, firstHalf, secondHalf
-                                                 // ^ if the class is 16 weeks or 8 weeks.
-                 }
-];
-
-
- var instructorData = {
-    
-    "totalClasses" : "N/A",
-    "instructorFirstName" : "N/A",
-    "instructorLastName" : "N/A",
-    "instructorTypeArray" : [],
-    "classes": []
-     
- };
