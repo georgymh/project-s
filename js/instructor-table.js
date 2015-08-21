@@ -39,10 +39,6 @@ var classID = 0;
 
 jQuery(document).ready(function() {
 
-    $('#add-room-btn').on('click', function() {
-        insertRoom();
-    });
-
     $('#save-instructor-changes').on('click', function() {
         insertInstructor();
         storeInstructorType();  
@@ -446,7 +442,6 @@ function retrieveInstructorType() {
         return 'fulltime';
     }
 }
-
 
 
 

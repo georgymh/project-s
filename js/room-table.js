@@ -1,3 +1,12 @@
+jQuery(document).ready(function() {
+
+    $('#add-room-btn').on('click', function() {
+        insertRoom();
+    });
+
+});
+
+
 /*
     Function that deletes the rooms that the user has added in step 2
 */
@@ -45,16 +54,3 @@ function insertRoom() {
         document.getElementById("room-number").value = '';        
     }    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
