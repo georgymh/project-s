@@ -41,7 +41,16 @@ jQuery(document).ready(function() {
     $('#addInstructorModal').on('hidden.bs.modal', function () {
         resetSaveInstructorFormData();
     });
-
+    
+    $('#instructor-avail-button').on('click', function(){
+        $('#instructor-avail').fadeToggle('slow');
+    });
+    
+    $(function () {
+        $('#instructor-avail').hide();
+    });
+    
+    $("#morning-popover").popover({ trigger: "hover" })
 });
 
 /**
