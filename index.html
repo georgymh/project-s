@@ -631,39 +631,39 @@
                             <div class="col-md-offset-1 col-md-10">
                                 <div class="row">
                                      <h4 class="section-header">Class Information:</h4>
-
-                                    <div class="col-md-4">
-                                     <div class="row">
-                                        <div class="col-md-12">
+                                     <button type="button" id="class-information-button" class="btn btn-success text-center">Change</button>
+                                    <div id="class-information-div">
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="col-md-12">
                                       
-                                        <label class="control-label">Class Title</label>
-                                        <input class="form-control input-md" id="class-title" name="textinput" type="text">
+                                                <label class="control-label">Class Title</label>
+                                                <input class="form-control input-md" id="class-title" name="textinput" type="text">
                                        
-                                        </div>
-                                        <div class="col-md-12">
+                                                </div>
+                                                <div class="col-md-12">
                                          
-                                            <label class="control-label">Total Hours</label>
-                                            <select class="form-control" id="class-hours">
-                                                    <option></option>
-                                                    <option value="3.4">3.4 hrs/week (3 credits)</option>
-                                                    <option value="4.2">4.2 hrs/week (3 credits)</option>
-                                                    <option value="5.6">5.6 hrs/week (4 credits)</option>
-                                                    <option value="5.7">5.7 hrs/week (4 credits)</option>
-                                                </select>
-                                        
-                                        </div>
-                                        <div class="col-md-12">
-                                        
-                                            <label for="sel1">Frequency</label>
-                                                <select class="form-control" id="class-frequency">
-                                                    <option></option>
-                                                    <option value="1">Once a Week</option>
-                                                    <option value="2">Twice a Week</option>
-                                                    <option value="3">Three times a week</option>
-                                                    <option value="4">Four times a week</option>
-                                                </select>
-                                         
-                                        </div>
+                                                <label class="control-label">Total Hours</label>
+                                                    <select class="form-control" id="class-hours">
+                                                        <option></option>
+                                                        <option value="3.4">3.4 hrs/week (3 credits)</option>
+                                                        <option value="4.2">4.2 hrs/week (3 credits)</option>
+                                                        <option value="5.6">5.6 hrs/week (4 credits)</option>
+                                                        <option value="5.7">5.7 hrs/week (4 credits)</option>
+                                                    </select>
+                                                        </div>
+                                                <div class="col-md-12">
+
+                                                    <label for="sel1">Frequency</label>
+                                                        <select class="form-control" id="class-frequency">
+                                                            <option></option>
+                                                            <option value="1">Once a Week</option>
+                                                            <option value="2">Twice a Week</option>
+                                                            <option value="3">Three times a week</option>
+                                                            <option value="4">Four times a week</option>
+                                                        </select>
+
+                                                </div>
                                     <div class="col-md-12 pad-top-sm text-center">
                                     
                                           <button type="button" id="add-class-btn" class="btn btn-success">Add Class</button>
@@ -671,13 +671,11 @@
                                      
                                     </div>
                                 </div>
-
-
-
-                                    <div class="col-md-8 text-center">
+                                  <div class="col-md-8 text-center">
                                         <h4>Classes Added</h4>
                                             <p class="text-muted" id="class-list-msg">No Classes Entered</p>
                                             <ul  class="list-unstyled" id="class-list"></ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
