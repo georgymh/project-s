@@ -44,10 +44,9 @@ jQuery(document).ready(function() {
         $('#instructor-availability').slideToggle('slow'); //show avail-schedule selector
         $('#periods-meaning').click(); //show popover
     });
-    
-    // Instructor Availability UI set ups
-    $('#instructor-availability').hide();
-    $('[data-toggle="popover"]').popover()
+
+    prepareInstructorAvailability();
+
 });
 
 /**
@@ -85,6 +84,9 @@ function resetSaveInstructorFormData() {
     $("#instructor-first-name").val('');
     $("#instructor-last-name").val('');
     $("#class-list").html('');
+
+    resetInstructorAvailability();
+    prepareInstructorAvailability();
 
     resetClassInfoForm();
 }
@@ -310,6 +312,36 @@ function resetClassInfoForm() {
 /**
  * HELPER METHODS.
  */
+
+function prepareInstructorAvailability() {
+    // Instructor Availability UI set ups
+    $('#instructor-availability').hide();
+    $('[data-toggle="popover"]').popover();
+
+    // Fill out monday-saturday 100% availability, sunday 0% availability.
+    var periodCheckboxes = $(document).find('.morning-period, .midday-period, .evening-period, .night-period');
+    periodCheckboxes.each(function() {
+        // check if we're selecting sunday's periods
+        if ($(this).parents('#sunday-availability').length) {
+            // It's sunday -- skip.
+        } else {
+            $(this).click(); // otherwise, check it.
+        }
+    });
+}
+
+function resetInstructorAvailability() {
+    $('#instructor-availability').hide();
+    $('#toggle-period-form').popover('hide');
+
+    // Uncheck all checked checkboxes - truly reset them.
+    var periodCheckboxes = $(document).find('.morning-period, .midday-period, .evening-period, .night-period');
+    periodCheckboxes.each(function() {
+        if ($(this).is(':checked')) {
+            $(this).click();
+        }
+    });
+}
 
 /*
     Function that retrieves instructor availability from the UI and returns object with 
