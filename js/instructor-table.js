@@ -122,9 +122,10 @@ function addInstructor() {
         /*
             JSON-RELATED ROUTINE FOR INSTRUCTORS
         */
-        var classes = retrieveClassesFromUI();
+        var availability = retrieveAvailabilityFromUI();
         var instructorType = retrieveInstructorTypeFromUI();
-        fillInstructorsDataWithJSON( uniqueID, firstName, lastName, classes, instructorType );
+        var classes = retrieveClassesFromUI();
+        fillInstructorsDataWithJSON( uniqueID, firstName, lastName, instructorType, availability, classes);
 
         // Hide the modal.
         $('#addInstructorModal').modal('hide');
@@ -135,7 +136,7 @@ function addInstructor() {
 }
 
 // Helper method to add instructor.
-function fillInstructorsDataWithJSON(id, firstName, lastName, classes, type) {
+function fillInstructorsDataWithJSON(id, firstName, lastName, type, availability, classes) {
     var instructor = {};
     instructor.firstName = firstName;
     instructor.lastName = lastName;
@@ -309,6 +310,60 @@ function resetClassInfoForm() {
 /**
  * HELPER METHODS.
  */
+
+/*
+    Function that retrieves instructor availability from the UI and returns object with 
+    the info ready to append to JSON master data.
+ */
+function retrieveAvailabilityFromUI() {
+    // HELPER FUNCTION
+    function transformPeriodForJSON(className) {
+        switch (className) {
+            case 'morning-period':
+                return "morning";
+            break;
+            case 'midday-period':
+                return "midday";
+            break;
+            case 'evening-period':
+                return "evening";
+            break;
+            case 'night-period':
+                return "night";
+            break; 
+            default:
+                return "";
+            break;
+        }
+    }
+
+    // START OF FUNCTION
+    // Constants
+    var weekdays = ["monday", "tuesday", "wednesday",
+                            "thursday", "friday", "saturday", "sunday"];
+
+    // Set up the availability object.
+    var availabilityObj = {};
+    for(var i = 0; i < weekdays.length; i++) {
+        var day = weekdays[i];
+        availabilityObj[day] = [];
+    }
+
+    // Fill it with data from the HTML.
+    for (var i = 0; i < weekdays.length; i++) {
+        var day = weekdays[i];
+        var currentDayColumn = $('#' + day + '-availability');
+        var checkboxes = currentDayColumn.find('.morning-period, .midday-period, .evening-period, .night-period');
+        checkboxes.each(function() {
+            if ($(this).is(':checked')) {
+                availabilityObj[day].push( transformPeriodForJSON($(this).attr('class')) );
+            }
+        });
+    }
+
+    // LOG IT FOR TESTING
+    console.log(availabilityObj);
+}
 
 /*
     Function that retrieves instructor type from the UI and returns a string with the type.
