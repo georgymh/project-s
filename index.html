@@ -118,6 +118,15 @@
           .seven-cols .col-lg-1 {
             width: 14.285714285714285714285714285714%;
           }
+            
+        #hidden-popover-btn {
+            background-color: Transparent;
+            background-repeat:no-repeat;
+            border: none;
+            cursor:pointer;
+            overflow: hidden;
+            outline:none;
+}
         }
     </style>
   </head>
@@ -468,8 +477,8 @@
                         <div class="row" >
                             <div class="col-md-offset-1 col-md-10">
                                 <div class="row">
-                                    <h4 class="section-header">Instructor Availability:</h4> 
-                                    <button type="button" id="instructor-avail-button" class="btn btn-success text-center">Change</button>
+                                    <h4 class="section-header">Instructor Availability: <button type="button" id="hidden-popover-btn"  class="btn btn-xs btn-success text-center" data-toggle="popover" title="Hours Info" data-content="Morning: 7am - 10am <br />Midday: 10am - 2pm <br />Evening: 2pm - 6 pm <br />Night: 6pm - 10:30pm" data-html="true">Change</button></h4> 
+                                    <button type="button" id="instructor-avail-button"  class="btn btn-success text-center">Change</button>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12 text-center" id="instructor-avail">

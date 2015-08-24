@@ -44,6 +44,7 @@ jQuery(document).ready(function() {
     
     $('#instructor-avail-button').on('click', function(){
         $('#instructor-avail').fadeToggle('slow');
+         $('#hidden-popover-btn').click();
     });
     
     $(function () {
@@ -52,12 +53,18 @@ jQuery(document).ready(function() {
     
     $('#class-information-button').on('click', function(){
         $('#class-information-div').fadeToggle('slow');
+        
     });
     
     $(function () {
         $('#class-information-div').hide();
     });
-    $("#morning-popover").popover({ trigger: "hover" })
+    
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+    
+    $('#hidden-popover-btn').prop('disabled', true);
 });
 
 /**
