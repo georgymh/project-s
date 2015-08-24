@@ -51,14 +51,6 @@ jQuery(document).ready(function() {
         $('#instructor-avail').hide();
     });
     
-    $('#class-information-button').on('click', function(){
-        $('#class-information-div').fadeToggle('slow');
-        
-    });
-    
-    $(function () {
-        $('#class-information-div').hide();
-    });
     
     $(function () {
         $('[data-toggle="popover"]').popover()
