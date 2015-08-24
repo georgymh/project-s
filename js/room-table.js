@@ -35,11 +35,11 @@ function insertRoom() {
         var newList = document.createElement("li");
         newList.class = "text-center";
 
-        var deleteRoomBtn = document.createElement("button");
-        var listText = document.createTextNode(roomPrefix + " " + roomNumber);
-        var deleteText = document.createTextNode("×");
+        var listContent = '<span class="roomPrefix">' + roomPrefix + '</span> <span class="roomNumber">' + roomNumber + '</span>';
+        $(newList).append(listContent); //add the text node to the newly created li
 
-        newList.appendChild(listText); //add the text node to the newly created li
+        var deleteRoomBtn = document.createElement("button");
+        var deleteText = document.createTextNode("×");
         deleteRoomBtn.appendChild(deleteText);
         newList.appendChild(deleteRoomBtn);
     

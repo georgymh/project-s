@@ -56,20 +56,22 @@ function fillDataFromStepOne() {
 */
 
 function fillDataFromStepTwo() {
-    
-    // stores the data that the user into an array
-    var rooms = document.getElementById("room-list");
-    var totalRooms = rooms.getElementsByTagName("li");
     var roomArray = [];
-     
-    for (var i = 0; i < totalRooms.length; i++){
-        var roomData = totalRooms[i].innerHTML.split("<")[0];
-        roomArray.push(roomData);    
-    }
-    
+
+    var rooms = $('#room-list');
+    rooms.find('.roomPrefix').each(function() {
+        var prefix = $(this).text();
+        var number = parseInt($(this).siblings('.roomNumber').text());
+
+        var tempObj = {};
+        tempObj.prefix = prefix;
+        tempObj.number = number;
+
+        roomArray.push(tempObj);
+    });
+
     // Put data into the JSON object
     var stepTwoData = data.stepTwo;
-
     stepTwoData.rooms = roomArray;
 
     console.log("Logging step two data: \n");

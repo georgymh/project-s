@@ -24,7 +24,13 @@ var data = {
 
     // Step Two: Room Information
     "stepTwo" : {
-        "rooms" : [] // array of rooms
+        "rooms" : 
+        [   // NOTE: The lines below are just for informational purposes.
+            // { 
+            //     "prefix" : '',
+            //     "number" : ''
+            // }
+        ]   // array of room objects
     },
     
     // Step Three: Instructor & Classes Information
