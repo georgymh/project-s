@@ -50,7 +50,6 @@ jQuery(document).ready(function() {
     
     // Instructor Availability UI set ups
     $('#instructor-availability').hide();
-    $('#class-information-div').hide();
     $('[data-toggle="popover"]').popover()
 });
 
