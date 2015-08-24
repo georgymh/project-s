@@ -14,9 +14,9 @@ class CollegeClass {
 	
 	function __construct() {
 		$this->title = "NO_TITLE";
-		$this->credits = null;
-		$this->frequencyPerWeek = null;
-		$this->period = null;
+		$this->credits = null; // HAS TO BE SET.
+		$this->frequencyPerWeek = null;  // HAS TO BE SET.
+		$this->period =  CollegeClassSemestrialPeriod::FullSemester;
 	}
 
 	// Setters
