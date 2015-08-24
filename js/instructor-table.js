@@ -41,20 +41,17 @@ jQuery(document).ready(function() {
     $('#addInstructorModal').on('hidden.bs.modal', function () {
         resetSaveInstructorFormData();
     });
-    
+
+    // Instructor Availability Toggle Button
     $('#toggle-period-form').on('click', function(){
         $('#instructor-availability').slideToggle('slow'); //show avail-schedule selector
         $('#periods-meaning').click(); //show popover
     });
     
-    $('#class-information-button').on('click', function(){
-        $('#class-information-div').fadeToggle('slow');
-    });
-
+    // Instructor Availability UI set ups
     $('#instructor-availability').hide();
     $('#class-information-div').hide();
     $('[data-toggle="popover"]').popover()
-
 });
 
 /**
