@@ -30,8 +30,9 @@ jQuery(document).ready(function() {
 
     $('#save-instructor-changes').on('click', function() {
         saveInstructor();
+
+        // Logging
         console.log(data.stepThree);
-        $('#addInstructorModal').modal('hide');
     });
 
     $('#add-class-btn').on('click', function (){
@@ -128,6 +129,9 @@ function addInstructor() {
         var classes = retrieveClassesFromUI();
         var instructorType = retrieveInstructorTypeFromUI();
         fillInstructorsDataWithJSON( uniqueID, firstName, lastName, classes, instructorType );
+
+        // Hide the modal.
+        $('#addInstructorModal').modal('hide');
     }
 }
 
