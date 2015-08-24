@@ -113,13 +113,14 @@
         }
 
         @media (min-width: 1200px) {
+
           .seven-cols .col-md-1,
           .seven-cols .col-sm-1,
           .seven-cols .col-lg-1 {
             width: 14.285714285714285714285714285714%;
           }
             
-        #hidden-popover-btn {
+          #hidden-popover-btn {
             background-color: Transparent;
             background-repeat:no-repeat;
             border: none;
@@ -127,6 +128,15 @@
             overflow: hidden;
             outline: none;
           }
+        }
+
+        #toggle-period-form {
+            font-size: 12px;
+            margin-left: 15px;
+        }
+
+        .period-lbl {
+            font-weight: 0 !important;
         }
     </style>
   </head>
@@ -211,7 +221,7 @@
                         <div class="row text-center">
                             <div class="col-md-4">
                                 <!-- Checkbox -->
-                                <label class="form-control" for="radios-0" >
+                                <label class="form-control"  >
                                     Monday
                                     <input type="checkbox" onclick="toggleMondayHours()"  id="monday-checkbox">
                                 </label>
@@ -231,7 +241,7 @@
                         <div class="row text-center">
                             <div class="col-md-4">
                                 <!-- Checkbox -->
-                                <label class="form-control" for="radios-0">
+                                <label class="form-control" >
                                     Tuesday
                                     <input type="checkbox" onclick="toggleTuesdayHours()" id="tuesday-checkbox">
                                 </label>
@@ -251,7 +261,7 @@
                         <div class="row text-center">
                             <div class="col-md-4">
                                 <!-- Checkbox -->
-                                <label class="form-control" for="radios-0">
+                                <label class="form-control" >
                                     Wednesday
                                     <input type="checkbox" onclick="toggleWednesdayHours()" id="wednesday-checkbox">
                                 </label>
@@ -271,7 +281,7 @@
                         <div class="row text-center">
                             <div class="col-md-4">
                                 <!-- Checkbox -->
-                                <label class="form-control" for="radios-0">
+                                <label class="form-control" >
                                     Thursday
                                     <input type="checkbox" onclick="toggleThursdayHours()" id="thursday-checkbox">
                                 </label>
@@ -291,7 +301,7 @@
                         <div class="row text-center">
                             <div class="col-md-4">
                                 <!-- Checkbox -->
-                                <label class="form-control" for="radios-0">
+                                <label class="form-control" >
                                     Friday
                                     <input type="checkbox" onclick="toggleFridayHours()" id="friday-checkbox">
                                 </label>
@@ -311,7 +321,7 @@
                         <div class="row text-center">
                             <div class="col-md-4">
                                 <!-- Checkbox -->
-                                <label class="form-control" for="radios-0">
+                                <label class="form-control" >
                                     Saturday
                                     <input type="checkbox" onclick="toggleSaturdayHours()" id="saturday-checkbox">
                                 </label>
@@ -331,7 +341,7 @@
                         <div class="row text-center">
                             <div class="col-md-4">
                                 <!-- Checkbox -->
-                                <label class="form-control" for="radios-0">
+                                <label class="form-control" >
                                     Sunday
                                     <input type="checkbox" onclick="toggleSundayHours()" id="sunday-checkbox">
                                 </label>
@@ -446,7 +456,7 @@
                               <div class="row">
                                   <div class="col-md-offset-1 col-md-10">
                                       <div class="row">
-                                        <h4 class="section-header">Instructor Information:</h4>
+                                        <h4 class="section-header">Instructor Information</h4>
                                           <div class="col-md-6">
                                             <label class="control-label">First Name</label>
                                                 <input class="form-control input-md" id="instructor-first-name" name="textinput" type="text">
@@ -477,154 +487,157 @@
                         <div class="row" >
                             <div class="col-md-offset-1 col-md-10">
                                 <div class="row">
-                                    <h4 class="section-header">Instructor Availability: <button type="button" id="hidden-popover-btn"  class="btn btn-xs btn-default text-center" data-toggle="popover" title="Hours Info" data-content="Morning: 7am - 10am <br />Midday: 10am - 2pm <br />Evening: 2pm - 6 pm <br />Night: 6pm - 10:30pm" data-html="true"></button></h4> 
-                                    <button type="button" id="instructor-avail-button"  class="btn btn-success text-center">Change</button>
+                                      <h4 class="section-header">
+                                        Instructor Availability 
+
+                                        <a class="btn btn-primary btn-sm" href="#" id="toggle-period-form" data-toggle="popover" title="Periods Meaning" data-placement="top" data-content="<div class='row'><div class='col-md-4'><b>Morning: <br>Midday: <br>Evening: <br>Night: <br></b></div><div class='col-md-8'> 7:00 am - 10:00 am <br /> 10:00 am - 2:00 pm <br /> 2:00 pm - 6:00 pm <br /> 6:00 pm - 10:30 pm</div</div>" data-html="true">Show/Hide</a>
+
+                                      </h4> 
                                 </div>
+
                                 <div class="row">
-                                    <div class="col-md-12 text-center" id="instructor-avail">
+                                    <div class="col-md-12" id="instructor-availability">
                                         <div class="row seven-cols">
                                             
                                             <div class="col-md-1" id="monday-availability">
-                                                    <h4 class="section-header text-center">Monday</h4> 
-                                                 <label for="radios-0">
+                                                <h4 class="section-header text-center">Mon</h4> 
+                                                 <label class="period-lbl" >
                                                     Morning
-                                                    <input type="checkbox"  id="monday-morning">
+                                                    <input type="checkbox" class="morning-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Midday
-                                                    <input type="checkbox" id="monday-midday">
+                                                    <input type="checkbox" class="midday-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Evening
-                                                    <input type="checkbox" id="monday-evening">
+                                                    <input type="checkbox" class="evening-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Night
-                                                    <input type="checkbox" id="monday-night">
+                                                    <input type="checkbox" class="night-period">
                                                 </label>
                                             </div>
                                             
                                             <div class="col-md-1" id="tuesday-availability">
-                                                     <h4 class="section-header text-center">Tuesday</h4>
-                                                <label class="" for="radios-0" >
+                                                     <h4 class="section-header text-center">Tue</h4>
+                                                <label class="period-lbl" >
                                                     Morning
-                                                    <input type="checkbox" id="tuesday-morning">
+                                                    <input type="checkbox" class="morning-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Midday
-                                                    <input type="checkbox" id="tuesday-midday">
+                                                    <input type="checkbox" class="midday-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Evening
-                                                    <input type="checkbox" id="tuesday-evening">
+                                                    <input type="checkbox" class="evening-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Night
-                                                    <input type="checkbox" id="tuesday-night">
+                                                    <input type="checkbox" class="night-period">
                                                 </label>
                                             </div>
                                             
                                             <div class="col-md-1" id="wednesday-availability">
-                                                     <h4 class="section-header text-center">Wednesday</h4>
-                                                <label class="" for="radios-0" >
+                                                     <h4 class="section-header text-center">Wed</h4>
+                                                <label class="period-lbl" >
                                                     Morning
-                                                    <input type="checkbox" id="wednesday-morning">
+                                                    <input type="checkbox" class="morning-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Midday
-                                                    <input type="checkbox" id="wednesday-midday">
+                                                    <input type="checkbox" class="midday-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Evening
-                                                    <input type="checkbox" id="wednesday-evening">
+                                                    <input type="checkbox" class="evening-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Night
-                                                    <input type="checkbox" id="wednesday-night">
+                                                    <input type="checkbox" class="night-period">
                                                 </label>
                                             </div>
                                             
                                             <div class="col-md-1" id="thursday-availability">
-                                                     <h4 class="section-header text-center">Thursday</h4>
-                                                <label class="" for="radios-0" >
+                                                     <h4 class="section-header text-center">Thu</h4>
+                                                <label class="period-lbl" >
                                                     Morning
-                                                    <input type="checkbox" id="thursday-morning">
+                                                    <input type="checkbox" class="morning-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Midday
-                                                    <input type="checkbox" id="thursday-midday">
+                                                    <input type="checkbox" class="midday-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Evening
-                                                    <input type="checkbox" id="thursday-evening">
+                                                    <input type="checkbox" class="evening-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Night
-                                                    <input type="checkbox" id="thursday-night">
+                                                    <input type="checkbox" class="night-period">
                                                 </label>
                                             </div>
                                             
                                             <div class="col-md-1" id="friday-availability">
-                                                     <h4 class="section-header text-center">Friday</h4>
-                                                <label class="" for="radios-0" >
+                                                     <h4 class="section-header text-center">Fri</h4>
+                                                <label class="period-lbl" >
                                                     Morning
-                                                    <input type="checkbox" id="friday-morning">
+                                                    <input type="checkbox" class="morning-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Midday
-                                                    <input type="checkbox" id="friday-midday">
+                                                    <input type="checkbox" class="midday-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Evening
-                                                    <input type="checkbox" id="friday-evening">
+                                                    <input type="checkbox" class="evening-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Night
-                                                    <input type="checkbox" id="friday-night">
+                                                    <input type="checkbox" class="night-period">
                                                 </label>
                                             </div>
                                             
                                             <div class="col-md-1" id="saturday-availability">
-                                                     <h4 class="section-header text-center">Saturday</h4>
-                                                <label class="" for="radios-0" >
+                                                     <h4 class="section-header text-center">Sat</h4>
+                                                <label class="period-lbl" >
                                                     Morning
-                                                    <input type="checkbox" id="saturday-morning">
+                                                    <input type="checkbox" class="morning-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Midday
-                                                    <input type="checkbox" id="saturday-midday">
+                                                    <input type="checkbox" class="midday-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Evening
-                                                    <input type="checkbox" id="saturday-evening">
+                                                    <input type="checkbox" class="evening-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Night
-                                                    <input type="checkbox" id="saturday-night">
+                                                    <input type="checkbox" class="night-period">
                                                 </label>
                                             </div>
                                             
                                             <div class="col-md-1" id="sunday-availability">
-                                                     <h4 class="section-header text-center">Sunday</h4>
-                                                <label class="" for="radios-0" >
+                                                     <h4 class="section-header text-center">Sun</h4>
+                                                <label class="period-lbl" >
                                                     Morning
-                                                    <input type="checkbox" id="sunday-morning">
+                                                    <input type="checkbox" class="morning-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Midday
-                                                    <input type="checkbox" id="sunday-midday">
+                                                    <input type="checkbox" class="midday-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Evening
-                                                    <input type="checkbox" id="sunday-evening">
+                                                    <input type="checkbox" class="evening-period">
                                                 </label>
-                                                <label class="" for="radios-0" >
+                                                <label class="period-lbl"   >
                                                     Night
-                                                    <input type="checkbox" id="sunday-night">
+                                                    <input type="checkbox" class="night-period">
                                                 </label>
-                                            </div>
-                                            
-                                               
+                                            </div>     
 
                                           </div>
                                     </div>
@@ -639,7 +652,7 @@
                         <div class="row">
                             <div class="col-md-offset-1 col-md-10">
                                 <div class="row">
-                                     <h4 class="section-header">Class Information:</h4>
+                                     <h4 class="section-header">Class Information</h4>
                                      <button type="button" id="class-information-button" class="btn btn-success text-center">Change</button>
                                     <div id="class-information-div">
                                         <div class="col-md-4">

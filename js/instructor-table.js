@@ -42,29 +42,19 @@ jQuery(document).ready(function() {
         resetSaveInstructorFormData();
     });
     
-    $('#instructor-avail-button').on('click', function(){
-        $('#instructor-avail').fadeToggle('slow');
-         $('#hidden-popover-btn').click();
-    });
-    
-    $(function () {
-        $('#instructor-avail').hide();
+    $('#toggle-period-form').on('click', function(){
+        $('#instructor-availability').slideToggle('slow'); //show avail-schedule selector
+        $('#periods-meaning').click(); //show popover
     });
     
     $('#class-information-button').on('click', function(){
         $('#class-information-div').fadeToggle('slow');
-        
     });
-    
-    $(function () {
-        $('#class-information-div').hide();
-    });
-    
-    $(function () {
-        $('[data-toggle="popover"]').popover()
-    })
-    
-    $('#hidden-popover-btn').prop('disabled', true);
+
+    $('#instructor-availability').hide();
+    $('#class-information-div').hide();
+    $('[data-toggle="popover"]').popover()
+
 });
 
 /**
