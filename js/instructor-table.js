@@ -38,10 +38,6 @@ jQuery(document).ready(function() {
     $('#add-class-btn').on('click', function (){
         insertClass();
     });
-    
-    $('#addInstructorModal').on('hidden.bs.modal', function () {
-        resetSaveInstructorFormData();
-    });
 
     // Instructor Availability Toggle Button
     $('#toggle-period-form').on('click', function(){
@@ -132,6 +128,9 @@ function addInstructor() {
 
         // Hide the modal.
         $('#addInstructorModal').modal('hide');
+
+        // Reset modal
+        resetSaveInstructorFormData();
     }
 }
 
