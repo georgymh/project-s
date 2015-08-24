@@ -142,9 +142,10 @@ function fillInstructorsDataWithJSON(id, firstName, lastName, type, availability
     var instructor = {};
     instructor.firstName = firstName;
     instructor.lastName = lastName;
-    instructor.classes = classes;
     instructor.type = type;
-
+    instructor.availablePeriods = availability;
+    instructor.classes = classes;
+    
     var instructors = data.stepThree.instructors;
 
     instructors[id] = instructor;
@@ -394,7 +395,9 @@ function retrieveAvailabilityFromUI() {
     }
 
     // LOG IT FOR TESTING
-    console.log(availabilityObj);
+    //console.log(availabilityObj);
+    
+    return availabilityObj;
 }
 
 /*
