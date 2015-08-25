@@ -138,6 +138,8 @@
         .period-lbl {
             font-weight: 0 !important;
         }
+        
+        
     </style>
   </head>
 
@@ -714,15 +716,18 @@
                 
                     <div class="btn-container">
                         <button type="button" class="action back btn btn-lg pull-left">Back</button>
-                        <button type="button" class="action next btn btn-lg btn-info pull-right">Next</button>
+                        <button type="button" class="action next btn btn-lg btn-info pull-right" id="step3-next-btn">Next</button>
                     </div>
                 </fieldset>
 
                 <fieldset class="step well" id="step-four" style="display:none">
                     <h2 class="step-title">Step 4</h2>
-
+                       <textarea class="form-control" id="summary-textarea" html="true" name="summary-form" rows="15" readonly="true"></textarea>
+    
+                        
+                   
                     <div class="btn-container">
-                        <button type="button" class="action back btn btn-lg">Back</button>
+                        <button type="button" class="action back btn btn-lg" id="summary-back-btn">Back</button>
                         <button class="action submit btn  btn-lg btn-success pull-right">Submit</button>
                     </div>
                 </fieldset>
@@ -754,6 +759,7 @@
     <script src="js/room-table.js"></script>
     <script src="js/instructor-table.js"></script>
     <script src="js/set-data-functions.js"></script>
+    <script src="js/summary.js"></script>
 
     <!-- Testing mode -->
     <script src="js/testing-mode.js"></script>
