@@ -15,6 +15,11 @@ var deleteRoom = function() {
     var listItem = this.parentNode;
     var ul = listItem.parentNode;
     ul.removeChild(listItem);
+
+    // Update the total rooms count
+    var totalRoomElem = $('#room-count');
+    var num = parseInt($.trim($(totalRoomElem).html()));
+    $(totalRoomElem).html(--num);
 }
 
 
@@ -52,5 +57,10 @@ function insertRoom() {
         
         //Sets the text boxes value back to null
         document.getElementById("room-number").value = '';        
-    }    
+    }
+
+    // Update the total rooms count
+    var totalRoomElem = $('#room-count');
+    var num = parseInt($.trim($(totalRoomElem).html()));
+    $(totalRoomElem).html(++num);
 }

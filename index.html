@@ -235,6 +235,8 @@
                         </div>
                     </div>
                 </div>
+
+                <hr>
                 
                 <div class="btn-container">
                     <button type="button" class="next btn btn-lg btn-info pull-right">Next</button>
@@ -245,11 +247,11 @@
             <fieldset class="step well" id="step-two" style="display:none">
                     <h2 class="step-title">Step 2: Rooms in the Building</h2>
 
-                    <div class="row pad-top-sm form-container">
-                      <h4>Rooms information:</h4>
-                      <small>Please add the rooms that your department controls. You will be able to add classes into the different rooms of your department.</small>
+                    <h4>Rooms information:</h4>
+                    <small>Please add the rooms that your department controls. You will be able to add classes into each of the different rooms of your department.</small>
 
-                      <div class="col-md-4 form-group pad-top">
+                    <div class="row pad-top-sm form-container">
+                      <div class="col-md-offset-1 col-md-3">
                         <label>Room prefix:</label>
                         <input class="form-control input-md" id="room-prefix" name="textinput" type="text">
 
@@ -260,12 +262,15 @@
                             <button type="button" id="add-room-btn" class="btn btn-default text-center">Add Room</button>
                         </div>
 
-                        <div class="pad-top text-center">
-                            <h5>Total rooms entered: <span id="room-count">0</span></h5>
+                        <hr>
+
+                        <div class="pad-top-sm text-center">
+                            <h5>Total rooms entered:</h5>
+                            <h3><span id="room-count">0</span></h3>
                         </div>
                       </div>
                    
-                      <div class="col-md-8 pad-top-sm" id="table-format">
+                      <div class="col-md-7" id="table-format">
                         <div class="row">
                             <div class="col-md-offset-4 col-md-8 text-center">
     				            <p class="column-heading">List of Rooms</p>
@@ -278,12 +283,13 @@
                       </div>
                     </div>
 
+                    <hr>
+
                     <div class="row btn-container">
                         <button type="button" class="action back btn btn-lg pull-left">Back</button>
                         <button type="submit" class="action next btn btn-lg btn-info pull-right">Go to Schedule</button>
                     </div>
 
-                    
                 </fieldset>
         </form>
     </div>
