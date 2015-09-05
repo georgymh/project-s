@@ -1,0 +1,62 @@
+body {
+    padding-top: 0;
+}
+
+h4 {
+  font-weight: bold;
+}
+
+label.form-control {
+  background-color: #eee;
+}
+
+.time {
+  text-align: center;
+  width: 130px;
+  margin-top: 5.5px;
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.time[disabled] {
+  cursor: not-allowed;
+  background-color: #eee;
+  opacity: 1;
+}
+
+.step-title {
+    padding-bottom:20px;
+}
+
+.column-heading {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.pad-top {
+    margin-top: 40px;
+}
+
+.pad-top-sm {
+    margin-top: 20px;
+}
+
+.pad-top-xsm {
+    margin-top: 10px;
+}
+
+.btn-container {
+    margin-top: 20px;
+}
+
+#delete-room-btn {
+    margin-left: 10px;
+}
+
+.footer {
+  background-color: #f8f8f8;
+  height: 60px;
+  padding-top: 22px;
+  margin-top: 20px;
+}

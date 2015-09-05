@@ -1,150 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
+<html>
+<head>
+	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="Schedulezilla">
+    <meta name="description" content="Scheduling system for colleges and universities.">
+    <meta name="author" content="ScheduleZilla">
 
-    <title>Schedulezilla</title>
-	
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+	<title>ScheduleZilla</title>
 
-    <!-- Custom styles for this template -->
-    <link href="css/jquery.timepicker.css" rel="stylesheet">
+	<!-- CSS -->
+    <link href="vendors/css/bootstrap.css" rel="stylesheet">
+    <link href="vendors/css/jquery.timepicker.css" rel="stylesheet">
+
+    <link href="resources/css/steps.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-      
-    <style>
-
-        .step-title {
-            padding-bottom:20px;
-        }
-
-        .heading {
-            font-weight: 500;
-            font-size: 16px;
-        }
-        
-        .pad-top {
-            margin-top: 40px;
-        }
-
-        .pad-top-sm {
-            margin-top: 20px;
-        }
-
-        .pad-top-xsm {
-            margin-top: 10px;
-        }
-
-        body {
-            padding-top: 0;
-        }
-
-        .time {
-            text-align: center;
-        }
-
-        .btn-container {
-            margin-top: 20px;
-        }
-
-        .footer {
-          background-color: #f8f8f8;
-          height: 60px;
-          padding-top: 22px;
-          margin-top: 20px;
-        }
-
-        .delete-class-btn, #delete-room-btn {
-            margin-left: 10px;
-        }
-        
-        .list-header {
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .section-header {
-            margin-bottom: 15px;
-        }
-
-        .modal-footer {
-            margin-top: 20px;
-        }
-        
-        .class-title{
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-        #instructor-list > li {
-            padding-top: 2px;
-            padding-bottom: 2.5px;
-        }
-
-        #number-classes-list > li {
-            padding-top: 2px;
-            padding-bottom: 2.5px;
-        }
-        
-        @media (min-width: 768px) {
-          .seven-cols .col-md-1,
-          .seven-cols .col-sm-1,
-          .seven-cols .col-lg-1  {
-            width: 100%;
-          }
-        }
-
-        @media (min-width: 992px) {
-          .seven-cols .col-md-1,
-          .seven-cols .col-sm-1,
-          .seven-cols .col-lg-1 {
-            width: 14.285714285714285714285714285714%;
-          }
-        }
-
-        @media (min-width: 1200px) {
-
-          .seven-cols .col-md-1,
-          .seven-cols .col-sm-1,
-          .seven-cols .col-lg-1 {
-            width: 14.285714285714285714285714285714%;
-          }
-            
-          #hidden-popover-btn {
-            background-color: Transparent;
-            background-repeat:no-repeat;
-            border: none;
-            cursor:pointer;
-            overflow: hidden;
-            outline: none;
-          }
-        }
-
-        #toggle-period-form {
-            font-size: 12px;
-            margin-left: 15px;
-        }
-
-        .period-lbl {
-            font-weight: 0 !important;
-        }
-        
-        
-    </style>
-  </head>
-
-  <body>
-    <!-- Top menu -->
+</head>
+<body>
+	<!-- Top Menu -->
     <nav class="navbar navbar-default" role="navigation">
         <div class="container">
             <div class="navbar-header">
@@ -154,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Schedulezilla</a>
+                <a class="navbar-brand" href='.'>Schedulezilla</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="top-navbar-1">
@@ -167,209 +45,205 @@
         </div>
     </nav>
 
+<!-- Main Content -->
+<div class="container">
+    <div class="well-container col-md-8 col-md-offset-2">
+		<form class="form-horizontal" id="main-form" method="post">
+            <!-- Begin Step One (1) -->
+            <fieldset class="step well" id="step-one" style="display:none">
+                <h2 class="step-title">Step 1: Department and Hours of Operation</h2>
 
-    <!-- Main Container Begin -->
-    <div class="container">
-        <!-- Well Container Begin --> 
-        <div class="well-container col-md-8 col-md-offset-2">
+                <div class="pad-top-xsm">
+                    <h4>Department information:</h4>
+                    <small>Please type the name of your department and building, just so we can refer to your schedule with them.</small>
+                        
+                    <div class="form-group">
+                      <div class="col-md-6">
+                        <label class="control-label" for="department-name">Department Name</label>
+                        <input class="form-control input-md" id="department-name" name="department-name" type="text">
+                      </div>
+                      <div class="col-md-6">
+                        <label class="control-label" for="building-name">Building Name</label> 
+                        <input class="form-control input-md" id="building-name" name="building-name" type="text">
+                      </div>
+                    </div>
+                </div>
 
-            <!--Begin Progress Bar 
-            <div class="progress">
-              <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            End Progress Bar -->
-            <form class="form-horizontal" id="main-form" method="post">
-                <!-- Begin Step One (1) -->
-                <fieldset class="step well" id="step-one" style="display:none">
-                    <!-- Input Fields -->
-                    <h2 class="step-title">Step 1: Department and Time Information</h2>
-
-                    <div>
-                        <h4>Department information:</h4>
-                        <small>Please type the name of your department and building, just so we can refer to your schedule with them.</small>
-                            
-                        <div class="form-group">
-                          <div class="col-md-6">
-                            <label class="control-label" for="department-name">Department Name</label>
-                            <input class="form-control input-md" id="department-name" name="department-name" type="text">
-                          </div>
-                          <div class="col-md-6">
-                            <label class="control-label" for="building-name">Building Name</label> 
-                            <input class="form-control input-md" id="building-name" name="building-name" type="text">
-                          </div>
+                <div class="pad-top">
+                    <h4>Days and time of operation:</h4>
+                    <small>Please <strong>select</strong> the days in which the building opens, and <strong>click</strong> on the corresponding textboxes to select the time it opens and closes for each day.</small>
+                
+                    <!-- Heading -->
+                    <div class="row pad-top-xsm text-center">
+                        <div class="col-md-4">
+                            <p class="column-heading">Days</p>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <p class="column-heading">Opening time</p>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <p class="column-heading">Closing time</p>
+                        </div>
+                    </div>
+                                
+                    <!-- Monday Checkbox -->
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <!-- Checkbox -->
+                            <label class="form-control">
+                                Monday
+                                <input class="days-checkbox pull-right" type="checkbox" onclick="toggleHours(this)">
+                            </label>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Starting time -->
+                            <input type="text" class="time ui-timepicker-input starting-hours" autocomplete="off" disabled>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Ending time -->
+                            <input type="text" class="time ui-timepicker-input ending-hours" autocomplete="off" disabled>
                         </div>
                     </div>
 
-                    <div class="pad-top-sm">
-                        <h4>Days and time of operation:</h4>
-                        <small>Please <strong>select</strong> the days in which the building opens, and <strong>click</strong> on the corresponding textboxes to select the time you open and close for each day.</small>
-                    
-                        <!-- Heading -->
-                        <div class="row pad-top-xsm text-center">
-                            <div class="col-md-4">
-                                <p class="heading">Days</p>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <p class="heading">Opening time</p>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <p class="heading">Closing time</p>
-                            </div>
+                    <!-- Tuesday Checkbox -->
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <!-- Checkbox -->
+                            <label class="form-control">
+                                Tuesday
+                                <input class="days-checkbox pull-right" type="checkbox" onclick="toggleHours(this)">
+                            </label>
                         </div>
-                                    
-                        <!-- Monday Checkbox -->
-                        <div class="row text-center">
-                            <div class="col-md-4">
-                                <!-- Checkbox -->
-                                <label class="form-control"  >
-                                    Monday
-                                    <input type="checkbox" onclick="toggleMondayHours()"  id="monday-checkbox">
-                                </label>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Starting time -->
-                                <input type="text" class="time ui-timepicker-input" id="monday-starting-hours" value="" autocomplete="off" disabled>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Ending time -->
-                                <input type="text" class="time ui-timepicker-input" id="monday-ending-hours" value="" autocomplete="off" disabled>
-                            </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Starting time -->
+                            <input type="text" class="time ui-timepicker-input starting-hours" autocomplete="off" disabled>
                         </div>
-                        <!-- Tuesday Checkbox -->
-                        <div class="row text-center">
-                            <div class="col-md-4">
-                                <!-- Checkbox -->
-                                <label class="form-control" >
-                                    Tuesday
-                                    <input type="checkbox" onclick="toggleTuesdayHours()" id="tuesday-checkbox">
-                                </label>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Starting time -->
-                                <input type="text" class="time ui-timepicker-input" id="tuesday-starting-hours" value="" autocomplete="off" disabled>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Ending time -->
-                                <input type="text" class="time ui-timepicker-input" id="tuesday-ending-hours" value="" autocomplete="off" disabled>
-                            </div>
-                        </div>
-                        <!-- Wednesday Checkbox -->
-                        <div class="row text-center">
-                            <div class="col-md-4">
-                                <!-- Checkbox -->
-                                <label class="form-control" >
-                                    Wednesday
-                                    <input type="checkbox" onclick="toggleWednesdayHours()" id="wednesday-checkbox">
-                                </label>
-                            </div>
-                            
-                            <div class="col-md-4">
-                               <!-- Starting time -->
-                               <input type="text" class="time ui-timepicker-input" id="wednesday-starting-hours" value="" autocomplete="off" disabled>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Ending time -->
-                                <input type="text" class="time ui-timepicker-input" id="wednesday-ending-hours" value="" autocomplete="off" disabled>
-                            </div>
-                        </div>
-                        <!-- Thursday Checkbox -->
-                        <div class="row text-center">
-                            <div class="col-md-4">
-                                <!-- Checkbox -->
-                                <label class="form-control" >
-                                    Thursday
-                                    <input type="checkbox" onclick="toggleThursdayHours()" id="thursday-checkbox">
-                                </label>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Starting time -->
-                                <input type="text" class="time ui-timepicker-input" id="thursday-starting-hours" value="" autocomplete="off" disabled>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Ending time -->
-                                <input type="text" class="time ui-timepicker-input" id="thursday-ending-hours" value="" autocomplete="off" disabled>
-                            </div>
-                        </div>
-                        <!-- Friday Checkbox -->
-                        <div class="row text-center">
-                            <div class="col-md-4">
-                                <!-- Checkbox -->
-                                <label class="form-control" >
-                                    Friday
-                                    <input type="checkbox" onclick="toggleFridayHours()" id="friday-checkbox">
-                                </label>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Starting time -->
-                                <input type="text" class="time ui-timepicker-input" id="friday-starting-hours" value="" autocomplete="off" disabled>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Ending time -->
-                                <input type="text" class="time ui-timepicker-input" id="friday-ending-hours" value="" autocomplete="off" disabled>
-                            </div>
-                        </div>
-                        <!-- Saturday Checkbox -->
-                        <div class="row text-center">
-                            <div class="col-md-4">
-                                <!-- Checkbox -->
-                                <label class="form-control" >
-                                    Saturday
-                                    <input type="checkbox" onclick="toggleSaturdayHours()" id="saturday-checkbox">
-                                </label>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Starting time -->
-                                <input type="text" class="time ui-timepicker-input" id="saturday-starting-hours" value="" autocomplete="off" disabled>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Ending time -->
-                                <input type="text" class="time ui-timepicker-input" id="saturday-ending-hours" value="" autocomplete="off" disabled>
-                            </div>
-                        </div>
-                        <!-- Sunday Checkbox -->
-                        <div class="row text-center">
-                            <div class="col-md-4">
-                                <!-- Checkbox -->
-                                <label class="form-control" >
-                                    Sunday
-                                    <input type="checkbox" onclick="toggleSundayHours()" id="sunday-checkbox">
-                                </label>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Starting time -->
-                                <input type="text" class="time ui-timepicker-input" id="sunday-starting-hours" value="" autocomplete="off" disabled>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <!-- Ending time -->
-                                <input type="text" class="time ui-timepicker-input" id="sunday-ending-hours" value="" autocomplete="off" disabled>
-                            </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Ending time -->
+                            <input type="text" class="time ui-timepicker-input ending-hours" autocomplete="off" disabled>
                         </div>
                     </div>
-                    
-                    <div class="btn-container">
-                        <button type="button" class="next btn btn-lg btn-info pull-right">Next</button>
-                    </div>
-                </fieldset>
-                <!--End Step One (1) -->
 
-                <fieldset class="step well" id="step-two" style="display:none">
-                    <!-- Input Fields -->
-                    <h2 class="step-title">Step 2: Room information</h2>
+                    <!-- Wednesday Checkbox -->
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <!-- Checkbox -->
+                            <label class="form-control">
+                                Wednesday
+                                <input class="days-checkbox pull-right" type="checkbox" onclick="toggleHours(this)">
+                            </label>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Starting time -->
+                            <input type="text" class="time ui-timepicker-input starting-hours" autocomplete="off" disabled>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Ending time -->
+                            <input type="text" class="time ui-timepicker-input ending-hours" autocomplete="off" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Thursday Checkbox -->
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <!-- Checkbox -->
+                            <label class="form-control">
+                                Thursday
+                                <input class="days-checkbox pull-right" type="checkbox" onclick="toggleHours(this)">
+                            </label>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Starting time -->
+                            <input type="text" class="time ui-timepicker-input starting-hours" autocomplete="off" disabled>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Ending time -->
+                            <input type="text" class="time ui-timepicker-input ending-hours" autocomplete="off" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Friday Checkbox -->
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <!-- Checkbox -->
+                            <label class="form-control">
+                                Friday
+                                <input class="days-checkbox pull-right" type="checkbox" onclick="toggleHours(this)">
+                            </label>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Starting time -->
+                            <input type="text" class="time ui-timepicker-input starting-hours" autocomplete="off" disabled>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Ending time -->
+                            <input type="text" class="time ui-timepicker-input ending-hours" autocomplete="off" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Saturday Checkbox -->
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <!-- Checkbox -->
+                            <label class="form-control">
+                                Saturday
+                                <input class="days-checkbox pull-right" type="checkbox" onclick="toggleHours(this)">
+                            </label>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Starting time -->
+                            <input type="text" class="time ui-timepicker-input starting-hours" autocomplete="off" disabled>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Ending time -->
+                            <input type="text" class="time ui-timepicker-input ending-hours" autocomplete="off" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Sunday Checkbox -->
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <!-- Checkbox -->
+                            <label class="form-control">
+                                Sunday
+                                <input class="days-checkbox pull-right" type="checkbox" onclick="toggleHours(this)">
+                            </label>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Starting time -->
+                            <input type="text" class="time ui-timepicker-input starting-hours" autocomplete="off" disabled>
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <!-- Ending time -->
+                            <input type="text" class="time ui-timepicker-input ending-hours" autocomplete="off" disabled>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-container">
+                    <button type="button" class="next btn btn-lg btn-info pull-right">Next</button>
+                </div>
+            </fieldset>
+
+            <!-- Begin Step Two (2) -->
+            <fieldset class="step well" id="step-two" style="display:none">
+                    <h2 class="step-title">Step 2: Rooms information</h2>
 
                     <div class="form-group pad-top">
 
@@ -399,374 +273,24 @@
                         <button type="button" class="action next btn btn-lg btn-info pull-right">Next</button>
                     </div>
                 </fieldset>
-                
-                <fieldset class="step well" id="step-three" style="display:none">
-                    <h2 class="step-title">Step 3: Course Information</h2>
-                    
-                  
-                    <h4 class="text-center">Instructor/Class information</h4>
-                    
-                    <!-- List Header -->
-                    <div class="row">
-                        <div class="col-md-offset-1 col-md-10"> <!-- -->
-                            <div class="row">
-                                <div class="col-md-4 text-center">
-                                    <h4 class="list-header"> Instructor </h4>
-                                    
-                                    <ul class="list-unstyled" id="instructor-list"></ul>
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <h4 class="list-header"> Number of Classes </h4>
-                                    
-                                    <ul class="list-unstyled" id="number-classes-list"></ul>
-                                </div>
-                                <div class="col-md-4 text-center">
-                                    <h4 class="list-header"> Actions </h4> <!-- let's use <i class="fa fa-edit"></i> (fontawesome icons) -->
-                                
-                                    <ul class="list-unstyled" id="actions-list"></ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Message -->
-                    <div class="row">
-                        <div class="col-md-offset-1 col-md-10">
-                            <p class="text-muted text-center" id="instructor-list-msg">No instructors added. Please start adding instructors...</p>
-                        </div>
-                    </div>
-                    
-
-                    <div class="col-md-12 pad-top-sm">
-                    <button type="button" class="btn btn-success text-center" data-toggle="modal" data-target="#addInstructorModal">Add Instructor</button>
-                    
-                        
-                    <!-- Add Instructor Modal 1-->
-		                  <div class="modal fade bs-example-modal-lg" id="addInstructorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		                      <div class="modal-dialog modal-lg">
-		                          <div class="modal-content">
-		                              <div class="modal-header">
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="myModalLabel">Add an Instructor</h4>
-		                              </div>
-                                      
-		                      <div class="modal-body">
-                                  
-
-                              <input id="instructor-editing-id" type="hidden"></input>
-
-                              <div class="row">
-                                  <div class="col-md-offset-1 col-md-10">
-                                      <div class="row">
-                                        <h4 class="section-header">Instructor Information</h4>
-                                          <div class="col-md-6">
-                                            <label class="control-label">First Name</label>
-                                                <input class="form-control input-md" id="instructor-first-name" name="textinput" type="text">
-                                          </div>
-                                          <div class="col-md-6">
-                                            <label class="control-label">Last Name</label>
-                                                <input class="form-control input-md" id="instructor-last-name" name="textinput" type="text">
-                                          </div>
-                                      </div>
-
-                                <div class="row pad-top-xsm">
-                                          
-                                  <div class="col-md-4">
-                                    <label class="control-label">Type of Instructor:</label>
-                                  </div>
-                                  <div class="col-md-4">
-                                    <label class="radio-inline"><input type="radio" id="part-time-radio"name="optradio">Part Time</label>
-                                  </div>
-                                  <div class="col-md-4">
-                                    <label class="radio-inline"><input type="radio" id="full-time-radio"name="optradio">Full Time</label>
-                                  </div>
-                                 
-                                      </div>
-                                  </div>
-                              </div>
-                        <hr>   
-                                      
-                        <div class="row" >
-                            <div class="col-md-offset-1 col-md-10">
-                                <div class="row">
-                                      <h4 class="section-header">
-                                        Instructor Availability 
-
-                                        <a class="btn btn-primary btn-sm" href="#" id="toggle-period-form" data-toggle="popover" title="Periods Meaning" data-placement="top" data-content="<div class='row'><div class='col-md-4'><b>Morning: <br>Midday: <br>Evening: <br>Night: <br></b></div><div class='col-md-8'> 7:00 am - 10:00 am <br /> 10:00 am - 2:00 pm <br /> 2:00 pm - 6:00 pm <br /> 6:00 pm - 10:30 pm</div</div>" data-html="true">Show/Hide</a>
-
-                                      </h4> 
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-md-12" id="instructor-availability">
-                                        <div class="row seven-cols">
-                                            
-                                            <div class="col-md-1" id="monday-availability">
-                                                <h4 class="section-header text-center">Mon</h4> 
-                                                 <label class="period-lbl" >
-                                                    Morning
-                                                    <input type="checkbox" class="morning-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Midday
-                                                    <input type="checkbox" class="midday-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Evening
-                                                    <input type="checkbox" class="evening-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Night
-                                                    <input type="checkbox" class="night-period">
-                                                </label>
-                                            </div>
-                                            
-                                            <div class="col-md-1" id="tuesday-availability">
-                                                     <h4 class="section-header text-center">Tue</h4>
-                                                <label class="period-lbl" >
-                                                    Morning
-                                                    <input type="checkbox" class="morning-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Midday
-                                                    <input type="checkbox" class="midday-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Evening
-                                                    <input type="checkbox" class="evening-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Night
-                                                    <input type="checkbox" class="night-period">
-                                                </label>
-                                            </div>
-                                            
-                                            <div class="col-md-1" id="wednesday-availability">
-                                                     <h4 class="section-header text-center">Wed</h4>
-                                                <label class="period-lbl" >
-                                                    Morning
-                                                    <input type="checkbox" class="morning-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Midday
-                                                    <input type="checkbox" class="midday-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Evening
-                                                    <input type="checkbox" class="evening-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Night
-                                                    <input type="checkbox" class="night-period">
-                                                </label>
-                                            </div>
-                                            
-                                            <div class="col-md-1" id="thursday-availability">
-                                                     <h4 class="section-header text-center">Thu</h4>
-                                                <label class="period-lbl" >
-                                                    Morning
-                                                    <input type="checkbox" class="morning-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Midday
-                                                    <input type="checkbox" class="midday-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Evening
-                                                    <input type="checkbox" class="evening-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Night
-                                                    <input type="checkbox" class="night-period">
-                                                </label>
-                                            </div>
-                                            
-                                            <div class="col-md-1" id="friday-availability">
-                                                     <h4 class="section-header text-center">Fri</h4>
-                                                <label class="period-lbl" >
-                                                    Morning
-                                                    <input type="checkbox" class="morning-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Midday
-                                                    <input type="checkbox" class="midday-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Evening
-                                                    <input type="checkbox" class="evening-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Night
-                                                    <input type="checkbox" class="night-period">
-                                                </label>
-                                            </div>
-                                            
-                                            <div class="col-md-1" id="saturday-availability">
-                                                     <h4 class="section-header text-center">Sat</h4>
-                                                <label class="period-lbl" >
-                                                    Morning
-                                                    <input type="checkbox" class="morning-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Midday
-                                                    <input type="checkbox" class="midday-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Evening
-                                                    <input type="checkbox" class="evening-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Night
-                                                    <input type="checkbox" class="night-period">
-                                                </label>
-                                            </div>
-                                            
-                                            <div class="col-md-1" id="sunday-availability">
-                                                     <h4 class="section-header text-center">Sun</h4>
-                                                <label class="period-lbl" >
-                                                    Morning
-                                                    <input type="checkbox" class="morning-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Midday
-                                                    <input type="checkbox" class="midday-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Evening
-                                                    <input type="checkbox" class="evening-period">
-                                                </label>
-                                                <label class="period-lbl"   >
-                                                    Night
-                                                    <input type="checkbox" class="night-period">
-                                                </label>
-                                            </div>     
-
-                                          </div>
-                                    </div>
-                                </div>
-                                
-  
-                            </div>        
-                        </div>
-                        <hr>      
-                        <div class="row">
-                            <div class="col-md-offset-1 col-md-10">
-                                <div class="row">
-                                    <h4 class="section-header">Class Information:</h4>
-                                    <div id="class-information-div">
-                                        <div class="col-md-4">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                      
-                                                <label class="control-label">Class Title</label>
-                                                <input class="form-control input-md" id="class-title" name="textinput" type="text">
-                                       
-                                                </div>
-                                                <div class="col-md-12">
-                                         
-                                                <label class="control-label">Total Hours</label>
-                                                    <select class="form-control" id="class-hours">
-                                                        <option></option>
-                                                        <option value="3.4">3.4 hrs/week (3 credits)</option>
-                                                        <option value="4.2">4.2 hrs/week (3 credits)</option>
-                                                        <option value="5.6">5.6 hrs/week (4 credits)</option>
-                                                        <option value="5.7">5.7 hrs/week (4 credits)</option>
-                                                    </select>
-                                                        </div>
-                                                <div class="col-md-12">
-
-                                                    <label for="sel1">Frequency</label>
-                                                        <select class="form-control" id="class-frequency">
-                                                            <option></option>
-                                                            <option value="1">Once a Week</option>
-                                                            <option value="2">Twice a Week</option>
-                                                            <option value="3">Three times a week</option>
-                                                            <option value="4">Four times a week</option>
-                                                        </select>
-
-                                                </div>
-                                    <div class="col-md-12 pad-top-sm text-center">
-                                    
-                                          <button type="button" id="add-class-btn" class="btn btn-success">Add Class</button>
-                                    </div>
-                                     
-                                    </div>
-                                </div>
-                                  <div class="col-md-8 text-center">
-                                        <h4>Classes Added</h4>
-                                            <p class="text-muted" id="class-list-msg">No Classes Entered</p>
-                                            <ul  class="list-unstyled" id="class-list"></ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>         
-		                              <div class="modal-footer">
-                                        <button type="button" class="btn btn-default"  data-dismiss="modal" id="close-instructor-changes">Close</button>
-                                        <button type="button" class="btn btn-primary" id="save-instructor-changes">Save changes</button>
-                                      </div>
-		                          </div>
-		                      </div>
-		                  </div>
-                        </div>
-                   <!-- Add Instructor Modal 1-->
-                    
-                    
-                    
-                
-                    <div class="btn-container">
-                        <button type="button" class="action back btn btn-lg pull-left">Back</button>
-                        <button type="button" class="action next btn btn-lg btn-info pull-right" id="step3-next-btn">Next</button>
-                    </div>
-                </fieldset>
-
-                <fieldset class="step well" id="step-four" style="display:none">
-                    <h2 class="step-title">Step 4</h2>
-                       <textarea class="form-control" id="summary-textarea" html="true" name="summary-form" rows="15" readonly="true"></textarea>
-    
-                        
-                   
-                    <div class="btn-container">
-                        <button type="button" class="action back btn btn-lg" id="summary-back-btn">Back</button>
-                        <button class="action submit btn  btn-lg btn-success pull-right">Submit</button>
-                    </div>
-                </fieldset>
-
-            </form>
-        </div>
-        <!-- Well Container END --> 
+        </form>
     </div>
-    <!-- Main Container END --> 
+</div>
 
-    <div id="testing" style="padding-left:20px"></div>
+</body>
 
-	<!-- FOOTER -->
+<!-- JS // Placed at the end of the document so the pages load faster  -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="vendors/js/bootstrap.js"></script>
+<script src="vendors/js/jquery.timepicker.js"></script>
 
-	<footer class="footer container-fluid text-center">
-        <p class="text-muted">&copy; 2015 Schedulezilla </a></p>
-    </footer>
+<script src="resources/js/checkbox-dropdown.js"></script>
+<script src="resources/js/form.js"></script>
+<script src="resources/js/populate-data.js"></script>
+<script src="resources/js/data.js"></script>
+<script src="resources/js/room-table.js"></script>
 
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
+<!-- Testing mode -->
+<script src="resources/js/testing-mode.js"></script>
 
-    <!-- Script Sources -->
-    <script src="js/checkbox-dropdown.js"></script>
-    <script src="js/form.js"></script>
-    <script src="js/vendor/jquery.timepicker.js"></script>
-    <script src="js/vendor/jquery.timepicker.min.js"></script>
-    <script src="js/data.js"></script>
-    <script src="js/room-table.js"></script>
-    <script src="js/instructor-table.js"></script>
-    <script src="js/set-data-functions.js"></script>
-    <script src="js/summary.js"></script>
-
-    <!-- Testing mode -->
-    <script src="js/testing-mode.js"></script>
-    
-    <!-- IE10 viewport hack for Surfac<e/desktop Windows 8 bug -->
-    
-    <!-- JQuery -->
-   
-  </body>
 </html>
