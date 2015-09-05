@@ -10,6 +10,11 @@ label.form-control {
   background-color: #eee;
 }
 
+.form-container {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
 .time {
   text-align: center;
   width: 130px;
@@ -48,6 +53,18 @@ label.form-control {
 
 .btn-container {
     margin-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#room-list {
+  width: 100%;
+  background-color: #eee;
+  padding: 10px 0;
+}
+
+#room-count {
+  font-weight: bold;
 }
 
 #delete-room-btn {

@@ -11,8 +11,8 @@
 
 	<!-- CSS -->
     <link href="vendors/css/bootstrap.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="vendors/css/jquery.timepicker.css" rel="stylesheet">
-
     <link href="resources/css/steps.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -51,11 +51,11 @@
 		<form class="form-horizontal" id="main-form" method="post">
             <!-- Begin Step One (1) -->
             <fieldset class="step well" id="step-one" style="display:none">
-                <h2 class="step-title">Step 1: Department and Hours of Operation</h2>
+                <h2 class="step-title">Step 1: Building and Hours of Operation</h2>
 
                 <div class="pad-top-xsm">
-                    <h4>Department information:</h4>
-                    <small>Please type the name of your department and building, just so we can refer to your schedule with them.</small>
+                    <h4>Department and building information:</h4>
+                    <small>Please type the name of your <strong>department</strong> and the name of your <strong>building</strong>. If your department is in charge of various physical buildings, just type the main one. This is purely informational.</small>
                         
                     <div class="form-group">
                       <div class="col-md-6">
@@ -71,7 +71,7 @@
 
                 <div class="pad-top">
                     <h4>Days and time of operation:</h4>
-                    <small>Please <strong>select</strong> the days in which the building opens, and <strong>click</strong> on the corresponding textboxes to select the time it opens and closes for each day.</small>
+                    <small>Please <strong>select</strong> the days in which the main building opens, and <strong>click</strong> on the corresponding textboxes to select the time it opens and closes for each day.</small>
                 
                     <!-- Heading -->
                     <div class="row pad-top-xsm text-center">
@@ -243,11 +243,13 @@
 
             <!-- Begin Step Two (2) -->
             <fieldset class="step well" id="step-two" style="display:none">
-                    <h2 class="step-title">Step 2: Rooms information</h2>
+                    <h2 class="step-title">Step 2: Rooms in the Building</h2>
 
-                    <div class="form-group pad-top">
+                    <div class="row pad-top-sm form-container">
+                      <h4>Rooms information:</h4>
+                      <small>Please add the rooms that your department controls. You will be able to add classes into the different rooms of your department.</small>
 
-                      <div class="col-md-4">
+                      <div class="col-md-4 form-group pad-top">
                         <label>Room prefix:</label>
                         <input class="form-control input-md" id="room-prefix" name="textinput" type="text">
 
@@ -255,23 +257,33 @@
                         <input class="form-control input-md" id="room-number" name="textinput" type="text">
 
                         <div class="text-center pad-top-sm">
-                            <button type="button" id="add-room-btn" class="btn btn-success text-center">Add Room</button>
+                            <button type="button" id="add-room-btn" class="btn btn-default text-center">Add Room</button>
+                        </div>
+
+                        <div class="pad-top text-center">
+                            <h5>Total rooms entered: <span id="room-count">0</span></h5>
                         </div>
                       </div>
                    
-                      <div class="col-md-8 text-center" id="table-format">
-    				    <h4>Entered Rooms</h4>
-    				    <p class="text-muted" id="rooms-entered">No Rooms Entered</p>
-                        <ul  class="list-unstyled" id="room-list">
-                        </ul>
+                      <div class="col-md-8 pad-top-sm" id="table-format">
+                        <div class="row">
+                            <div class="col-md-offset-4 col-md-8 text-center">
+    				            <p class="column-heading">List of Rooms</p>
+    				            <p class="text-muted" id="rooms-entered">No Rooms Entered</p>
+                                <div>
+                                    <ul class="list-unstyled text-center" id="room-list"></ul>
+                                </div>
+                            </div>
+                        </div>
                       </div>
-
                     </div>
 
-                    <div class="btn-container">
+                    <div class="row btn-container">
                         <button type="button" class="action back btn btn-lg pull-left">Back</button>
-                        <button type="button" class="action next btn btn-lg btn-info pull-right">Next</button>
+                        <button type="submit" class="action next btn btn-lg btn-info pull-right">Go to Schedule</button>
                     </div>
+
+                    
                 </fieldset>
         </form>
     </div>
