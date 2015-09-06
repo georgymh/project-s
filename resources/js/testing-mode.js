@@ -25,25 +25,15 @@ $(document).ready(function() {
 		var weekendOpeningTime = "9:00am";
 		var weekendClosingTime = "6:00pm";
 
-		var weekdays = ["monday", "tuesday", "wednesday",
-							"thursday", "friday", "saturday", "sunday"];
+		$('#step-one').find('.days-checkbox').each(function() {
+        	$(this).click()
+            $(getStartingHoursTextField( this )).val(weekdayOpeningTime);
+            $(getEndingHoursTextField( this )).val(weekdayClosingTime);
 
-		for (var i = 0; i < weekdays.length; i++) {
-			if (i < 4) {
-				// Weekday.
-				$('#' + weekdays[i] + '-checkbox').click();
-				$('#' + weekdays[i] + '-starting-hours').val(weekdayOpeningTime);
-				$('#' + weekdays[i] + '-ending-hours').val(weekdayClosingTime);
-			} else {
-				// Weekend day (including Friday)
-				$('#' + weekdays[i] + '-checkbox').click();
-				$('#' + weekdays[i] + '-starting-hours').val(weekendOpeningTime);
-				$('#' + weekdays[i] + '-ending-hours').val(weekendClosingTime);
-			}
-		}
+    	});
 
 		// Turn sunday off.
-		$('#sunday-checkbox').click();
+		$('.days-checkbox').last().click();
 	}
 
 	function fillStepTwo() {
