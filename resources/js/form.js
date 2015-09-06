@@ -1,5 +1,4 @@
-  
-jQuery(document).ready(function() {
+  jQuery(document).ready(function() {
    /*
         Form
     */
@@ -14,7 +13,6 @@ jQuery(document).ready(function() {
         var next_step = true;
         
         if( next_step ) {
-
             parent_fieldset.fadeOut(400, function() {
                 $(this).next().fadeIn();
             });
@@ -23,7 +21,6 @@ jQuery(document).ready(function() {
         // Run respective JSON-populating routine.
         var currentStepId = getCurrentStep().attr('id');
         runCorrectDataFiller( currentStepId );
-
     });
     
     // previous step
@@ -39,37 +36,27 @@ jQuery(document).ready(function() {
     $('#main-form').on('submit', function(e) {
         e.preventDefault();
 
-        var allow_submit = true;
+        // Run respective JSON-populating routine.
+        var currentStepId = getCurrentStep().attr('id');
+        runCorrectDataFiller( currentStepId );
 
-        var formData = {};
-
+        var allow_submit = true; // for future validation.
         if ( allow_submit ) {
-
         	console.log('submitting...');
-            
+    
             $.ajax({
-                type: "POST",
-                url: "registeraccounts.php",
-                data: formData,
-                success: __handleSubmit,
-                complete: function () {
-
+                method: 'POST',
+                url: 'createschedule.php',
+                data: { "data" : JSON.stringify(data) },
+                success: function(data) {
+                    console.log(data);
+                    window.location.href = '.';
                 }
             });
         }
     });
 
 });
-
-var __handleSubmit = function HandleSubmit(replyObj) {
-    if (replyObj == 1) {
-        //showSuccessMessage();
-    } else {
-        //showErrorAlert(replyObj);
-    }
-
-    //console.log(replyObj);
-};
 
 function getCurrentStep() {
     if ( $('#step-one').is(":visible") ) {

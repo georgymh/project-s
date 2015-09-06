@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -22,35 +23,37 @@
     <![endif]-->
 </head>
 <body>
-	<!-- Top Menu -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href='.'>Schedulezilla</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="top-navbar-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#"><strong>Contact Us</strong></a> 
-                    </li>
-                </ul>
-            </div>
+<!-- Top Menu -->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href='.'>Schedulezilla</a>
         </div>
-    </nav>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="top-navbar-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#"><strong>Contact Us</strong></a> 
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
 <!-- Main Content -->
-<div class="container">
+<div id="main-container" class="container">
     <div class="well-container col-md-8 col-md-offset-2">
 		<form class="form-horizontal" id="main-form" method="post">
+
             <!-- Begin Step One (1) -->
             <fieldset class="step well" id="step-one" style="display:none">
+                <input type="hidden" id="data" name="data">
                 <h2 class="step-title">Step 1: Building and Hours of Operation</h2>
 
                 <div class="pad-top-xsm">

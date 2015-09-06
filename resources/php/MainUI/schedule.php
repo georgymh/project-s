@@ -1,3 +1,13 @@
+<?php
+
+	if ( !empty($_SESSION['stepsData']) && isset($_SESSION['stepsData']) ) {
+		$data = $_SESSION['stepsData'];
+	} else {
+		// Using MainUI:
+		MainUI::deleteSession();
+	}
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -16,6 +26,9 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.js'></script>
 <script src='vendors/js/bootstrap.js'></script>
 <script>
+
+	var JSONData = JSON.parse('<?php echo $data ?>');
+	console.log(JSONData);
 
 	$(document).ready(function() {
 
@@ -145,10 +158,11 @@
 			</div>
 		</div>
 
-
 		<div id='calendar'></div>
 
 		<div style='clear:both'></div>
+
+		<div class='pull-right' style='clear:both'><a href="resources/php/MainUI/deletesession.php?refresh=yes"> Logout </a></div>
 
 	</div>
 </body>
