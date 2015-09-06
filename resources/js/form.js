@@ -74,20 +74,10 @@ var __handleSubmit = function HandleSubmit(replyObj) {
 function getCurrentStep() {
     if ( $('#step-one').is(":visible") ) {
         return $('#step-one'); // step 1
-
     } else if ( $('#step-two').is(":visible") ) {
         return $('#step-two'); // step 2
-
-    } else if ( $('#step-three').is(":visible") ) {
-        return $('#step-three'); // step 3
-
-    } else if ( $('#step-four').is(":visible") ) {
-        return $('#step-four'); // step 4
-
     } else {
         return null; // unknown
         console.log("ERROR: erroneous step!!! Don't let this bug spread.")
     }
 }
-
-
