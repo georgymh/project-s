@@ -15,11 +15,12 @@ function runCorrectDataFiller( step ) {
     Function that sets the user data in step 1, converts data into JSON schema
 */
 function fillDataFromStepOne() {
-    var stepOneData = data.stepOne;
+    // RESET DATA FIRST
+    resetStepOneData();
 
     // Set department and building name.
-    stepOneData.department = $("#department-name").val();
-    stepOneData.building = $("#building-name").val();
+    data.department = $("#department-name").val();
+    data.building = $("#building-name").val();
 
     // Get all hours information from the DOM and put into 'hours' array.
     // NOTE: to get the starting and ending hours we assume that the times are ordered
@@ -36,7 +37,7 @@ function fillDataFromStepOne() {
     });
 
     // Put hours into each day of week inside main JSON object.
-    var operatingHours = stepOneData.operatingHours;
+    var operatingHours = data.operatingHours;
     $.each( daysOfWeek, function( index, value ){
         operatingHours[value].push( hours[ index * 2 ] );
         operatingHours[value].push( hours[ (index * 2) + 1] );
@@ -44,7 +45,6 @@ function fillDataFromStepOne() {
 
     // Perform some testing.
     console.log("Logging step one data: \n");
-    console.log(stepOneData); 
     logTheFullJSONObject();   
 }
 
@@ -68,12 +68,10 @@ function fillDataFromStepTwo() {
     });
 
     // Put data into the JSON object
-    var stepTwoData = data.stepTwo;
-    stepTwoData.rooms = roomArray;
+    data.rooms = roomArray;
 
     // Perform some testing.
     console.log("Logging step two data: \n");
-    console.log(stepTwoData);
     logTheFullJSONObject();
 }
 
@@ -82,3 +80,16 @@ function logTheFullJSONObject() {
     console.log(data);
 }
 
+function resetStepOneData() {
+    data.department = '';
+    data.building = '';
+    data.operatingHours = {
+        "monday" : [ ],
+        "tuesday" : [ ],
+        "wednesday" : [ ],
+        "thursday" : [ ],
+        "friday" : [ ],
+        "saturday" : [ ],
+        "sunday" : [ ]
+    };
+}
