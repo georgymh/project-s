@@ -19,6 +19,7 @@
 <!-- CSS -->
 <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.css' rel='stylesheet' />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.print.css' rel='stylesheet' media='print' />
+<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet' />
 <link href="vendors/css/bootstrap.css" rel='stylesheet' />
 
 <!-- JS -->
@@ -113,7 +114,7 @@
 
 	body {
 		margin-top: 40px;
-		text-align: center;
+		
 		font-size: 14px;
 		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
 	}
@@ -121,6 +122,11 @@
 	hr {
 		border-top: 1px solid #D8D8D8;
 	}
+
+	.pad-top { padding-top: 40px; }
+	.pad-top-md { padding-top: 30px; }
+	.pad-top-sm { padding-top: 20px; }
+	.pad-top-xsm { padding-top: 10px; }
 		
 	#wrap {
 		width: 100%;
@@ -136,6 +142,7 @@
 		margin-left: 230px;
 		margin-right: 270px;
 		overflow: hidden;
+		height: 751px;
 	}
 
 	#right-container {
@@ -245,6 +252,12 @@
 		clear: both;
 	}
 
+	/* modal */
+	.modal-section {
+		text-align: center;
+	}
+
+
 </style>
 </head>
 <body>
@@ -273,8 +286,57 @@
 				<hr style="margin-bottom: 10px">
 
 				<div class='text-center'>
-					<button id='add-instructor' type="button" class="btn btn-default">Add Instructor</button>
+					<button id='add-instructor' type="button" class="btn btn-default" data-toggle="modal" data-target="#addInstructorModal">Add Instructor</button>
 				</div>
+			</div>
+
+			<!-- Add Instructor Modal -->
+			<div class="modal fade" id="addInstructorModal" tabindex="-1" role="dialog" aria-labelledby="addInstructorModal">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h3 class="modal-title text-center" id="addInstructorModalLabel">Add Instructor</h3>
+			      </div>
+
+			      <div class="modal-body pad-top-sm">
+		              <div class="row">
+                        <div class="col-md-offset-1 col-md-10">
+                        	<h4 class="modal-section">Instructor Information</h4>
+
+							<div class="row pad-top-sm">
+							  <div class="col-md-6">
+							    <label class="control-label">First Name</label>
+							    <input class="form-control input-md" id="first-name" name="textinput" type="text">
+							  </div>
+							  <div class="col-md-6">
+							    <label class="control-label">Last Name</label>
+							    <input class="form-control input-md" id="ast-name" name="textinput" type="text">
+							  </div>
+							</div>
+
+							<div class="row pad-top-sm">
+							  <div class="col-md-4">
+							    <label class="control-label">Type of Instructor:</label>
+							  </div>
+							  <div class="col-md-4">
+							    <label class="radio-inline"><input type="radio" id="type-full-time" name="instructor-type" checked>Full Time</label>
+							  </div>
+							  <div class="col-md-4">
+							    <label class="radio-inline"><input type="radio" id="type-part-time" name="instructor-type">Part Time</label>
+							  </div>
+							</div>
+					    </div>
+                      </div>
+			      </div>
+
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
+			        <button type="button" class="btn btn-primary">Add Instructor</button>
+			      </div>
+			    </div>
+			  </div>
 			</div>
 
 			<div id='class-box' class="left-side-box">
@@ -290,8 +352,69 @@
 				</div>
 
 				<div class='text-center'>
-					<button id='add-class' type="button" class="btn btn-default">Add Class</button>
+					<button id='add-class' type="button" class="btn btn-default" data-toggle="modal" data-target="#addClassModal">Add Class</button>
 				</div>
+			</div>
+
+			<!-- Add Class Modal -->
+			<div class="modal fade" id="addClassModal" tabindex="-1" role="dialog" aria-labelledby="addClassModal">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h3 class="modal-title text-center" id="addClassModalLabel">Add Class for <span id='current-instructor-modal-text'></span></h3>
+			      </div>
+
+			      <div class="modal-body pad-top-sm">
+		              <div class="row">
+		              	<div class="col-md-offset-1 col-md-10">
+		              		<h4 class="modal-section">Class Information</h4>
+		              	</div>
+		              </div>
+		              <div class="row">
+                        <div class="col-md-offset-3 col-md-6">
+                        	<div class='pad-top-xsm'>
+	                            <label class="control-label">Class Title</label>
+	                            <input id="class-title" name="class-title" class="form-control input-md" type="text" style="height:37.22222px">
+	                        </div>
+
+	                        <div class='pad-top-xsm'>
+		                        <label class="control-label">Total Hours Per Semester</label>
+		                        <div class="input-group">
+							      <input id='class-total-hours' type="text" class="form-control" style="height:36.22222px" aria-label="Total Hours Per Semester">
+							      <span class="input-group-addon" id="basic-addon2">hours</span>
+							      <div class="input-group-btn">
+							        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:36.22222px"><span class="caret"></span></button>
+							        <ul class="dropdown-menu dropdown-menu-right">
+							          <li><a class='total-hours-option' href="#">60</a></li>
+							          <li><a class='total-hours-option' href="#">90</a></li>
+							        </ul>
+							      </div><!-- /btn-group -->
+							    </div><!-- /input-group -->
+							</div>
+	                        
+	                        <div class='pad-top-xsm'>
+	                        	<label for="class-frequency">Desired Weekly Frequency</label>
+	                            <select id="class-frequency" class="form-control" style="height:37.22222px">
+	                                <option></option>
+	                                <option value="1">Once a Week</option>
+	                                <option value="2">Twice a Week</option>
+	                                <option value="3">Three times a week</option>
+	                                <option value="4">Four times a week</option>
+	                            </select>
+	                        </div>
+
+					    </div>
+                      </div>
+			      </div>
+
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
+			        <button type="button" class="btn btn-primary">Add Class</button>
+			      </div>
+			    </div>
+			  </div>
 			</div>
 		</div>
 
@@ -327,12 +450,10 @@
 				  </ul>
 				</div>
 				-->
-
 			</div>
 		</div>
 
 		<div id='calendar'></div>
-
 
 		<div style='clear:both'></div>
 
@@ -342,6 +463,18 @@
 </body>
 
 <script>
+
+	$(document).ready(function() {
+		$('#addClassModal').on('shown.bs.modal', function () {
+		  $('#current-instructor-modal-text').text($('#current-instructor').text()); // update current instructor in modal
+		});
+
+		$('.total-hours-option').click( function(e) {
+			e.preventDefault();
+			$('#class-total-hours').val($(this).text()); 
+		});
+		
+	});
 
 	function getBusinessHours() {
 		return [
