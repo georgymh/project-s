@@ -400,10 +400,9 @@
 	                        	<label for="class-frequency">Desired Weekly Frequency</label>
 	                            <select id="class-frequency" class="form-control" style="height:37.22222px">
 	                                <option></option>
-	                                <option value="1">Once a Week</option>
-	                                <option value="2">Twice a Week</option>
-	                                <option value="3">Three times a week</option>
-	                                <option value="4">Four times a week</option>
+	                                <option value="1">Once per week</option>
+	                                <option value="2">Twice per week</option>
+	                                <option value="4">Monday through Thursday</option>
 	                            </select>
 	                        </div>
 
