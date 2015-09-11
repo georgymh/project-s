@@ -41,8 +41,8 @@ $(document).ready(function() {
 		var number = $('#room-number');
 		var addBtn = $('#add-room-btn');
 
-		var prefixTest = "CC";
-		var prefixNumberStart = 100;
+		var prefixTest = "MBCC";
+		var prefixNumberStart = 123;
 		var numOfRoomsToAdd = 9;
 
 		for (var i = 0; i < numOfRoomsToAdd; i++) {
