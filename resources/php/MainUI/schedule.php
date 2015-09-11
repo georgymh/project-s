@@ -28,6 +28,7 @@
 <script src='vendors/js/jquery-ui.custom.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.js'></script>
 <script src='vendors/js/bootstrap.js'></script>
+<script src='resources/js/instructorData.js'></script>
 <script>
 
 	var JSONData = JSON.parse('<?php echo $data ?>');
