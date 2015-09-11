@@ -5,13 +5,7 @@ $(document).ready(function() {
 	if (TESTING_MODE) {
 	  fillStepOne();
 	  fillStepTwo();
-	  fillStepThree();
-
-	  // jQuery(document).ready(function() {
-	  //   fillDataFromStepOne();
-	  //   fillDataFromStepTwo();
-	  //   sendByAjax();
-	  // });
+ 
 	}
 
 	function fillStepOne() {
@@ -54,56 +48,6 @@ $(document).ready(function() {
 		// And just fill an extra one but not add it.
 		prefix.val(prefixTest);
 		number.val(prefixNumberStart);
-	}
-
-	function fillStepThree() {
-		$('#instructor-first-name').val('John');
-		$('#instructor-last-name').val('Doe');
-
-		$('#full-time-radio').click();
-
-		$('#class-title').val('CS 170');
-		$('#class-hours').val('3.4');
-		$('#class-frequency').val('1')
-		$('#add-class-btn').trigger('click');
-
-		$('#class-title').val('CS 150');
-		$('#class-hours').val('5.6');
-		$('#class-frequency').val('2')
-		$('#add-class-btn').trigger('click');
-
-		$('#class-title').val('CS 250');
-		$('#class-hours').val('5.6');
-		$('#class-frequency').val('3')
-		$('#add-class-btn').trigger('click');
-
-		$('#class-title').val('CS 200');
-		$('#class-hours').val('5.7');
-		$('#class-frequency').val('4')
-		$('#add-class-btn').trigger('click');
-
-	}
-
-	function sendByAjax() {
-	    var JSONData = {};
-	    JSONData.data = data;
-
-	    $.ajax({
-	                type: "POST",
-	                url: "process.php",
-	                data: JSONData,
-	                success: function(replyObj) {
-	                    console.log('success');
-	                    console.log(replyObj);
-	                    $('#testing').html(replyObj);
-	                },
-	                error: function() {
-	                    console.log('error');
-	                },
-	                complete: function() {
-	                    console.log('complete');
-	                }
-	    });
 	}
 
 });
