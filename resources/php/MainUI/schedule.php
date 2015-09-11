@@ -54,30 +54,7 @@
 		/* initialize the external events
 		-----------------------------------------------------------------*/
 
-		$('#class-inner-box .fc-event').each(function() {
-
-			// store data so the calendar knows to render an event upon drop
-			$(this).data('event', {
-				title: $.trim($(this).find('.title').text()), // use the element's text as the event title
-				duration: $(this).find('.duration').text(),
-				stick: true // maintain when user navigates (see docs on the renderEvent method)
-			});
-
-			// make the event draggable using jQuery UI
-			$(this).draggable({
-				zIndex: 999,
-				revert: true,      // will cause the event to go back to its
-				revertDuration: 0,  //  original position after the drag
-
-				// these set of options are to allow the dedired effect
-				// inside the scrollable div created in #class-inner-box:
-				appendTo: 'body',
-				scroll: false,
-				helper: 'clone',
-				containment: 'window'
-			});
-
-		});
+		enableDraggability();
 
 		/* initialize the calendar
 		-----------------------------------------------------------------*/
@@ -202,6 +179,10 @@
 		margin: 10px 0;
 		padding-left: 4px;
 		cursor: pointer;
+	}
+
+	.fc-event-clone {
+		padding: 0 10px;
 	}
 
 	#class-inner-box .fc-event h5,
