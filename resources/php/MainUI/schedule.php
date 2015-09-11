@@ -1,4 +1,5 @@
 <?php
+	$TESTING_MODE = false;
 
 	if ( !empty($_SESSION['stepsData']) && isset($_SESSION['stepsData']) ) {
 		$data = $_SESSION['stepsData'];
@@ -346,15 +347,25 @@
 				<h4>List of Classes</h4>
 
 				<div id='class-inner-box'>
-					<div class='fc-event'><h5><span class="title">CS A200</span> (1/2)</h5> <h6><b>Duration:</b> <span class="duration">2:35</span></h6></div>
-					<div class='fc-event'><h5><span class="title">CS A200</span> (2/2)</h5> <h6><b>Duration:</b> <span class="duration">2:35</span></h6></div>
-					<div class='fc-event'><h5><span class="title">CS A170</span> (1/2)</h5> <h6><b>Duration:</b> <span class="duration">2:30</span></h6></div>
-					<div class='fc-event'><h5><span class="title">CS A170</span> (2/2)</h5> <h6><b>Duration:</b> <span class="duration">2:30</span></h6></div>
-					<div class='fc-event'><h5><span class="title">CS A216</span> (1/1)</h5> <h6><b>Duration:</b> <span class="duration">5:00</span></h6></div>
-					<div class='fc-event'><h5><span class="title">CS A216</span> (1/1)</h5> <h6><b>Duration:</b> <span class="duration">5:00</span></h6></div>
+					<?php
+						if ($TESTING_MODE) {
+							echo '<div class="fc-event"><h5><span class="title">CS A200</span> (1/2)</h5> <h6><b>Duration:</b> <span class="duration">2:35</span></h6></div>';
+							echo '<div class="fc-event"><h5><span class="title">CS A200</span> (2/2)</h5> <h6><b>Duration:</b> <span class="duration">2:35</span></h6></div>';
+							echo '<div class="fc-event"><h5><span class="title">CS A170</span> (1/2)</h5> <h6><b>Duration:</b> <span class="duration">2:30</span></h6></div>';
+							echo '<div class="fc-event"><h5><span class="title">CS A170</span> (2/2)</h5> <h6><b>Duration:</b> <span class="duration">2:30</span></h6></div>';
+							echo '<div class="fc-event"><h5><span class="title">CS A216</span> (1/1)</h5> <h6><b>Duration:</b> <span class="duration">5:00</span></h6></div>';
+							echo '<div class="fc-event"><h5><span class="title">CS A216</span> (1/1)</h5> <h6><b>Duration:</b> <span class="duration">5:00</span></h6></div>';
+						} else {
+					?>
+
+					<h3 class='text-muted text-center first-time'> - </h3>
+
+					<?php
+						}
+					?>
 				</div>
 
-				<div class='text-center'>
+				<div class='text-center pad-top-xsm'>
 					<button id='add-class' type="button" class="btn btn-default" data-toggle="modal" data-target="#addClassModal">Add Class</button>
 				</div>
 			</div>
