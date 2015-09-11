@@ -313,7 +313,7 @@
 							  </div>
 							  <div class="col-md-6">
 							    <label class="control-label">Last Name</label>
-							    <input class="form-control input-md" id="ast-name" name="textinput" type="text">
+							    <input class="form-control input-md" id="last-name" name="textinput" type="text">
 							  </div>
 							</div>
 
@@ -334,7 +334,7 @@
 
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
-			        <button type="button" class="btn btn-primary">Add Instructor</button>
+			        <button id='add-instructor-btn' type="button" class="btn btn-primary">Add Instructor</button>
 			      </div>
 			    </div>
 			  </div>
