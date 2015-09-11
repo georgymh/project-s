@@ -251,7 +251,7 @@
 			<div id='instructor-box' class="left-side-box">
 				<p class='box-description'>Current Instructor</p>
 				<div id='current-instructor'>
-					<span class="text-muted small first-time"> - </span> 
+					<span class="text-muted first-time"> - </span> 
 				</div>
 				<!--<input type="hidden" id="current-instructor-uuid">-->
  
