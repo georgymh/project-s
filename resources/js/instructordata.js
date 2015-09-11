@@ -51,6 +51,9 @@ $(document).ready(function() {
 			instructorHeader = $('#part-time-header');
 		}
 		instructorHeader.after('<li><a href="#">' + instructor.lastName + ', ' + instructor.firstName + '</a></li>');
+
+		// Auto-select the just added instructor -- probably only for testing.
+		instructorHeader.siblings('li').children('a').last().click();
 		
 		// Clear the modal
 		$('#first-name').val('');
