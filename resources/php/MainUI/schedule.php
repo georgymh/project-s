@@ -268,9 +268,10 @@
 			<div id='instructor-box' class="left-side-box">
 				<p class='box-description'>Current Instructor</p>
 				<div id='current-instructor'>
-					Ernsberger, Gabriela
+					<span class="text-muted small first-time"> - </span> 
 				</div>
-
+				<!--<input type="hidden" id="current-instructor-uuid">-->
+ 
 				<hr style="margin-top: 10px">
 
 				<div class="dropdown text-center">
