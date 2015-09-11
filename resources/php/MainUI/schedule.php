@@ -280,8 +280,8 @@
 				    <span class="caret"></span>
 				  </button>
 				  <ul id='instructor-list' class='dropdown-menu' aria-labelledby="instructorList">
-					<li class="dropdown-header">Full Time</li>
-					<li class="dropdown-header">Part Time</li>
+					<li class="dropdown-header" id="full-time-header">Full Time</li>
+					<li class="dropdown-header" id="part-time-header">Part Time</li>
 				  </ul>
 				</div>
 
@@ -413,7 +413,7 @@
 
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
-			        <button type="button" class="btn btn-primary">Add Class</button>
+			        <button id='add-class-btn' type="button" class="btn btn-primary">Add Class</button>
 			      </div>
 			    </div>
 			  </div>
