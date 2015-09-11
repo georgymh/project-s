@@ -123,7 +123,13 @@ function loadInstructor(instructor) {
 ************************************************/
 
 function getCurrentInstructor() {
-	var fullName = $('#current-instructor').text();
+	var fullName = $('#current-instructor').text().trim();
+
+	// Prevent adding class without an instructor selected
+	if (fullName == "-") {
+		return null;
+	}
+
 	return getInstructorFromFullName(fullName);
 }
 
