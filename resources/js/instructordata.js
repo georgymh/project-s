@@ -65,6 +65,32 @@ $(document).ready(function() {
 function getTypeOfInstructor() {
 	return $('#type-full-time').is(':checked') ? 'fulltime' : 'parttime';
 }
+
+// Add class
+$(document).ready(function() {
+	$('#add-class-btn').on('click', function() {
+		// Get current instructor and verify it's valid
+		var instructor = getCurrentInstructor();
+		if (instructor == null) {
+			return false;
+		}
+
+		// Add new class into instructor's 'classes' object 
+		var newClass = {};
+		newClass.title = sanitizeText($('#class-title').val());
+		newClass.totalHours = $('#class-total-hours').val();
+		newClass.weeklyFrequency = $('#class-frequency').val();
+		instructor.classes.push(newClass);
+
+		// Add class into the class box
+		createEventsFromClassData(newClass);
+	});
+});
+
+function createEventsFromClassData(aClass) {
+	
+}
+
 /* Functions to manage the instructor data
 *************************************************/
 
