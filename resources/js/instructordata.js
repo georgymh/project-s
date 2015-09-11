@@ -40,7 +40,7 @@ $(document).ready(function() {
 		instructor.firstName = fName;
 		instructor.lastName = lName;
 		instructor.type = getTypeOfInstructor();
-		instructor.classes = {};
+		instructor.classes = [];
 		instructorData.push(instructor);
 
 		// Add instructor into the instructor box
@@ -84,11 +84,35 @@ $(document).ready(function() {
 
 		// Add class into the class box
 		createEventsFromClassData(newClass);
+
+		// Clear the modal
+		$('#class-title').val('');
+		$('#class-total-hours').val('');
+		$('#class-frequency').val('');
+
+		// Hide the modal
+		$('#addClassModal').modal('hide');
 	});
 });
 
 function createEventsFromClassData(aClass) {
-	
+	// Remove the '-' holder if needed
+	if ($('#class-inner-box').find('.first-time')) {
+		$('#class-inner-box').find('.first-time').remove();
+	}
+
+	// Create the events and put into class list box
+	var newDraggableEvent = $("<div>", {class: "fc-event"});
+	newDraggableEvent.append('<h5><span class="title">' + aClass.title + '</span> (' + '1/2' + ')</h5>');
+	newDraggableEvent.append('<h6><b>Duration:</b> <span class="duration">' + generateClassDuration(aClass) + '</span></h6>');
+	$('#class-inner-box').append(newDraggableEvent);
+
+	// Make event draggable
+	enableDraggability();
+}
+
+function generateClassDuration(aClass) {
+	return '1:00';
 }
 
 /* Functions to manage the instructor data
