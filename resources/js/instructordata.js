@@ -81,8 +81,8 @@ $(document).ready(function() {
 		// Add new class into instructor's 'classes' object 
 		var newClass = {};
 		newClass.title = sanitizeText($('#class-title').val());
-		newClass.totalHours = $('#class-total-hours').val();
-		newClass.weeklyFrequency = $('#class-frequency').val();
+		newClass.totalHours = parseInt($('#class-total-hours').val());
+		newClass.weeklyFrequency = parseInt($('#class-frequency').val());
 		instructor.classes.push(newClass);
 
 		// Add class into the class box
