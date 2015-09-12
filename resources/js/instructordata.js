@@ -119,7 +119,37 @@ function generateDraggableEventsFromClassData(aClass) {
 }
 
 function generateClassDuration(aClass) {
-	return '1:00';
+	function ceilTime(duration, minutesBoundary) {
+		var hours = Math.floor(duration);
+		var minutes = Math.floor((duration - hours) * 60);
+		console.log(minutes);
+
+		for (i = minutes; i <= 60 + minutesBoundary; i++) {
+			if ( (i % 60) % minutesBoundary == 0 ) {
+				if (i >= 60) {
+					hours++;
+				}
+
+				minutes = i % 60;
+
+				break;
+			} 		
+		}
+
+		// Add extra 0 if needed (if minutes is a single-digit integer)
+		var newMinutes = minutes.toString();
+		if (newMinutes.length < 2) {
+			newMinutes = '0' + newMinutes;
+		}
+
+		return hours.toString() + ':' + newMinutes;
+	}
+
+	var hoursPerWeek = aClass.totalHours / JSONData.weeksInASemester;
+	var classDuration = hoursPerWeek / aClass.weeklyFrequency;
+	var ceiledDuration = ceilTime(classDuration, 5);
+
+	return ceiledDuration;
 }
 
 /* Functions to manage the instructor data
