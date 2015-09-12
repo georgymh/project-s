@@ -6,7 +6,7 @@ var data = {
     // Operating Hours contains the hours the department in general will be open or close
     // on each day. Each day has an array that will contain two strings that represent this data.
     // In case the department does not open at a certain day, the two strings will be empty.
-    "operatingHours": 
+    "operatingHours" : 
     {
         "monday" : [ ],
         "tuesday" : [ ],
@@ -16,6 +16,7 @@ var data = {
         "saturday" : [ ],
         "sunday" : [ ]
     },
+    "weeksInASemester" : 16,
 
     // Step Two: Room Information
     "rooms" : 
