@@ -86,7 +86,7 @@ $(document).ready(function() {
 		instructor.classes.push(newClass);
 
 		// Add class into the class box
-		createEventsFromClassData(newClass);
+		generateDraggableEventsFromClassData(newClass);
 
 		// Clear the modal
 		$('#class-title').val('');
@@ -98,7 +98,7 @@ $(document).ready(function() {
 	});
 });
 
-function createEventsFromClassData(aClass) {
+function generateDraggableEventsFromClassData(aClass) {
 	// Remove the '-' holder if needed
 	if ($('#class-inner-box').find('.first-time')) {
 		$('#class-inner-box').find('.first-time').remove();
