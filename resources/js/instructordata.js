@@ -53,7 +53,7 @@ $(document).ready(function() {
 		instructorHeader.after('<li><a href="#">' + instructor.lastName + ', ' + instructor.firstName + '</a></li>');
 
 		// Auto-select the just added instructor -- probably only for testing.
-		instructorHeader.siblings('li').children('a').last().click();
+		instructorHeader.siblings('li').children('a').first().click();
 		
 		// Clear the modal
 		$('#first-name').val('');
