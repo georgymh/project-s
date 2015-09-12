@@ -105,10 +105,14 @@ function generateDraggableEventsFromClassData(aClass) {
 	}
 
 	// Create the events and put into class list box
-	var newDraggableEvent = $("<div>", {class: "fc-event"});
-	newDraggableEvent.append('<h5><span class="title">' + aClass.title + '</span> (' + '1/2' + ')</h5>');
-	newDraggableEvent.append('<h6><b>Duration:</b> <span class="duration">' + generateClassDuration(aClass) + '</span></h6>');
-	$('#class-inner-box').append(newDraggableEvent);
+	var classDuration = generateClassDuration(aClass);
+	for (i = 0; i < aClass.weeklyFrequency; i++) {
+		var newDraggableEvent = $("<div>", {class: "fc-event"});
+		var eventFraction = (i+1).toString() + '/' + aClass.weeklyFrequency.toString();
+		newDraggableEvent.append('<h5><span class="title">' + aClass.title + '</span> (' + eventFraction + ')</h5>');
+		newDraggableEvent.append('<h6><b>Duration:</b> <span class="duration">' + classDuration + '</span></h6>');
+		$('#class-inner-box').append(newDraggableEvent);
+	}
 
 	// Make event draggable
 	enableDraggability();
