@@ -143,7 +143,14 @@ $(document).ready(function() {
 });
 
 function loadInstructor(instructor) {
-	
+	// SHOW INSTRUCTOR'S UNADDED EVENTS
+	// Take out all current events from class list side box
+	$('#class-inner-box').html('');
+
+	// Show each instructor class on the class list side box
+	$.each(instructor.classes, function(key, aClass) {
+		generateDraggableEventsFromClassData(aClass);
+	});
 }
 
 /* Other functions
