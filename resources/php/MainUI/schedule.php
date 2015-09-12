@@ -8,7 +8,7 @@
 		MainUI::deleteSession();
 	}
 
-	//print_r($data);
+	// print_r($data);
 
 ?>
 
@@ -457,7 +457,6 @@
 </body>
 
 <script>
-
 	$(document).ready(function() {
 		$('#addClassModal').on('shown.bs.modal', function () {
 		  $('#current-instructor-modal-text').text($('#current-instructor').text()); // update current instructor in modal
@@ -523,4 +522,5 @@
 	}
 
 </script>
+<script src='resources/js/schedule-testing-mode.js'></script>
 </html>
