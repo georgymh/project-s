@@ -21,6 +21,7 @@
 <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.css' rel='stylesheet' />
 <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.print.css' rel='stylesheet' media='print' />
 <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' rel='stylesheet' />
+<link href='http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.1/jquery.qtip.min.css' rel='stylesheet' />
 <link href="vendors/css/bootstrap.css" rel='stylesheet' />
 
 <!-- JS -->
@@ -28,6 +29,7 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
 <script src='vendors/js/jquery-ui.custom.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.1/jquery.qtip.min.js'></script>
 <script src='vendors/js/bootstrap.js'></script>
 <script src='resources/js/ui-logic.js'></script>
 <script src='resources/js/instructorData.js'></script>
@@ -98,6 +100,18 @@
 
 		        // change the border color just for fun
 		        $(this).css('border-color', 'red');
+		    },
+		    eventRender: function(event, element) {
+		        element.qtip({
+		            content: event.instructor,
+		            style: { 
+		            	classes: 'qtip-bootstrap h5' 
+		            },
+		            position: {
+		            	at: 'top center',
+		            	my: 'bottom center'
+		            }
+		        });
 		    }
 		});
 
