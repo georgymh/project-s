@@ -127,6 +127,10 @@ function drawDraggableEvent(event, eventsQty, title) {
 	var eventFraction = event.id.toString() + '/' + eventsQty.toString();
 	newDraggableEvent.append('<h5><span class="title">' + title + '</span> (' + eventFraction + ')</h5>');
 	newDraggableEvent.append('<h6><b>Duration:</b> <span class="duration">' + event.duration + '</span></h6>');
+
+	newDraggableEvent.data('eventData', event);
+	newDraggableEvent.data('instructor', $('#current-instructor').text());
+
 	$('#class-inner-box').append(newDraggableEvent);
 }
 
@@ -196,8 +200,14 @@ function loadInstructor(instructor) {
 
 	// Show each instructor class on the class list side box
 	$.each(instructor.classes, function(key, aClass) {
-		generateDraggableEventsFromClassData(aClass);
+		$.each(aClass.events, function(key, event) {
+			if (!event.inCalendar) {
+				drawDraggableEvent(event, aClass.events.length, aClass.title);
+			}
+		});
 	});
+
+	enableDraggability();
 }
 
 /* Other functions

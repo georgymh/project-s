@@ -30,6 +30,8 @@ function enableDraggability() {
 		$(this).data('event', {
 			title: $.trim($(this).find('.title').text()), // use the element's text as the event title
 			duration: $(this).find('.duration').text(),
+			instructor: $(this).data('instructor'),
+			eventData: $(this).data('eventData'),
 			stick: true // maintain when user navigates (see docs on the renderEvent method)
 		});
 

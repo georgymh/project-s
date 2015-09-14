@@ -89,6 +89,8 @@
 			editable: true,
 			droppable: true, // this allows things to be dropped onto the calendar
 			drop: function(date) {
+					var eventData = $(this).data('eventData');
+					eventData.inCalendar = true;
 					$(this).remove();
 			},
 			eventClick: function(event) {
