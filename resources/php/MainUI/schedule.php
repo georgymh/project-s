@@ -60,21 +60,28 @@
 		-----------------------------------------------------------------*/
 
 		$('#calendar').fullCalendar({
-			header: {
-				left: 'prev,next today',
+			/* General View */
+			header: false, /*{
+				left: 'prev,next',
 				center: 'title',
 				right: 'agendaWeek,agendaDay'
-			},
+			},*/
 			defaultView: 'agendaWeek',
 			allDaySlot: false,
+			columnFormat: 'dddd',
+			defaultDate: '2015-08-24',
+			aspectRatio: 1.1775,
+
+			/* Days & hours properties */
 			snapDuration: '00:05:00',
 			//slotLabelInterval: '00:30:00',
 			slotEventOverlap: true, // as default
-			hiddenDays: [ 0 ],
+			//hiddenDays: [ 0 ],
 			firstDay: 1,
 			minTime: '7:00',
 			maxTime: '23:00',
-			aspectRatio: 1.35,
+			
+			/* Events & actions */
 			//events: getBusinessHours(),
 			//businessHours: true,
 			eventDurationEditable: false, // can't resize to edit event duration
@@ -83,7 +90,13 @@
 			droppable: true, // this allows things to be dropped onto the calendar
 			drop: function(date) {
 					$(this).remove();
-			}
+			},
+			eventClick: function(event) {
+		        alert('Event: ' + Date(event.start));
+
+		        // change the border color just for fun
+		        $(this).css('border-color', 'red');
+		    }
 		});
 
 });
@@ -122,7 +135,7 @@
 		margin-left: 230px;
 		margin-right: 270px;
 		overflow: hidden;
-		height: 751px;
+		height: 100%;
 	}
 
 	#right-container {
@@ -172,7 +185,7 @@
 
 	#class-inner-box {
 		overflow-y: auto;
-		max-height: 307.78px;
+		max-height: 333.75px;
 	}
 		
 	#class-inner-box .fc-event {
