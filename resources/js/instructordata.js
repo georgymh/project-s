@@ -3,22 +3,23 @@ var instructorData =
 	// { 
 	// 	"firstName" : "",
 	// 	"lastName" : "",
-	// 	"type" : "", // String - 'parttime' or 'fulltime'
+	// 	"type" : "", 						// String - 'parttime' or 'fulltime'
 	// 	"classes" : [
 	// 		{
-	// 			"title" : "",
-	// 			"totalHours" : "", // Integer
-	// 			"weeklyFrequency" : "" // Integer
+	// 			"title" : "", 				// String
+	// 			"totalHours" : "", 			// Integer
+	// 			"weeklyFrequency" : "" 		// Integer
+	// 			"events" : [
+	// 				"id" : "",				// Integer
+	// 				"inCalendar" : "",		// Boolean
+	// 				"room" : "",			// String - room title
+	// 				"day" : "",				// String - day (mon, tues, wed...)
+	// 				"duration" : "",		// String - time (hh:mm)
+	// 				"start" : "",			// String - time (hh:mm)
+	// 				"end" : ""				// String - time (hh:mm)
+	// 			]
 	// 		}
-	// 	], // array of classes
-	// 	"classesInsideCalendar" : [ ], // These are FullCalendar event objects that were already created
-	// 								   // and are inside the calendar frame. These objects also contain
-	// 								   // their room information.
-
-	// 	"classesOutsideCalendar" : [ ] // These are FullCalendar event objects that can be displayed in 
-	// 								   // the class list left side box, and ready to be dropped into the
-	// 								   // calendar frame. On this event, it will be transfered into the
-	// 								   // "classesInsideCalendar" array.
+	// 	] // array of classes
 	// }
 ]; // array of instructors
 
