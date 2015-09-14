@@ -86,8 +86,8 @@ $(document).ready(function() {
 		newClass.weeklyFrequency = parseInt($('#class-frequency').val());
 		instructor.classes.push(newClass);
 
-		// Add class into the class box
-		generateDraggableEventsFromClassData(newClass);
+		// Create the events
+		createEvents(newClass);
 
 		// Clear the modal
 		$('#class-title').val('');
@@ -99,25 +99,37 @@ $(document).ready(function() {
 	});
 });
 
-function generateDraggableEventsFromClassData(aClass) {
+function createEvents(aClass) {
+	aClass.events = [];
+
+	var classDuration = generateClassDuration(aClass);
+	var totalEvents = aClass.weeklyFrequency;
+	for (id = 1; id <= totalEvents; id++) {
+		var newEvent = {};
+		newEvent.id = id;
+		newEvent.inCalendar = false;
+		newEvent.duration = classDuration;
+		aClass.events.push(newEvent);
+
+		drawDraggableEvent(newEvent, totalEvents, aClass.title);
+	}
+
+	enableDraggability();
+}
+
+function drawDraggableEvent(event, eventsQty, title) {
 	// Remove the '-' holder if needed
 	if ($('#class-inner-box').find('.first-time')) {
 		$('#class-inner-box').find('.first-time').remove();
 	}
 
-	// Create the events and put into class list box
-	var classDuration = generateClassDuration(aClass);
-	for (i = 0; i < aClass.weeklyFrequency; i++) {
-		var newDraggableEvent = $("<div>", {class: "fc-event"});
-		var eventFraction = (i+1).toString() + '/' + aClass.weeklyFrequency.toString();
-		newDraggableEvent.append('<h5><span class="title">' + aClass.title + '</span> (' + eventFraction + ')</h5>');
-		newDraggableEvent.append('<h6><b>Duration:</b> <span class="duration">' + classDuration + '</span></h6>');
-		$('#class-inner-box').append(newDraggableEvent);
-	}
-
-	// Make event draggable
-	enableDraggability();
+	var newDraggableEvent = $("<div>", {class: "fc-event"});
+	var eventFraction = event.id.toString() + '/' + eventsQty.toString();
+	newDraggableEvent.append('<h5><span class="title">' + title + '</span> (' + eventFraction + ')</h5>');
+	newDraggableEvent.append('<h6><b>Duration:</b> <span class="duration">' + event.duration + '</span></h6>');
+	$('#class-inner-box').append(newDraggableEvent);
 }
+
 
 function generateClassDuration(aClass) {
 	function ceilTime(duration, minutesBoundary) {
