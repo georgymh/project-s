@@ -134,7 +134,6 @@ function drawDraggableEvent(event, eventsQty, title) {
 	$('#class-inner-box').append(newDraggableEvent);
 }
 
-
 function generateClassDuration(aClass) {
 	function ceilTime(duration, minutesBoundary) {
 		var hours = Math.floor(duration);
@@ -239,6 +238,14 @@ function getInstructorFromFullName(fullName) {
 	});
 
 	return instructor;
+}
+
+function getEventDataFromDraggableEvent(draggableEventElem) {
+	return $(draggableEventElem).data('eventData');
+}
+
+function getEventDataFromFCEvent(fcEventElem) {
+	return $(fcEventElem).data('eventData');
 }
 
 function generateUUID(){

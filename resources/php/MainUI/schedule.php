@@ -30,6 +30,7 @@
 <script src='vendors/js/jquery-ui.custom.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.1/jquery.qtip.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js'></script>
 <script src='vendors/js/bootstrap.js'></script>
 <script src='resources/js/ui-logic.js'></script>
 <script src='resources/js/instructorData.js'></script>
@@ -37,6 +38,16 @@
 
 	var JSONData = JSON.parse('<?php echo $data ?>');
 	console.log(JSONData);
+
+	var dayOfWeek = [
+		"sunday",
+	    "monday",
+	    "tuesday",
+	    "wednesday",
+	    "thursday",
+	    "friday",
+	    "saturday"              
+	];
 
 	$(document).ready(function() {
 
@@ -91,9 +102,23 @@
 			editable: true,
 			droppable: true, // this allows things to be dropped onto the calendar
 			drop: function(date) {
-					var eventData = $(this).data('eventData');
-					eventData.inCalendar = true;
-					$(this).remove();
+				var eventData = getEventDataFromDraggableEvent(this);
+				eventData.inCalendar = true;
+				eventData.day = dayOfWeek[date.toDate().getDay()];
+				eventData.start = moment(date).format("HH:mm");
+				eventData.end = moment(date).add(moment.duration(eventData.duration)).format("HH:mm");
+				console.log('\ndate: ' + eventData.day +
+							'\nstart: ' + eventData.start +
+							'\nend: ' + eventData.end);
+				console.log('deleting');
+				$(this).remove();
+			},
+			eventDrop: function(event, delta) {
+				var eventData = getEventDataFromFCEvent(this);
+				console.log(delta);
+				console.log('\ndate: ' + eventData.day +
+							'\nstart: ' + eventData.start +
+							'\nend: ' + eventData.end);
 			},
 			eventClick: function(event) {
 		        alert('Event: ' + Date(event.start));
@@ -112,6 +137,8 @@
 		            	my: 'bottom center'
 		            }
 		        });
+
+		        element.data('eventData', event.eventData);
 		    }
 		});
 
