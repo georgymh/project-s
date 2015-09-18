@@ -37,16 +37,6 @@
 	var JSONData = JSON.parse('<?php echo $data ?>');
 	console.log(JSONData);
 
-	var dayOfWeek = [
-		"sunday",
-	    "monday",
-	    "tuesday",
-	    "wednesday",
-	    "thursday",
-	    "friday",
-	    "saturday"              
-	];
-
 	$(document).ready(function() {
 
 		/* initialize the external events
@@ -89,10 +79,10 @@
 			drop: function(date) {
 				var eventData = getEventDataFromDraggableEvent(this);
 				eventData.inCalendar = true;
-				eventData.day = dayOfWeek[date.toDate().getDay()];
+				eventData.day = date.toDate().getDay();
 				eventData.start = moment(date).format("HH:mm");
 				eventData.end = moment(date).add(moment.duration(eventData.duration)).format("HH:mm");
-				console.log('\ndate: ' + eventData.day +
+				console.log('\nday: ' + eventData.day +
 							'\nstart: ' + eventData.start +
 							'\nend: ' + eventData.end);
 				console.log('deleting');
@@ -100,8 +90,13 @@
 			},
 			eventDrop: function(event, delta) {
 				var eventData = getEventDataFromFCEvent(this);
-				console.log(delta);
-				console.log('\ndate: ' + eventData.day +
+				console.log('current ' + moment().day(eventData.day).get('day'));
+				console.log('delta ' + delta.days());
+				console.log('+ ' + moment().day(eventData.day).add(delta.days(), 'day').get('day'));
+				eventData.day = moment().days(eventData.day).add(delta).get('day');
+				eventData.start = moment(eventData.start, "HH:mm").add(delta).format('HH:mm');
+				eventData.end = moment(eventData.end, "HH:mm").add(delta).format("HH:mm");
+				console.log('\nday: ' + eventData.day +
 							'\nstart: ' + eventData.start +
 							'\nend: ' + eventData.end);
 			},
