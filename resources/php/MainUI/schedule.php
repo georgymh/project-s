@@ -30,10 +30,8 @@
 <script src='vendors/js/jquery-ui.custom.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.4.0/fullcalendar.min.js'></script>
 <script src='http://cdnjs.cloudflare.com/ajax/libs/qtip2/2.2.1/jquery.qtip.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js'></script>
 <script src='vendors/js/bootstrap.js'></script>
-<script src='resources/js/ui-logic.js'></script>
-<script src='resources/js/instructorData.js'></script>
+
 <script>
 
 	var JSONData = JSON.parse('<?php echo $data ?>');
@@ -50,19 +48,6 @@
 	];
 
 	$(document).ready(function() {
-
-		/* room events
-		-----------------------------------------------------------------*/
-
-		$('.room-container').on('click', function() {
-			$('.right-side-box').find('.room-container').each(function() {
-				$(this).removeClass('current');
-			});
-
-			$(this).addClass('current');
-
-			$('#current-room').text($(this).text());		
-		});
 
 		/* initialize the external events
 		-----------------------------------------------------------------*/
@@ -471,12 +456,11 @@
 		<div id='right-container'>
 			<div class='right-side-box'>
 				<p class='box-description'>Current Room</p>
-				<div id='current-room'>
-					MBCC 123
-				</div>
+				<div id='current-room'></div>
 
 				<hr style="margin-top: 10px">
 
+				<!--
 				<div class='room-container current'><div class="room-wrap"><div class='room-title'>MBCC 123</div></div></div>
 				<div class='room-container'><div class="room-wrap"><div class='room-title'>MBCC 124</div></div></div>
 				<div class='room-container'><div class="room-wrap"><div class='room-title'>MBCC 125</div></div></div>
@@ -489,6 +473,7 @@
 				<div class='room-container'><div class="room-wrap"><div class='room-title'>MBCC 204</div></div></div>
 				<div class='room-container'><div class="room-wrap"><div class='room-title'>MBCC 205</div></div></div>
 				<div class='clear'></div>
+				-->
 
 				<!--
 				<div class="dropdown text-center">
@@ -578,5 +563,8 @@
 	}
 
 </script>
+<script src='resources/js/ui-logic.js'></script>
+<script src='resources/js/instructordata.js'></script>
+<script src='resources/js/roomdata.js'></script>
 <script src='resources/js/schedule-testing-mode.js'></script>
 </html>
