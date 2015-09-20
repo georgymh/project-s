@@ -37,95 +37,8 @@
 	var JSONData = JSON.parse('<?php echo $data ?>');
 	console.log(JSONData);
 
-	$(document).ready(function() {
-
-		/* initialize the external events
-		-----------------------------------------------------------------*/
-
-		enableDraggability();
-
-		/* initialize the calendar
-		-----------------------------------------------------------------*/
-
-		$('#calendar').fullCalendar({
-			/* General View */
-			header: false, /*{
-				left: 'prev,next',
-				center: 'title',
-				right: 'agendaWeek,agendaDay'
-			},*/
-			defaultView: 'agendaWeek',
-			allDaySlot: false,
-			columnFormat: 'dddd',
-			defaultDate: '2015-08-24',
-			aspectRatio: 1.1775,
-
-			/* Days & hours properties */
-			snapDuration: '00:05:00',
-			//slotLabelInterval: '00:30:00',
-			slotEventOverlap: true, // as default
-			//hiddenDays: [ 0 ],
-			firstDay: 1,
-			minTime: '7:00',
-			maxTime: '23:00',
-			
-			/* Events & actions */
-			//events: getBusinessHours(),
-			//businessHours: true,
-			eventDurationEditable: false, // can't resize to edit event duration
-			eventOverlap: false,
-			editable: true,
-			droppable: true, // this allows things to be dropped onto the calendar
-			drop: function(date) {
-				var eventData = getEventDataFromDraggableEvent(this);
-				eventData.inCalendar = true;
-				eventData.day = date.toDate().getDay();
-				eventData.start = moment(date).format("HH:mm");
-				eventData.end = moment(date).add(moment.duration(eventData.duration)).format("HH:mm");
-				console.log('\nday: ' + eventData.day +
-							'\nstart: ' + eventData.start +
-							'\nend: ' + eventData.end);
-				console.log('deleting');
-				$(this).remove();
-			},
-			eventDrop: function(event, delta) {
-				var eventData = getEventDataFromFCEvent(this);
-				console.log('current ' + moment().day(eventData.day).get('day'));
-				console.log('delta ' + delta.days());
-				console.log('+ ' + moment().day(eventData.day).add(delta.days(), 'day').get('day'));
-				eventData.day = moment().days(eventData.day).add(delta).get('day');
-				eventData.start = moment(eventData.start, "HH:mm").add(delta).format('HH:mm');
-				eventData.end = moment(eventData.end, "HH:mm").add(delta).format("HH:mm");
-				console.log('\nday: ' + eventData.day +
-							'\nstart: ' + eventData.start +
-							'\nend: ' + eventData.end);
-			},
-			eventClick: function(event) {
-		        alert('Event: ' + Date(event.start));
-
-		        // change the border color just for fun
-		        $(this).css('border-color', 'red');
-		    },
-		    eventRender: function(event, element) {
-		        element.qtip({
-		            content: event.instructor,
-		            style: { 
-		            	classes: 'qtip-bootstrap h5' 
-		            },
-		            position: {
-		            	at: 'top center',
-		            	my: 'bottom center'
-		            }
-		        });
-
-		        element.data('eventData', event.eventData);
-		    }
-		});
-
-});
-	 
-	
 </script>
+
 <style>
 
 	body {
@@ -562,4 +475,98 @@
 <script src='resources/js/instructordata.js'></script>
 <script src='resources/js/roomdata.js'></script>
 <script src='resources/js/schedule-testing-mode.js'></script>
+<script>
+
+	$(document).ready(function() {
+
+		/* initialize the external events
+		-----------------------------------------------------------------*/
+
+		enableDraggability();
+
+		/* initialize the calendar
+		-----------------------------------------------------------------*/
+
+		$('#calendar').fullCalendar({
+			/* General View */
+			header: false, /*{
+				left: 'prev,next',
+				center: 'title',
+				right: 'agendaWeek,agendaDay'
+			},*/
+			defaultView: 'agendaWeek',
+			allDaySlot: false,
+			columnFormat: 'dddd',
+			defaultDate: '2015-08-24',
+			aspectRatio: 1.1775,
+
+			/* Days & hours properties */
+			snapDuration: '00:05:00',
+			//slotLabelInterval: '00:30:00',
+			slotEventOverlap: true, // as default
+			//hiddenDays: [ 0 ],
+			firstDay: 1,
+			minTime: '7:00',
+			maxTime: '23:00',
+			
+			/* Events & actions */
+			//events: getBusinessHours(),
+			//businessHours: true,
+			eventDurationEditable: false, // can't resize to edit event duration
+			eventOverlap: false,
+			editable: true,
+			droppable: true, // this allows things to be dropped onto the calendar
+			drop: function(date) {
+				// Set event data from classdata
+				var eventData = getEventDataFromDraggableEvent(this);
+				eventData.inCalendar = true;
+				eventData.day = date.toDate().getDay();
+				eventData.start = moment(date).format("HH:mm");
+				eventData.end = moment(date).add(moment.duration(eventData.duration)).format("HH:mm");
+				console.log('\nday: ' + eventData.day +
+							'\nstart: ' + eventData.start +
+							'\nend: ' + eventData.end);
+				console.log('deleting');
+				$(this).remove();
+			},
+			eventDrop: function(event, delta) {
+				var eventData = getEventDataFromFCEvent(this);
+				console.log('current ' + moment().day(eventData.day).get('day'));
+				console.log('delta ' + delta.days());
+				console.log('+ ' + moment().day(eventData.day).add(delta.days(), 'day').get('day'));
+				eventData.day = moment().days(eventData.day).add(delta).get('day');
+				eventData.start = moment(eventData.start, "HH:mm").add(delta).format('HH:mm');
+				eventData.end = moment(eventData.end, "HH:mm").add(delta).format("HH:mm");
+				console.log('\nday: ' + eventData.day +
+							'\nstart: ' + eventData.start +
+							'\nend: ' + eventData.end);
+			},
+			eventClick: function(event) {
+		        alert('Event: ' + Date(event.start));
+
+		        // change the border color just for fun
+		        $(this).css('border-color', 'red');
+		    },
+		    eventRender: function(event, element) {
+		    	element.data('eventData', event.eventData);
+		    },
+		    eventAfterRender: function(event, element) {
+		        element.qtip({
+		            content: event.eventData.instructor,
+		            overwrite: true,
+		            style: { 
+		            	classes: 'qtip-bootstrap h5' 
+		            },
+		            position: {
+		            	at: 'top center',
+		            	my: 'bottom center'
+		            }
+		        });
+		    }
+		});
+
+});
+	 
+	
+</script>
 </html>

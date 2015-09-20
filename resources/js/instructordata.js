@@ -99,6 +99,7 @@ $(document).ready(function() {
 	});
 });
 
+// Creating eventData
 function createEvents(aClass) {
 	aClass.events = [];
 
@@ -107,17 +108,19 @@ function createEvents(aClass) {
 	for (id = 1; id <= totalEvents; id++) {
 		var newEvent = {};
 		newEvent.id = id;
+		newEvent.title = aClass.title;
+		newEvent.instructor = $('#current-instructor').text();
 		newEvent.inCalendar = false;
 		newEvent.duration = classDuration;
 		aClass.events.push(newEvent);
 
-		drawDraggableEvent(newEvent, totalEvents, aClass.title);
+		drawDraggableEvent(newEvent, totalEvents);
 	}
 
 	enableDraggability();
 }
 
-function drawDraggableEvent(event, eventsQty, title) {
+function drawDraggableEvent(event, eventsQty) {
 	// Remove the '-' holder if needed
 	if ($('#class-inner-box').find('.first-time')) {
 		$('#class-inner-box').find('.first-time').remove();
@@ -125,7 +128,7 @@ function drawDraggableEvent(event, eventsQty, title) {
 
 	var newDraggableEvent = $("<div>", {class: "fc-event"});
 	var eventFraction = event.id.toString() + '/' + eventsQty.toString();
-	newDraggableEvent.append('<h5><span class="title">' + title + '</span> (' + eventFraction + ')</h5>');
+	newDraggableEvent.append('<h5><span class="title">' + event.title + '</span> (' + eventFraction + ')</h5>');
 	newDraggableEvent.append('<h6><b>Duration:</b> <span class="duration">' + event.duration + '</span></h6>');
 
 	newDraggableEvent.data('eventData', event);
@@ -201,7 +204,7 @@ function loadInstructor(instructor) {
 	$.each(instructor.classes, function(key, aClass) {
 		$.each(aClass.events, function(key, event) {
 			if (!event.inCalendar) {
-				drawDraggableEvent(event, aClass.events.length, aClass.title);
+				drawDraggableEvent(event, aClass.events.length);
 			}
 		});
 	});
@@ -228,7 +231,7 @@ function getInstructorFromFullName(fullName) {
 	var firstName = fullName[1].trim();
 	var lastName = fullName[0].trim();
 
-	var instructor = null
+	var instructor = null;
 	$.each(instructorData, function(key, value) {
 		console.log(value.lastName);
 		if (value.firstName == firstName && value.lastName == lastName) {
