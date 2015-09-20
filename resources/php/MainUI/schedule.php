@@ -560,6 +560,11 @@
 		            position: {
 		            	at: 'top center',
 		            	my: 'bottom center'
+		            },
+		            hide: {
+		            	fixed: true,
+		            	event: 'click mouseleave unfocus',
+		            	distance: $(element).height()
 		            }
 		        });
 		    }
