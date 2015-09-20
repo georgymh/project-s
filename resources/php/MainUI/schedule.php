@@ -523,10 +523,16 @@
 				eventData.day = date.toDate().getDay();
 				eventData.start = moment(date).format("HH:mm");
 				eventData.end = moment(date).add(moment.duration(eventData.duration)).format("HH:mm");
+				eventData.room = getCurrentRoom();
 				console.log('\nday: ' + eventData.day +
 							'\nstart: ' + eventData.start +
 							'\nend: ' + eventData.end);
 				console.log('deleting');
+
+				// Set room data
+				var roomData = getCurrentRoomData();
+				roomData.eventDataList.push(eventData);
+
 				$(this).remove();
 			},
 			eventDrop: function(event, delta) {
