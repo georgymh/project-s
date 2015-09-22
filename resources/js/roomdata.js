@@ -53,8 +53,9 @@ function initializeRoomData() {
 	var rooms = JSONData.rooms;
 	for (var i = 0; i < rooms.length; i++) {
 		var newRoom = {};
+		newRoom["_id"] = generateUUID();
 		newRoom.title = rooms[i].prefix + " " + rooms[i].number;
-		newRoom.eventDataList = [];
+		newRoom.classes = [];
 		roomData.push(newRoom);
 	}
 }
@@ -65,11 +66,17 @@ function initializeRoomData() {
 function loadEventsFromRoomData(roomData) {
 	$('#calendar').fullCalendar('removeEvents');
 
-	var eventDataList = roomData.eventDataList;
-	var totalEvents = eventDataList.length;
-	for (var i = 0; i < totalEvents; i++) {
-		$('#calendar').fullCalendar('renderEvent', createFCEventData( eventDataList[i]) );
+	var classDataList = roomData.classes;
+	var totalClasses = classDataList.length;
+	for (var i = 0; i < totalClasses; i++) {
+		console.log('try ' + i);
+		renderEvent( createFCEventData(classDataList[i]), false );
 	}
+}
+
+function renderEvent(fcEvent, addClassToRoom) {
+	fcEvent.addToRoom = false;
+	$('#calendar').fullCalendar( 'renderEvent', fcEvent );
 }
 
 /* RUNTIME METHODS
@@ -104,12 +111,20 @@ var fcDay = [
 ];
 
 // Function to create an FC-recognizable event object.
-function createFCEventData(eventData) {
+function createFCEventData(id_list) {
+	var eventData = getEventDataFromIdList(id_list);
+	var theClass = getClassFromInstructorAndClassId( 
+						getInstructorFromFullName(id_list.instructor), 
+						id_list.class_id );
+
 	var newEvent = {};
-	newEvent.title = eventData.title;
+	newEvent.title = theClass.title;
 	newEvent.start = fcDay[eventData.day] + "T" + eventData.start;
 	newEvent.end = fcDay[eventData.day] + "T" + eventData.end;
-	newEvent.eventData = eventData;
+	newEvent.instructor = id_list.instructor;
+	newEvent.eventData_id = id_list.eventData_id;
+	newEvent.class_id = id_list.class_id;
+	
 	return newEvent;
 }
 
@@ -118,11 +133,14 @@ function createFCEventData(eventData) {
 
 var roomData = [
 	// {
+	//  id : "", // String - id of the room
 	// 	title : "", // String - title of the room (prefix + number)
-	// 	eventDataList : [
+	// 	classes : [
 	// 		{
-				
+	//			eventData_id : "",
+	//			instructor : "",
+	//			class_id : ""
 	// 		}
-	// 	]			// Array of eventData - classes corresponding to the room
+	// 	]			// Array of class data - classes corresponding to the room
 	// }
 ];

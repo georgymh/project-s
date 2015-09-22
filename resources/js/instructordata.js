@@ -1,16 +1,19 @@
 var instructorData = 
 [
-	// { 
+	// {
+	//  "_id" : "",
 	// 	"firstName" : "",
 	// 	"lastName" : "",
 	// 	"type" : "", 						// String - 'parttime' or 'fulltime'
 	// 	"classes" : [
 	// 		{
+	// 			"_id" : "",
 	// 			"title" : "", 				// String
 	// 			"totalHours" : "", 			// Integer
 	// 			"weeklyFrequency" : "" 		// Integer
-	// 			"events" : [
-	// 				"id" : "",				// Integer
+	// 			"eventData" : [
+	// 				"_id" : "",
+	// 				"eventNumber" : 0, 		// Integer
 	// 				"inCalendar" : "",		// Boolean
 	// 				"room" : "",			// String - room title
 	// 				"day" : "",				// String - day (mon, tues, wed...)
@@ -38,6 +41,7 @@ $(document).ready(function() {
 
 		// Add new instructor into 'instructorData'
 		var instructor = {};
+		instructor["_id"] = generateUUID();
 		instructor.firstName = fName;
 		instructor.lastName = lName;
 		instructor.type = getTypeOfInstructor();
@@ -81,6 +85,7 @@ $(document).ready(function() {
 
 		// Add new class into instructor's 'classes' object 
 		var newClass = {};
+		newClass["_id"] = generateUUID();
 		newClass.title = sanitizeText($('#class-title').val());
 		newClass.totalHours = parseInt($('#class-total-hours').val());
 		newClass.weeklyFrequency = parseInt($('#class-frequency').val());
@@ -107,32 +112,30 @@ function createEvents(aClass) {
 	var totalEvents = aClass.weeklyFrequency;
 	for (id = 1; id <= totalEvents; id++) {
 		var newEvent = {};
-		newEvent.id = id;
-		newEvent.title = aClass.title;
-		newEvent.instructor = $('#current-instructor').text();
+		newEvent["_id"] = generateUUID();
+		newEvent.eventNumber = id;
 		newEvent.inCalendar = false;
 		newEvent.duration = classDuration;
 		aClass.events.push(newEvent);
 
-		drawDraggableEvent(newEvent, totalEvents);
+		drawDraggableEvent(newEvent, totalEvents, aClass);
 	}
 
 	enableDraggability();
 }
 
-function drawDraggableEvent(event, eventsQty) {
+function drawDraggableEvent(event, eventsQty, aClass) {
 	// Remove the '-' holder if needed
 	if ($('#class-inner-box').find('.first-time')) {
 		$('#class-inner-box').find('.first-time').remove();
 	}
 
 	var newDraggableEvent = $("<div>", {class: "fc-event"});
-	var eventFraction = event.id.toString() + '/' + eventsQty.toString();
-	newDraggableEvent.append('<h5><span class="title">' + event.title + '</span> (' + eventFraction + ')</h5>');
+	var eventFraction = event.eventNumber.toString() + '/' + eventsQty.toString();
+	newDraggableEvent.append('<h5><span class="title">' + aClass.title + '</span> (' + eventFraction + ')</h5>');
 	newDraggableEvent.append('<h6><b>Duration:</b> <span class="duration">' + event.duration + '</span></h6>');
 
-	newDraggableEvent.data('eventData', event);
-	newDraggableEvent.data('instructor', $('#current-instructor').text());
+	addMetaDataToDraggableEvent(newDraggableEvent, aClass['_id'], event['_id']);
 
 	$('#class-inner-box').append(newDraggableEvent);
 }
@@ -141,7 +144,6 @@ function generateClassDuration(aClass) {
 	function ceilTime(duration, minutesBoundary) {
 		var hours = Math.floor(duration);
 		var minutes = Math.floor((duration - hours) * 60);
-		console.log(minutes);
 
 		for (i = minutes; i <= 60 + minutesBoundary; i++) {
 			if ( (i % 60) % minutesBoundary == 0 ) {
@@ -182,7 +184,6 @@ $(document).ready(function() {
 		// Get instructor from option and verify it's valid
 		var fullName = $(this).text();
 		var instructor = getInstructorFromFullName(fullName);
-		console.log(instructor);
 		if (instructor == null) {
 			return false;
 		}
@@ -204,7 +205,7 @@ function loadInstructor(instructor) {
 	$.each(instructor.classes, function(key, aClass) {
 		$.each(aClass.events, function(key, event) {
 			if (!event.inCalendar) {
-				drawDraggableEvent(event, aClass.events.length);
+				drawDraggableEvent(event, aClass.events.length, aClass);
 			}
 		});
 	});
@@ -233,7 +234,6 @@ function getInstructorFromFullName(fullName) {
 
 	var instructor = null;
 	$.each(instructorData, function(key, value) {
-		console.log(value.lastName);
 		if (value.firstName == firstName && value.lastName == lastName) {
 			instructor = value;
 			return false;
@@ -243,12 +243,45 @@ function getInstructorFromFullName(fullName) {
 	return instructor;
 }
 
+function getClassFromInstructorAndClassId(instructor, classId) {
+	var theClass = null;
+	$.each(instructor.classes, function (index, aClass) {
+	  if (aClass['_id'] == classId) {
+	  	theClass = aClass;
+	  	return false;
+	  }
+	});
+
+	return theClass;
+}
+
+function getEventFromClassAndEventId(aClass, eventDataId) {
+	var theEvent = null;
+	$.each(aClass.events, function (index, anEvent) {
+	  if (anEvent['_id'] == eventDataId) {
+	  	theEvent = anEvent;
+	  	return false;
+	  }
+	});
+
+	return theEvent;
+}
+
 function getEventDataFromDraggableEvent(draggableEventElem) {
-	return $(draggableEventElem).data('eventData');
+	var elemEventData = $(draggableEventElem).data('event');
+	return getEventDataFromIdList(elemEventData);
 }
 
 function getEventDataFromFCEvent(fcEventElem) {
-	return $(fcEventElem).data('eventData');
+	var fcElemEventData = $(fcEventElem).data('id_data');
+	return getEventDataFromIdList(fcElemEventData);
+}
+
+function getEventDataFromIdList(idList) {
+	var instructor = getInstructorFromFullName(idList.instructor);
+	var theClass = getClassFromInstructorAndClassId(instructor, idList.class_id);
+	var theEvent = getEventFromClassAndEventId(theClass, idList.eventData_id);
+	return theEvent;
 }
 
 function generateUUID(){

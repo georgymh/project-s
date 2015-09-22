@@ -20,19 +20,25 @@ $(document).ready(function() {
 	});
 });
 
+function addMetaDataToDraggableEvent(draggableEvent, classId, eventId) {
+	// store data so the calendar knows to render an event upon drop
+	$(draggableEvent).data('event', {
+		title: $.trim($(draggableEvent).find('.title').text()), // use the element's text as the event title
+		instructor: $('#current-instructor').text(),
+		duration: $(draggableEvent).find('.duration').text(),
+
+		class_id: classId,
+		eventData_id: eventId,
+
+		stick: true // maintain when user navigates (see docs on the renderEvent method)
+	});
+}
+
 function enableDraggability() {
 	/* initialize the external events
 	-----------------------------------------------------------------*/
 
 	$('#class-inner-box .fc-event').each(function() {
-
-		// store data so the calendar knows to render an event upon drop
-		$(this).data('event', {
-			title: $.trim($(this).find('.title').text()), // use the element's text as the event title
-			duration: $(this).find('.duration').text(),
-			eventData: $(this).data('eventData'),
-			stick: true // maintain when user navigates (see docs on the renderEvent method)
-		});
 
 		// make the event draggable using jQuery UI
 		$(this).draggable({

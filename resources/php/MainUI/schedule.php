@@ -479,6 +479,16 @@
 
 	$(document).ready(function() {
 
+		var fcDayTable = {
+			"2015-08-30" : 0, // Sun
+			"2015-08-24" : 1, // Mon
+			"2015-08-25" : 2, // Tue
+			"2015-08-26" : 3, // Wed
+			"2015-08-27" : 4, // Thu
+			"2015-08-28" : 5, // Fri
+			"2015-08-29" : 6  // Sat
+		};
+
 		/* initialize the external events
 		-----------------------------------------------------------------*/
 
@@ -523,15 +533,10 @@
 				eventData.day = date.toDate().getDay();
 				eventData.start = moment(date).format("HH:mm");
 				eventData.end = moment(date).add(moment.duration(eventData.duration)).format("HH:mm");
-				eventData.room = getCurrentRoom();
 				console.log('\nday: ' + eventData.day +
 							'\nstart: ' + eventData.start +
 							'\nend: ' + eventData.end);
 				console.log('deleting');
-
-				// Set room data
-				var roomData = getCurrentRoomData();
-				roomData.eventDataList.push(eventData);
 
 				$(this).remove();
 			},
@@ -543,6 +548,7 @@
 				eventData.day = fcDayTable[moment.unix(event.start/1000).format('YYYY-MM-DD')];
 				eventData.start = moment(eventData.start, "HH:mm").add(delta).format('HH:mm');
 				eventData.end = moment(eventData.end, "HH:mm").add(delta).format("HH:mm");
+				event.addToRoom = false;
 				console.log('\nday: ' + eventData.day +
 							'\nstart: ' + eventData.start +
 							'\nend: ' + eventData.end);
@@ -553,12 +559,30 @@
 		        // change the border color just for fun
 		        $(this).css('border-color', 'red');
 		    },
-		    eventRender: function(event, element) {
-		    	element.data('eventData', event.eventData);
-		    },
 		    eventAfterRender: function(event, element) {
+		    	console.log(event.addToRoom);
+		    	console.log(event);
+		    	
+		    	var id_data = {
+		    		eventData_id:  event.eventData_id,
+		    		class_id: event.class_id,
+		    		instructor: event.instructor
+		    	}
+
+		    	element.data('id_data', id_data);
+
+		    	console.log('test');
+		    	console.log(getEventDataFromIdList(event));
+		    	console.log('test');
+
+		    	if (! getEventDataFromIdList(event).inCalendar) {
+		    		// Set room data
+					var roomData = getCurrentRoomData();
+					roomData.classes.push(id_data);
+		    	}
+
 		        element.qtip({
-		            content: event.eventData.instructor,
+		            content: event.instructor,
 		            overwrite: true,
 		            style: { 
 		            	classes: 'qtip-bootstrap h5' 
