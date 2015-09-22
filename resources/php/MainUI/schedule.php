@@ -539,8 +539,8 @@
 				var eventData = getEventDataFromFCEvent(this);
 				console.log('current ' + moment().day(eventData.day).get('day'));
 				console.log('delta ' + delta.days());
-				console.log('+ ' + moment().day(eventData.day).add(delta.days(), 'day').get('day'));
-				eventData.day = moment().days(eventData.day).add(delta).get('day');
+				console.log('+ ' + (moment().day(eventData.day).get('day') + delta.days()));
+				eventData.day = fcDayTable[moment.unix(event.start/1000).format('YYYY-MM-DD')];
 				eventData.start = moment(eventData.start, "HH:mm").add(delta).format('HH:mm');
 				eventData.end = moment(eventData.end, "HH:mm").add(delta).format("HH:mm");
 				console.log('\nday: ' + eventData.day +
