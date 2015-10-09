@@ -1,4 +1,4 @@
-var TESTING_MODE = true;
+var TESTING_MODE = false;
 
 $(document).ready(function() {
 
