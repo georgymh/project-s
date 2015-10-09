@@ -398,6 +398,66 @@
 
 		<div id='calendar'></div>
 
+		<!-- Change class info modal -->
+		<!-- Modal -->
+		<div class="modal fade" id="manageEventModal" tabindex="-1" role="dialog" aria-labelledby="manageEventModal">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="manageEventModalTitle">Editing <span class='class-title'></span></h4>
+		      </div>
+		      
+		      <div class="modal-body pad-top-sm">
+	              <div class="row">
+	              	<div class="col-md-offset-1 col-md-10">
+	              		<h4 class="modal-section">Class Information</h4>
+	              	</div>
+	              </div>
+	              <div class="row">
+                    <div class="col-md-offset-3 col-md-6">
+                    	<div class='pad-top-xsm'>
+                            <label class="control-label">Class Title</label>
+                            <input id="edit-class-title" name="class-title" class="form-control input-md" type="text" style="height:37.22222px">
+                        </div>
+
+                        <div class='pad-top-xsm'>
+	                        <label class="control-label">Total Hours Per Semester</label>
+	                        <div class="input-group">
+						      <input id='edit-class-total-hours' type="text" class="form-control" style="height:36.22222px" aria-label="Total Hours Per Semester">
+						      <span class="input-group-addon" id="basic-addon2">hours</span>
+						      <div class="input-group-btn">
+						        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:36.22222px"><span class="caret"></span></button>
+						        <ul class="dropdown-menu dropdown-menu-right">
+						          <li><a class='total-hours-option' href="#">60</a></li>
+						          <li><a class='total-hours-option' href="#">90</a></li>
+						        </ul>
+						      </div><!-- /btn-group -->
+						    </div><!-- /input-group -->
+						</div>
+                        
+                        <div class='pad-top-xsm'>
+                        	<label for="edit-class-frequency">Desired Weekly Frequency</label>
+                            <select id="edit-class-frequency" class="form-control" style="height:37.22222px">
+                                <option></option>
+                                <option value="1">Once per week</option>
+                                <option value="2">Twice per week</option>
+                                <option value="4">Monday through Thursday</option>
+                            </select>
+                        </div>
+
+				    </div>
+                  </div>
+		      </div>
+
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
 		<div style='clear:both'></div>
 
 		<div class='pull-right' style='clear:both'><a href="resources/php/MainUI/deletesession.php?refresh=yes"> Logout </a></div>
