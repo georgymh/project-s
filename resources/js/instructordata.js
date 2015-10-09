@@ -114,6 +114,8 @@ function createEvents(aClass) {
 		var newEvent = {};
 		newEvent["_id"] = generateUUID();
 		newEvent.eventNumber = id;
+		//newEvent.title = aClass.title;
+		//newEvent.instructor = $('#current-instructor').text();
 		newEvent.inCalendar = false;
 		newEvent.duration = classDuration;
 		aClass.events.push(newEvent);
