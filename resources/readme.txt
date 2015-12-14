@@ -1,1 +1,0 @@
-Resources files (files created by the project and used for the project).
