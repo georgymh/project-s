@@ -5,13 +5,13 @@
 
    	// Animation to show FIRST step.
     $('#main-form fieldset:first-child').fadeIn('slow');
-    
+
     // next step
     $('.next').on('click', function() {
         var parent_fieldset = $(this).parents('fieldset');
 
         var next_step = true;
-        
+
         if( next_step ) {
             parent_fieldset.fadeOut(400, function() {
                 $(this).next().fadeIn();
@@ -22,7 +22,7 @@
         var currentStepId = getCurrentStep().attr('id');
         runCorrectDataFiller( currentStepId );
     });
-    
+
     // previous step
     $('.back').on('click', function() {
     	var parent_fieldset = $(this).parents('fieldset');
@@ -31,7 +31,7 @@
             $(this).prev().fadeIn();
         });
     });
-    
+
     // submit
     $('#main-form').on('submit', function(e) {
         e.preventDefault();
@@ -43,7 +43,7 @@
         var allow_submit = true; // for future validation.
         if ( allow_submit ) {
         	console.log('submitting...');
-    
+
             $.ajax({
                 method: 'POST',
                 url: 'createschedule.php',
