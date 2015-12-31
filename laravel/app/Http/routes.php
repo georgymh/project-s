@@ -1,29 +1,18 @@
 <?php
 
 
-  Route::get('/', function()
-  {
-  	return View::make('index');
+  Route::get('/', 'PagesController@index');
+  
+  Route::get('/signUp', 'PagesController@signUp');
+    
+  Route::post('/signUp', 'PagesController@welcome');
+
+  //Route::get('/welcome', 'PagesController@welcome');
+
+  	
 
 
-  });
 
-  Route::get('/signUp', function()
-  {
-
-  	return View::make('register');
-
-
-  });
 
   
-  Route::get('/signUp/welcome', function()
-  {
-
-  	return View::make('welcome_view');
-
-
-  });
-
-  Route::get('/signUp/validate', 'ValidateController@validateInputFields');
   
