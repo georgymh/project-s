@@ -3,12 +3,23 @@
 @section('content')
 <h1 style="padding-top: 100px; text-align: center">Create Your Schedulezilla Account</h1>
         <hr>
+
+        @if ($errors->any())
+                 <div class="col-md-4 col-md-offset-4">
+                  <ul class="alert alert-danger" >
+                    @foreach ($errors->all() as $error)
+                      <li> {{$error}} </li>
+                    @endforeach
+                  </ul>
+                </div>
+                @endif
            <!-- Registration form - START -->
           <div class="container" id="sign-up-form">
               <div class="col-md-6 col-md-offset-3" style="background-color: #e6e6e6; padding: 25px">
 
-              {!! Form::open(['url' => 'signUp'  ]) !!}
+              {!! Form::open(['url' => '/signUp'  ]) !!}
 
+                      
                           <div class="col-lg-8">
                               <div class="form-group">
                                   <label for="InputName">Name</label>
@@ -28,7 +39,7 @@
                                   <label for="InputName">Username</label>
                                   <div class="input-group">
                                       <div class="col-md-12">
-                                         {!! Form::text('Username', NULL, array('placeholder' => 'Enter Username', 'class' => 'form-control')) !!}
+                                         {!! Form::text('username', NULL, array('placeholder' => 'Enter Username', 'class' => 'form-control')) !!}
                                       </div>
                                     </div>
                                   </div>
@@ -36,7 +47,7 @@
                                   <label for="InputName">School</label>
                                   <div class="input-group">
                                       <div class="col-md-12">
-                                         {!! Form::text('School', NULL, array('placeholder' => 'School Name', 'class' => 'form-control')) !!}
+                                         {!! Form::text('school', NULL, array('placeholder' => 'School Name', 'class' => 'form-control')) !!}
                                       </div>
                                     </div>
                                   </div>
@@ -44,7 +55,7 @@
                                   <label for="InputName">Create a password</label>
                                   <div class="input-group">
                                       <div class="col-md-12">
-                                         {!! Form::password('password-1', array('class' => 'form-control', 'id' => 'passwordInitial')) !!}
+                                         {!! Form::password('password', array('class' => 'form-control', 'id' => 'passwordInitial')) !!}
                                       </div>
                                     </div>
                                   </div>
@@ -52,7 +63,7 @@
                                   <label for="InputName">Confirm your password</label>
                                   <div class="input-group">
                                       <div class="col-md-12">
-                                        {!! Form::password('password-2', array('class' => 'form-control', 'id' => 'passwordInitial')) !!}
+                                        {!! Form::password('password_confirmation', array('class' => 'form-control', 'id' => 'passwordInitial')) !!}
                                       </div>
                                     </div>
                                   </div>
@@ -60,7 +71,7 @@
                                   <label for="InputEmail">Enter Email</label>
                                   <div class="input-group">
                                     <div class="col-md-12">
-                                     {!! Form::text('Email', NULL, array('placeholder' => 'Enter Email', 'class' => 'form-control')) !!}
+                                     {!! Form::text('email', NULL, array('placeholder' => 'Enter Email', 'class' => 'form-control')) !!}
                                     </div>
                                   </div>
                               </div>
@@ -72,10 +83,14 @@
                         </div>
                   
                  {!! Form::close() !!}
-              </div>
+
+                  
+
+                   </div>
           </div>
-          <!-- Registration form - END -->
+
     @stop
+
 
 
 

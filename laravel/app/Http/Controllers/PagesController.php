@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Request;
 
-use App\Http\Requests;
+use App\User;
+use Hash;
+use App\Http\Requests\RegisterUserRequest;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
@@ -23,12 +24,16 @@ class PagesController extends Controller
     	return view('register');
     }
 
-    public function welcome()
+    public function register(RegisterUserRequest $request)
     {
-        $input = Request::all();
-
-    	return $input;
+        $users = new User;
+        $users->email = $request->email;
+        $users->first_name = $request->firstName;
+        $users->last_name = $request->lastName;
+        $users->school = $request->school;
+        $users->password = Hash::make($request->password);
+        $users->save();
+        //reroute('/');
     }
-
-
+    
 }
