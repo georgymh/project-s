@@ -39,6 +39,7 @@
 		 {!! Form::close() !!}
 		</div>
 	  </div>
+
 	    @if ($errors->any())
 		   	<div class="container" style="padding-top: 1em">
 			  <div class="col-md-4 col-md-offset-4" >

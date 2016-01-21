@@ -15,6 +15,10 @@ Route::group(['middleware' => ['web']], function () {
 
   Route::post('/signUp', 'PagesController@register');
 
+  Route::get('/dashboard', 'PagesController@postLogin');
+
+  Route::get('/destroyToken', 'PagesController@destroyToken');
+
 });
   
 
