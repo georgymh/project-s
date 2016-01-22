@@ -19,6 +19,7 @@ Route::group(['middleware' => ['web']], function () {
 
   Route::get('/destroyToken', 'PagesController@destroyToken');
 
+
 });
   
 

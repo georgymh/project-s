@@ -19,7 +19,10 @@ class PagesController extends Controller
     //
 	public function index()
 	{
-
+        if (Auth::check())
+        {
+            return view('loggedIn');
+        }
 
     	return view('index');
     }
@@ -36,21 +39,29 @@ class PagesController extends Controller
 
     }
 
+    public function postLogin(){
+
+        return view('dashboard');
+
+    }
     public function signInAccount(SignInRequest $request){
 
         $user = User::where('email', $request->email)->first();
-        $remember = $user->remember_token;
 
-        if (empty($user)){
-            return view('signIn')->withErrors('Email or Password is incorrect');
-        }
-        else if (Auth::attempt(['email' => $user->email, 'password' => $request->password], $remember)){
+        $rememberMe = $request['agree'];
+
+        if ($rememberMe == 'yes')
+            $rememberUser = true;
+        else 
+            $rememberUser = false;
+
+        if (Auth::attempt(array('email' => $user->email, 'password' => $request->password), $rememberUser)){
             return view('dashboard');
-        }else{
-
+        }
+        else{
             return view('signIn')->withErrors('Email or Password is incorrect');
         }
-           
+
     }
 
     public function destroyToken(){
@@ -74,8 +85,9 @@ class PagesController extends Controller
         else
             $users->save();
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password]))
-            return view('dashboard');
+        if (Auth::attempt(array('email' => $request->email, 'password' => $request->password), true)){
+            return redirect('/dashboard');
+        }
         else
             return view('register');
     }

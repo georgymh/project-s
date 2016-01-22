@@ -35,6 +35,9 @@
 		        <label for="inputPassword" class="sr-only">Password</label>
 		        {!! Form::text('password', NULL, array('placeholder' => 'Password', 'class' => 'form-control', 'id' => 'passwordSignIn')) !!}
 		        <br>
+            		{{ Form::checkbox('agree', 'yes', true, ['id' => 'signInCheckbox']) }}
+          			<label>Remember me</label>
+          		<br>
 		        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		 {!! Form::close() !!}
 		</div>
