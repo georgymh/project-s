@@ -38,6 +38,25 @@
 
   <body>
 
+    <div class="row">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ URL('/') }}">Schedulezilla</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          {!! Form::open(['class' => 'text-right', 'style' => 'padding-top: 5px']) !!}
+             <a href="{{ URL('/destroyToken') }}" button type="submit" class="btn btn-primary"><i class="fa fa-sign-out"> Logout</i></a>
+          {!! Form::close() !!}
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
     
 
     <div>
@@ -45,14 +64,6 @@
       @yield('content')
 
     </div>
-
-     
-     <div  class="row" style="position: relative; bottom: 0; padding-right: 2em">
-      <hr>
-      <footer style="text-align: right">
-        <p>&copy; 2015 Schedulezilla, Inc.</p>
-      </footer>
-     </div>
 
 
     <!-- Bootstrap core JavaScript
